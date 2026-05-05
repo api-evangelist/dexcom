@@ -1,0 +1,75 @@
+aid: dexcom
+url: https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/apis.yml
+name: Dexcom
+tags:
+  - Continuous Glucose Monitoring
+  - Diabetes
+  - Digital Health
+  - Glucose
+  - Healthcare
+  - Medical Devices
+  - Wearables
+type: Index
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+access: 3rd-Party
+x-type: company
+created: '2026-05-04'
+modified: '2026-05-04'
+description: >-
+  Dexcom is a leading medical device company that develops, manufactures, and
+  distributes continuous glucose monitoring (CGM) systems for people with
+  diabetes. The company's wearable sensors stream real-time glucose data to
+  mobile apps, dedicated receivers, and connected health platforms. Dexcom
+  exposes a public developer program that lets approved third parties retrieve
+  CGM data (estimated glucose values, events, calibrations, devices, and
+  statistics) through an OAuth 2.0 secured REST API, with a sandbox for
+  development and a production environment for live patient data.
+apis:
+  - aid: dexcom:dexcom-api
+    name: Dexcom API
+    humanURL: https://developer.dexcom.com/
+    baseURL: https://api.dexcom.com
+    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    tags:
+      - CGM
+      - Glucose
+      - Healthcare
+      - REST
+    properties:
+      - type: Documentation
+        url: https://developer.dexcom.com/
+      - type: GettingStarted
+        url: https://developer.dexcom.com/get-started
+      - type: APIReference
+        url: https://developer.dexcom.com/overview
+      - type: Authentication
+        url: https://developer.dexcom.com/authentication
+      - type: Sandbox
+        url: https://sandbox-api.dexcom.com
+      - type: TermsOfService
+        url: https://developer.dexcom.com/terms-of-use
+    description: >-
+      REST API for retrieving Dexcom continuous glucose monitoring data on
+      behalf of authorized end users. Authentication is OAuth 2.0
+      authorization code flow; sandbox and production hosts are separate.
+      Resources include estimated glucose values (EGVs), events,
+      calibrations, devices, data range, and statistics. Intended for
+      research, clinical, and consumer applications that integrate Dexcom
+      CGM data with other digital health experiences.
+common:
+  - type: Website
+    url: https://www.dexcom.com/
+  - type: DeveloperPortal
+    url: https://developer.dexcom.com/
+  - type: Documentation
+    url: https://developer.dexcom.com/
+  - type: TermsOfService
+    url: https://www.dexcom.com/terms-of-use
+  - type: PrivacyPolicy
+    url: https://www.dexcom.com/privacy-policy
+  - type: Support
+    url: https://www.dexcom.com/contact
+maintainers:
+  - FN: API Evangelist
+    url: https://apievangelist.com
+specificationVersion: '0.19'
