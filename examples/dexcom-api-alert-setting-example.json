@@ -1,0 +1,7 @@
+{
+  "alertName": "rise",
+  "value": 82.52,
+  "unit": "mmol/L",
+  "snooze": 30,
+  "enabled": true
+}

@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egv-record-schema.json",
+  "title": "EGVRecord",
+  "description": "A single estimated glucose value record.",
+  "type": "object",
+  "properties": {
+    "recordId": {
+      "type": "string"
+    },
+    "systemTime": {
+      "$ref": "#/$defs/DateTime"
+    },
+    "displayTime": {
+      "$ref": "#/$defs/DateTime"
+    },
+    "transmitterId": {
+      "type": "string",
+      "nullable": true
+    },
+    "transmitterTicks": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "value": {
+      "type": "integer",
+      "format": "int32",
+      "description": "Estimated glucose value, in `unit`."
+    },
+    "status": {
+      "$ref": "#/$defs/EgvStatus"
+    },
+    "trend": {
+      "$ref": "#/$defs/TrendType"
+    },
+    "trendRate": {
+      "type": "number",
+      "format": "double",
+      "nullable": true
+    },
+    "unit": {
+      "$ref": "#/$defs/GlucoseUnit"
+    },
+    "rateUnit": {
+      "$ref": "#/$defs/RateUnit"
+    },
+    "displayDevice": {
+      "type": "string",
+      "description": "One of `iOS`, `android`, or `receiver`."
+    },
+    "transmitterGeneration": {
+      "$ref": "#/$defs/TransmitterGeneration"
+    }
+  },
+  "$defs": {
+    "EgvStatus": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "high",
+        "low",
+        "ok"
+      ]
+    },
+    "DateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp."
+    },
+    "TransmitterGeneration": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "g4",
+        "g5",
+        "g6",
+        "g6+",
+        "dexcomPro",
+        "g7"
+      ]
+    },
+    "TrendType": {
+      "type": "string",
+      "enum": [
+        "none",
+        "unknown",
+        "doubleUp",
+        "singleUp",
+        "fortyFiveUp",
+        "flat",
+        "fortyFiveDown",
+        "singleDown",
+        "doubleDown",
+        "notComputable",
+        "rateOutOfRange"
+      ]
+    },
+    "RateUnit": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "mg/dL/min",
+        "mmol/L/min"
+      ]
+    },
+    "GlucoseUnit": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "mg/dL",
+        "mmol/L"
+      ]
+    }
+  }
+}

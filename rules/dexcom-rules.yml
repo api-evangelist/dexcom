@@ -1,0 +1,384 @@
+# Dexcom Developer API — Spectral ruleset
+#
+# Enforces conventions observed in the Dexcom v3 OpenAPI specification:
+# - Title and summary prefix "Dexcom ..." / Title Case operation summaries
+# - camelCase operationIds with verb prefixes (get, exchange, refresh)
+# - Versioned, lowerCamelCase paths under /v3/users/self/{resource}
+# - OAuth 2.0 authorization-code security with offline_access scope
+# - ISO 8601 startDate/endDate query parameters
+# - camelCase JSON property naming (e.g. systemTime, displayTime, transmitterId)
+
+rules:
+
+  # ---------------------------------------------------------------------------
+  # INFO / METADATA
+  # ---------------------------------------------------------------------------
+
+  info-title-required:
+    description: Every API must have a title in the info object.
+    severity: error
+    given: $.info
+    then:
+      field: title
+      function: truthy
+
+  info-title-prefix:
+    description: Titles should start with "Dexcom" for portfolio consistency.
+    severity: warn
+    given: $.info.title
+    then:
+      function: pattern
+      functionOptions:
+        match: '^Dexcom '
+
+  info-description-required:
+    description: The info object must include a description explaining the API purpose.
+    severity: error
+    given: $.info
+    then:
+      field: description
+      function: truthy
+
+  info-description-min-length:
+    description: Info descriptions should be at least 80 characters to be meaningful.
+    severity: warn
+    given: $.info.description
+    then:
+      function: length
+      functionOptions:
+        min: 80
+
+  info-version-required:
+    description: A version string is required in the info object (e.g. v3).
+    severity: error
+    given: $.info
+    then:
+      field: version
+      function: truthy
+
+  info-version-format:
+    description: API version should match the v{N} pattern Dexcom uses (v2, v3).
+    severity: warn
+    given: $.info.version
+    then:
+      function: pattern
+      functionOptions:
+        match: '^v[0-9]+$'
+
+  # ---------------------------------------------------------------------------
+  # OPENAPI VERSION
+  # ---------------------------------------------------------------------------
+
+  openapi-version-3:
+    description: Specs must declare OpenAPI 3.x.
+    severity: error
+    given: $.openapi
+    then:
+      function: pattern
+      functionOptions:
+        match: '^3\.'
+
+  # ---------------------------------------------------------------------------
+  # SERVERS
+  # ---------------------------------------------------------------------------
+
+  servers-required:
+    description: At least one server must be declared.
+    severity: error
+    given: $.servers
+    then:
+      function: truthy
+
+  servers-https:
+    description: All Dexcom server URLs must use HTTPS.
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: '^https://'
+
+  servers-dexcom-host:
+    description: Server URLs should point to a Dexcom-controlled host (api.dexcom.com, api.dexcom.eu, api.dexcom.jp, sandbox-api.dexcom.com).
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: '^https://(sandbox-api|api)\.dexcom\.(com|eu|jp)$'
+
+  servers-description:
+    description: Each server must include a description (e.g. Production, Sandbox).
+    severity: warn
+    given: $.servers[*]
+    then:
+      field: description
+      function: truthy
+
+  # ---------------------------------------------------------------------------
+  # PATHS — NAMING CONVENTIONS
+  # ---------------------------------------------------------------------------
+
+  paths-versioned:
+    description: Paths should be versioned with a /v{N}/ prefix as Dexcom does.
+    severity: warn
+    given: $.paths.*~
+    then:
+      function: pattern
+      functionOptions:
+        match: '^/v[0-9]+/'
+
+  paths-no-trailing-slash:
+    description: Paths must not end with a trailing slash.
+    severity: error
+    given: $.paths.*~
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: '.+/$'
+
+  paths-no-query-string:
+    description: Paths must not embed query strings; use parameters instead.
+    severity: error
+    given: $.paths.*~
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: '\?'
+
+  paths-lower-camel-case:
+    description: Path segments should use lowerCamelCase (e.g. dataRange) consistent with Dexcom's API.
+    severity: warn
+    given: $.paths.*~
+    then:
+      function: pattern
+      functionOptions:
+        match: '^(/[a-z][a-zA-Z0-9]*|/v[0-9]+|/users|/self|/\{[a-zA-Z]+\})+$'
+
+  # ---------------------------------------------------------------------------
+  # OPERATIONS
+  # ---------------------------------------------------------------------------
+
+  operation-operationId-required:
+    description: Every operation must define an operationId.
+    severity: error
+    given: $.paths.*[get,put,post,delete,patch,options,head]
+    then:
+      field: operationId
+      function: truthy
+
+  operation-operationId-camel-case:
+    description: operationIds must be camelCase (e.g. getEgvsV3, exchangeAuthorizationCode).
+    severity: warn
+    given: $.paths.*[get,put,post,delete,patch,options,head].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-zA-Z0-9]+$'
+
+  operation-summary-required:
+    description: Every operation must have a summary.
+    severity: error
+    given: $.paths.*[get,put,post,delete,patch,options,head]
+    then:
+      field: summary
+      function: truthy
+
+  operation-summary-title-case:
+    description: Summaries should be Title Case (each significant word capitalized).
+    severity: warn
+    given: $.paths.*[get,put,post,delete,patch,options,head].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[A-Z][A-Za-z0-9]*( [A-Z0-9][A-Za-z0-9/]*)*$'
+
+  operation-description-required:
+    description: Every operation should include a description.
+    severity: warn
+    given: $.paths.*[get,put,post,delete,patch,options,head]
+    then:
+      field: description
+      function: truthy
+
+  operation-tags-required:
+    description: Operations must declare at least one tag for documentation grouping.
+    severity: warn
+    given: $.paths.*[get,put,post,delete,patch,options,head]
+    then:
+      field: tags
+      function: truthy
+
+  # ---------------------------------------------------------------------------
+  # TAGS
+  # ---------------------------------------------------------------------------
+
+  tags-defined:
+    description: A global tags array should be defined at the spec level.
+    severity: info
+    given: $
+    then:
+      field: tags
+      function: truthy
+
+  tags-title-case:
+    description: Tag names should be Title Case (e.g. "Estimated Glucose Values").
+    severity: warn
+    given: $.tags[*].name
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[A-Z][A-Za-z0-9]*( [A-Z0-9][A-Za-z0-9]*)*$'
+
+  tag-description-required:
+    description: Each declared tag should have a description.
+    severity: warn
+    given: $.tags[*]
+    then:
+      field: description
+      function: truthy
+
+  # ---------------------------------------------------------------------------
+  # PARAMETERS
+  # ---------------------------------------------------------------------------
+
+  parameter-description-required:
+    description: Parameters must include a description.
+    severity: warn
+    given: $.paths.*.*.parameters[*]
+    then:
+      field: description
+      function: truthy
+
+  parameter-camel-case:
+    description: Parameter names should use lowerCamelCase (e.g. startDate, endDate, lastSyncTime, client_id is permitted only for OAuth bodies).
+    severity: warn
+    given: $.paths.*.*.parameters[?(@.in!='header')].name
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-zA-Z0-9_]*$'
+
+  parameter-date-iso8601:
+    description: startDate and endDate query parameters must be defined as date-time strings.
+    severity: error
+    given: "$.paths.*.*.parameters[?(@.name=='startDate' || @.name=='endDate')]"
+    then:
+      field: schema.format
+      function: pattern
+      functionOptions:
+        match: '^date-time$'
+
+  # ---------------------------------------------------------------------------
+  # RESPONSES
+  # ---------------------------------------------------------------------------
+
+  response-success-required:
+    description: Every operation must define at least one 2xx response.
+    severity: error
+    given: $.paths.*[get,put,post,delete,patch,options,head].responses
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          patternProperties:
+            '^(2[0-9]{2}|3[0-9]{2})$':
+              type: object
+          minProperties: 1
+
+  response-description-required:
+    description: Each response must have a description.
+    severity: warn
+    given: $.paths.*.*.responses[*]
+    then:
+      field: description
+      function: truthy
+
+  response-application-json:
+    description: 2xx responses should declare application/json content.
+    severity: warn
+    given: "$.paths.*.*.responses['200','201','202'].content"
+    then:
+      field: application/json
+      function: truthy
+
+  # ---------------------------------------------------------------------------
+  # SCHEMAS — PROPERTY NAMING
+  # ---------------------------------------------------------------------------
+
+  schema-property-camel-case:
+    description: Schema properties should use lowerCamelCase (systemTime, displayTime, transmitterId, transmitterGeneration).
+    severity: warn
+    given: $.components.schemas.*.properties.*~
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-zA-Z0-9]*$|^(access_token|refresh_token|expires_in|token_type|client_id|client_secret|grant_type|redirect_uri|response_type)$'
+
+  schema-datetime-format:
+    description: Properties whose names end in "Time" or "Date" should declare format date-time.
+    severity: info
+    given: "$.components.schemas.*.properties[?(@property.match(/(Time|Date)$/))]"
+    then:
+      field: format
+      function: truthy
+
+  # ---------------------------------------------------------------------------
+  # SECURITY
+  # ---------------------------------------------------------------------------
+
+  security-defined:
+    description: A global security requirement must be declared.
+    severity: error
+    given: $
+    then:
+      field: security
+      function: truthy
+
+  security-scheme-oauth2:
+    description: Dexcom uses OAuth 2.0; an OAuth2 security scheme must be defined.
+    severity: error
+    given: $.components.securitySchemes
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          patternProperties:
+            '.*':
+              type: object
+              properties:
+                type:
+                  enum:
+                    - oauth2
+                    - http
+                    - apiKey
+
+  security-oauth2-authorization-code:
+    description: The OAuth2 scheme should expose the authorizationCode flow with offline_access scope.
+    severity: warn
+    given: $.components.securitySchemes[?(@.type=='oauth2')]
+    then:
+      field: flows.authorizationCode
+      function: truthy
+
+  # ---------------------------------------------------------------------------
+  # MICROCKS / EXAMPLES
+  # ---------------------------------------------------------------------------
+
+  operation-microcks-extension:
+    description: Each operation should declare x-microcks-operation for mock-server compatibility.
+    severity: info
+    given: $.paths.*[get,put,post,delete,patch,options,head]
+    then:
+      field: x-microcks-operation
+      function: truthy
+
+  response-named-examples:
+    description: Successful JSON responses should include named examples for Microcks.
+    severity: info
+    given: "$.paths.*.*.responses['200','201','202'].content.application/json"
+    then:
+      field: examples
+      function: truthy

@@ -1,0 +1,29 @@
+{
+  "recordType": "device",
+  "recordVersion": "3.0",
+  "userId": "fd403d5c-d2db-7f03-128a-fbaee573759d",
+  "records": [
+    {
+      "lastUploadDate": "2026-04-30T15:00:00",
+      "transmitterId": "8GA1JK",
+      "transmitterGeneration": "g6+",
+      "displayDevice": "receiver",
+      "displayApp": "Dexcom G7",
+      "alertSchedules": [
+        null,
+        null
+      ]
+    },
+    {
+      "lastUploadDate": "2026-04-30T15:00:00",
+      "transmitterId": "8GA1JK",
+      "transmitterGeneration": "g6",
+      "displayDevice": "iOS",
+      "displayApp": "Dexcom ONE",
+      "alertSchedules": [
+        null,
+        null
+      ]
+    }
+  ]
+}

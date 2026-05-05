@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alerts-response-structure.json",
+  "name": "AlertsResponse",
+  "description": "AlertsResponse schema from Dexcom Developer API",
+  "type": "object",
+  "properties": {
+    "recordType": {
+      "type": "string",
+      "example": "alert"
+    },
+    "recordVersion": {
+      "type": "string",
+      "example": "3.0"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AlertRecord"
+      }
+    }
+  },
+  "definitions": {
+    "AlertRecord": {
+      "name": "AlertRecord",
+      "type": "object",
+      "properties": {
+        "recordId": {
+          "type": "string"
+        },
+        "systemTime": {
+          "$ref": "#/definitions/DateTime"
+        },
+        "displayTime": {
+          "$ref": "#/definitions/DateTime"
+        },
+        "alertName": {
+          "$ref": "#/definitions/AlertName"
+        },
+        "alertState": {
+          "$ref": "#/definitions/AlertState"
+        },
+        "displayDevice": {
+          "type": "string"
+        },
+        "transmitterGeneration": {
+          "$ref": "#/definitions/TransmitterGeneration"
+        },
+        "transmitterId": {
+          "type": "string",
+          "nullable": true
+        }
+      }
+    },
+    "TransmitterGeneration": {
+      "name": "TransmitterGeneration",
+      "type": "string",
+      "enum": [
+        "unknown",
+        "g4",
+        "g5",
+        "g6",
+        "g6+",
+        "dexcomPro",
+        "g7"
+      ]
+    },
+    "AlertName": {
+      "name": "AlertName",
+      "type": "string",
+      "enum": [
+        "unknown",
+        "high",
+        "low",
+        "rise",
+        "fall",
+        "outOfRange",
+        "urgentLow",
+        "urgentLowSoon",
+        "noReadings",
+        "fixedLow"
+      ]
+    },
+    "AlertState": {
+      "name": "AlertState",
+      "type": "string",
+      "enum": [
+        "unknown",
+        "inactive",
+        "activeSnoozed",
+        "activeAlarming"
+      ]
+    },
+    "DateTime": {
+      "name": "DateTime",
+      "type": "datetime",
+      "description": "ISO 8601 timestamp."
+    }
+  }
+}

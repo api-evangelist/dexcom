@@ -1,0 +1,226 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "dex": "https://developer.dexcom.com/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "AlertRecord": "dex:AlertRecord",
+    "AlertSchedule": "dex:AlertSchedule",
+    "AlertSetting": "dex:AlertSetting",
+    "AlertsResponse": "dex:AlertsResponse",
+    "CalibrationRecord": "dex:CalibrationRecord",
+    "CalibrationsResponse": "dex:CalibrationsResponse",
+    "DataRangeMoment": "dex:DataRangeMoment",
+    "DataRangeResponse": "dex:DataRangeResponse",
+    "DataRangeWindow": "dex:DataRangeWindow",
+    "DeviceRecord": "dex:DeviceRecord",
+    "DevicesResponse": "dex:DevicesResponse",
+    "EGVRecord": "dex:EGVRecord",
+    "EgvsResponse": "dex:EgvsResponse",
+    "EventRecord": "dex:EventRecord",
+    "EventsResponse": "dex:EventsResponse",
+    "TokenRequest": "dex:TokenRequest",
+    "TokenResponse": "dex:TokenResponse",
+    "accessToken": {
+      "@id": "dex:access_token",
+      "@type": "xsd:string"
+    },
+    "alertName": {
+      "@id": "dex:alertName",
+      "@type": "xsd:string"
+    },
+    "alertScheduleName": {
+      "@id": "dex:alertScheduleName",
+      "@type": "xsd:string"
+    },
+    "alertScheduleSettings": {
+      "@id": "dex:alertScheduleSettings",
+      "@type": "@id"
+    },
+    "alertSchedules": {
+      "@id": "dex:alertSchedules",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "alertSettings": {
+      "@id": "dex:alertSettings",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "alertState": {
+      "@id": "dex:alertState",
+      "@type": "xsd:string"
+    },
+    "calibrations": {
+      "@id": "dex:calibrations",
+      "@type": "@id"
+    },
+    "clientId": {
+      "@id": "dex:client_id",
+      "@type": "xsd:string"
+    },
+    "clientSecret": {
+      "@id": "dex:client_secret",
+      "@type": "xsd:string"
+    },
+    "code": {
+      "@id": "dex:code",
+      "@type": "xsd:string"
+    },
+    "daysOfWeek": {
+      "@id": "dex:daysOfWeek",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "displayApp": {
+      "@id": "dex:displayApp",
+      "@type": "xsd:string"
+    },
+    "displayDevice": {
+      "@id": "dex:displayDevice",
+      "@type": "xsd:string"
+    },
+    "displayTime": {
+      "@id": "dex:displayTime",
+      "@type": "xsd:dateTime"
+    },
+    "egvs": {
+      "@id": "dex:egvs",
+      "@type": "@id"
+    },
+    "enabled": {
+      "@id": "dex:enabled",
+      "@type": "xsd:boolean"
+    },
+    "end": {
+      "@id": "dex:end",
+      "@type": "@id"
+    },
+    "endTime": {
+      "@id": "dex:endTime",
+      "@type": "xsd:string"
+    },
+    "eventStatus": {
+      "@id": "dex:eventStatus",
+      "@type": "xsd:string"
+    },
+    "eventSubType": {
+      "@id": "dex:eventSubType",
+      "@type": "xsd:string"
+    },
+    "eventType": {
+      "@id": "dex:eventType",
+      "@type": "xsd:string"
+    },
+    "events": {
+      "@id": "dex:events",
+      "@type": "@id"
+    },
+    "expiresIn": {
+      "@id": "dex:expires_in",
+      "@type": "xsd:integer"
+    },
+    "grantType": {
+      "@id": "dex:grant_type",
+      "@type": "xsd:string"
+    },
+    "isDefaultSchedule": {
+      "@id": "dex:isDefaultSchedule",
+      "@type": "xsd:boolean"
+    },
+    "isEnabled": {
+      "@id": "dex:isEnabled",
+      "@type": "xsd:boolean"
+    },
+    "lastUploadDate": {
+      "@id": "dex:lastUploadDate",
+      "@type": "xsd:dateTime"
+    },
+    "rateUnit": {
+      "@id": "dex:rateUnit",
+      "@type": "xsd:string"
+    },
+    "recordId": {
+      "@id": "dex:recordId",
+      "@type": "xsd:string"
+    },
+    "recordType": {
+      "@id": "dex:recordType",
+      "@type": "xsd:string"
+    },
+    "recordVersion": {
+      "@id": "dex:recordVersion",
+      "@type": "xsd:string"
+    },
+    "records": {
+      "@id": "dex:records",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "redirectUri": {
+      "@id": "dex:redirect_uri",
+      "@type": "@id"
+    },
+    "refreshToken": {
+      "@id": "dex:refresh_token",
+      "@type": "xsd:string"
+    },
+    "snooze": {
+      "@id": "dex:snooze",
+      "@type": "xsd:integer"
+    },
+    "start": {
+      "@id": "dex:start",
+      "@type": "@id"
+    },
+    "startTime": {
+      "@id": "dex:startTime",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "dex:status",
+      "@type": "xsd:string"
+    },
+    "systemTime": {
+      "@id": "dex:systemTime",
+      "@type": "xsd:dateTime"
+    },
+    "tokenType": {
+      "@id": "dex:token_type",
+      "@type": "xsd:string"
+    },
+    "transmitterGeneration": {
+      "@id": "dex:transmitterGeneration",
+      "@type": "xsd:string"
+    },
+    "transmitterId": {
+      "@id": "dex:transmitterId",
+      "@type": "xsd:string"
+    },
+    "transmitterTicks": {
+      "@id": "dex:transmitterTicks",
+      "@type": "xsd:integer"
+    },
+    "trend": {
+      "@id": "dex:trend",
+      "@type": "xsd:string"
+    },
+    "trendRate": {
+      "@id": "dex:trendRate",
+      "@type": "xsd:double"
+    },
+    "unit": {
+      "@id": "dex:unit",
+      "@type": "xsd:string"
+    },
+    "userId": {
+      "@id": "dex:userId",
+      "@type": "xsd:string"
+    },
+    "value": {
+      "@id": "dex:value",
+      "@type": "xsd:decimal"
+    }
+  }
+}

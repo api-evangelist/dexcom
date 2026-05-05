@@ -1,0 +1,8 @@
+{
+  "client_id": "your-client-id",
+  "client_secret": "your-client-secret",
+  "code": "1adf9e8c3ffeacbeabecd4eb455ccbb8",
+  "refresh_token": "5cf0326a3d7f7692e45abcdcc7adfbf0",
+  "grant_type": "authorization_code",
+  "redirect_uri": "https://api.dexcom.com/v3/users/self/egvs"
+}

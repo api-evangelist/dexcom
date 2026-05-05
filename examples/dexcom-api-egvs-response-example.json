@@ -1,0 +1,37 @@
+{
+  "recordType": "egv",
+  "recordVersion": "3.0",
+  "userId": "079a528d-7cf7-d4b4-7704-1efbd08f921d",
+  "records": [
+    {
+      "recordId": "3f17180d-5a7e-8450-09c8-cb7e76447107",
+      "systemTime": "2026-04-30T15:00:00",
+      "displayTime": "2026-04-30T15:00:00",
+      "transmitterId": "8HX3LM",
+      "transmitterTicks": 64309839,
+      "value": 138,
+      "status": "high",
+      "trend": "fortyFiveUp",
+      "trendRate": -0.8,
+      "unit": "mg/dL",
+      "rateUnit": "unknown",
+      "displayDevice": "receiver",
+      "transmitterGeneration": "dexcomPro"
+    },
+    {
+      "recordId": "f95eee1e-084d-5f22-94c0-031d4d706294",
+      "systemTime": "2026-04-30T15:00:00",
+      "displayTime": "2026-04-30T15:00:00",
+      "transmitterId": "8HX3LM",
+      "transmitterTicks": 73688690,
+      "value": 135,
+      "status": "high",
+      "trend": "rateOutOfRange",
+      "trendRate": 0.6,
+      "unit": "unknown",
+      "rateUnit": "mmol/L/min",
+      "displayDevice": "android",
+      "transmitterGeneration": "g5"
+    }
+  ]
+}

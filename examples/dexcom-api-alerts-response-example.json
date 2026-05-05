@@ -1,0 +1,27 @@
+{
+  "recordType": "alert",
+  "recordVersion": "3.0",
+  "userId": "4c2b0e93-e540-de81-f3a6-f37eea7a6b7d",
+  "records": [
+    {
+      "recordId": "9714fd54-ac32-dab7-38b4-dfdab5a43efb",
+      "systemTime": "2026-04-30T15:00:00",
+      "displayTime": "2026-04-30T15:00:00",
+      "alertName": "urgentLow",
+      "alertState": "unknown",
+      "displayDevice": "android",
+      "transmitterGeneration": "unknown",
+      "transmitterId": "8HX3LM"
+    },
+    {
+      "recordId": "2a26df5d-3133-d932-7c72-cee3195b7530",
+      "systemTime": "2026-04-30T15:00:00",
+      "displayTime": "2026-04-30T15:00:00",
+      "alertName": "fall",
+      "alertState": "unknown",
+      "displayDevice": "iOS",
+      "transmitterGeneration": "g5",
+      "transmitterId": "8HX3LM"
+    }
+  ]
+}

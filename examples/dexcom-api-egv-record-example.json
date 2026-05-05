@@ -1,0 +1,15 @@
+{
+  "recordId": "9f807aa4-9e16-6999-a19f-f830a82a1934",
+  "systemTime": "2026-04-30T15:00:00",
+  "displayTime": "2026-04-30T15:00:00",
+  "transmitterId": "8GZ7K2",
+  "transmitterTicks": 25889339,
+  "value": 172,
+  "status": "high",
+  "trend": "fortyFiveUp",
+  "trendRate": 0.0,
+  "unit": "unknown",
+  "rateUnit": "mg/dL/min",
+  "displayDevice": "android",
+  "transmitterGeneration": "g7"
+}

@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-date-time-structure.json",
+  "name": "DateTime",
+  "description": "ISO 8601 timestamp.",
+  "type": "datetime"
+}

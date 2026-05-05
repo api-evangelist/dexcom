@@ -1,0 +1,29 @@
+{
+  "recordType": "calibration",
+  "recordVersion": "3.0",
+  "userId": "f413c0db-48e5-6f11-c4ff-4d4679c500e5",
+  "records": [
+    {
+      "recordId": "8c2b4627-3a21-6f0b-43ad-fc3e58a42360",
+      "systemTime": "2026-04-30T15:00:00",
+      "displayTime": "2026-04-30T15:00:00",
+      "unit": "mg/dL",
+      "value": 123,
+      "displayDevice": "receiver",
+      "transmitterId": "8GZ7K2",
+      "transmitterTicks": 23106960,
+      "transmitterGeneration": "g5"
+    },
+    {
+      "recordId": "8ea63c35-e4de-6bad-592e-abf1dd36a681",
+      "systemTime": "2026-04-30T15:00:00",
+      "displayTime": "2026-04-30T15:00:00",
+      "unit": "unknown",
+      "value": 129,
+      "displayDevice": "receiver",
+      "transmitterId": "8GA1JK",
+      "transmitterTicks": 85445036,
+      "transmitterGeneration": "g4"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-record-schema.json",
+  "title": "AlertRecord",
+  "description": "AlertRecord schema from Dexcom Developer API",
+  "type": "object",
+  "properties": {
+    "recordId": {
+      "type": "string"
+    },
+    "systemTime": {
+      "$ref": "#/$defs/DateTime"
+    },
+    "displayTime": {
+      "$ref": "#/$defs/DateTime"
+    },
+    "alertName": {
+      "$ref": "#/$defs/AlertName"
+    },
+    "alertState": {
+      "$ref": "#/$defs/AlertState"
+    },
+    "displayDevice": {
+      "type": "string"
+    },
+    "transmitterGeneration": {
+      "$ref": "#/$defs/TransmitterGeneration"
+    },
+    "transmitterId": {
+      "type": "string",
+      "nullable": true
+    }
+  },
+  "$defs": {
+    "AlertName": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "high",
+        "low",
+        "rise",
+        "fall",
+        "outOfRange",
+        "urgentLow",
+        "urgentLowSoon",
+        "noReadings",
+        "fixedLow"
+      ]
+    },
+    "AlertState": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "inactive",
+        "activeSnoozed",
+        "activeAlarming"
+      ]
+    },
+    "DateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp."
+    },
+    "TransmitterGeneration": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "g4",
+        "g5",
+        "g6",
+        "g6+",
+        "dexcomPro",
+        "g7"
+      ]
+    }
+  }
+}

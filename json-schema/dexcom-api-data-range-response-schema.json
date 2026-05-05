@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-response-schema.json",
+  "title": "DataRangeResponse",
+  "description": "DataRangeResponse schema from Dexcom Developer API",
+  "type": "object",
+  "properties": {
+    "recordType": {
+      "type": "string",
+      "example": "dataRange"
+    },
+    "recordVersion": {
+      "type": "string",
+      "example": "3.0"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "calibrations": {
+      "$ref": "#/$defs/DataRangeWindow"
+    },
+    "egvs": {
+      "$ref": "#/$defs/DataRangeWindow"
+    },
+    "events": {
+      "$ref": "#/$defs/DataRangeWindow"
+    }
+  },
+  "$defs": {
+    "DataRangeWindow": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "$ref": "#/$defs/DataRangeMoment"
+        },
+        "end": {
+          "$ref": "#/$defs/DataRangeMoment"
+        }
+      }
+    },
+    "DataRangeMoment": {
+      "type": "object",
+      "properties": {
+        "systemTime": {
+          "$ref": "#/$defs/DateTime"
+        },
+        "displayTime": {
+          "$ref": "#/$defs/DateTime"
+        }
+      },
+      "required": [
+        "systemTime",
+        "displayTime"
+      ]
+    },
+    "DateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp."
+    }
+  }
+}

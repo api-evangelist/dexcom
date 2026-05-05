@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-devices-response-schema.json",
+  "title": "DevicesResponse",
+  "description": "DevicesResponse schema from Dexcom Developer API",
+  "type": "object",
+  "properties": {
+    "recordType": {
+      "type": "string",
+      "example": "device"
+    },
+    "recordVersion": {
+      "type": "string",
+      "example": "3.0"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/DeviceRecord"
+      }
+    }
+  },
+  "$defs": {
+    "DeviceRecord": {
+      "type": "object",
+      "properties": {
+        "lastUploadDate": {
+          "$ref": "#/$defs/DateTime"
+        },
+        "transmitterId": {
+          "type": "string",
+          "nullable": true
+        },
+        "transmitterGeneration": {
+          "$ref": "#/$defs/TransmitterGeneration"
+        },
+        "displayDevice": {
+          "type": "string",
+          "description": "For example `iOS`, `android`, or `receiver`."
+        },
+        "displayApp": {
+          "type": "string",
+          "nullable": true
+        },
+        "alertSchedules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AlertSchedule"
+          }
+        }
+      }
+    },
+    "DateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp."
+    },
+    "AlertSchedule": {
+      "type": "object",
+      "properties": {
+        "alertScheduleSettings": {
+          "type": "object",
+          "properties": {
+            "alertScheduleName": {
+              "type": "string"
+            },
+            "isEnabled": {
+              "type": "boolean"
+            },
+            "isDefaultSchedule": {
+              "type": "boolean"
+            },
+            "startTime": {
+              "type": "string",
+              "description": "Local time of day in `HH:mm` format."
+            },
+            "endTime": {
+              "type": "string",
+              "description": "Local time of day in `HH:mm` format."
+            },
+            "daysOfWeek": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "sunday",
+                  "monday",
+                  "tuesday",
+                  "wednesday",
+                  "thursday",
+                  "friday",
+                  "saturday"
+                ]
+              }
+            }
+          }
+        },
+        "alertSettings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AlertSetting"
+          }
+        }
+      }
+    },
+    "AlertSetting": {
+      "type": "object",
+      "properties": {
+        "alertName": {
+          "$ref": "#/$defs/AlertName"
+        },
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "$ref": "#/$defs/GlucoseUnit"
+        },
+        "snooze": {
+          "type": "integer",
+          "description": "Snooze interval in minutes."
+        },
+        "enabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "GlucoseUnit": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "mg/dL",
+        "mmol/L"
+      ]
+    },
+    "TransmitterGeneration": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "g4",
+        "g5",
+        "g6",
+        "g6+",
+        "dexcomPro",
+        "g7"
+      ]
+    },
+    "AlertName": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "high",
+        "low",
+        "rise",
+        "fall",
+        "outOfRange",
+        "urgentLow",
+        "urgentLowSoon",
+        "noReadings",
+        "fixedLow"
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "recordType": "event",
+  "recordVersion": "3.0",
+  "userId": "cafee42b-f0a6-2225-de69-3cb31f95d3b2",
+  "records": [
+    {
+      "recordId": "904a7edc-cd1a-c412-da38-cac0d7e3be27",
+      "systemTime": "2026-04-30T15:00:00",
+      "displayTime": "2026-04-30T15:00:00",
+      "eventType": "exercise",
+      "eventSubType": "example",
+      "value": 43.67,
+      "unit": "mmol/L",
+      "eventStatus": "created",
+      "transmitterId": "8GA1JK",
+      "transmitterGeneration": "unknown",
+      "displayDevice": "receiver"
+    },
+    {
+      "recordId": "e837cf43-7827-e026-613b-7f255cfaaaad",
+      "systemTime": "2026-04-30T15:00:00",
+      "displayTime": "2026-04-30T15:00:00",
+      "eventType": "exercise",
+      "eventSubType": "example",
+      "value": 71.32,
+      "unit": "units",
+      "eventStatus": "created",
+      "transmitterId": "8GZ7K2",
+      "transmitterGeneration": "g6+",
+      "displayDevice": "android"
+    }
+  ]
+}

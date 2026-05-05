@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egv-status-structure.json",
+  "name": "EgvStatus",
+  "description": "EgvStatus schema from Dexcom Developer API",
+  "type": "string",
+  "enum": [
+    "unknown",
+    "high",
+    "low",
+    "ok"
+  ]
+}

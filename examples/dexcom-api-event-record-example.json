@@ -1,0 +1,13 @@
+{
+  "recordId": "ff267d79-892f-2b01-34eb-a29ba47746c6",
+  "systemTime": "2026-04-30T15:00:00",
+  "displayTime": "2026-04-30T15:00:00",
+  "eventType": "unknown",
+  "eventSubType": "example",
+  "value": 78.48,
+  "unit": "mg/dL",
+  "eventStatus": "created",
+  "transmitterId": "8GZ7K2",
+  "transmitterGeneration": "unknown",
+  "displayDevice": "receiver"
+}

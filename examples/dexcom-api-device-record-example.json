@@ -1,0 +1,43 @@
+{
+  "lastUploadDate": "2026-04-30T15:00:00",
+  "transmitterId": "8GA1JK",
+  "transmitterGeneration": "g6",
+  "displayDevice": "iOS",
+  "displayApp": "Dexcom ONE",
+  "alertSchedules": [
+    {
+      "alertScheduleSettings": {
+        "alertScheduleName": "example",
+        "isEnabled": true,
+        "isDefaultSchedule": true,
+        "startTime": "00:00",
+        "endTime": "08:00",
+        "daysOfWeek": [
+          "saturday",
+          "saturday"
+        ]
+      },
+      "alertSettings": [
+        null,
+        null
+      ]
+    },
+    {
+      "alertScheduleSettings": {
+        "alertScheduleName": "example",
+        "isEnabled": true,
+        "isDefaultSchedule": true,
+        "startTime": "22:00",
+        "endTime": "08:00",
+        "daysOfWeek": [
+          "friday",
+          "sunday"
+        ]
+      },
+      "alertSettings": [
+        null,
+        null
+      ]
+    }
+  ]
+}

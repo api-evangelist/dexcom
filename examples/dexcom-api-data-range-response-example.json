@@ -1,0 +1,35 @@
+{
+  "recordType": "dataRange",
+  "recordVersion": "3.0",
+  "userId": "5fee3e28-f52d-5d69-e22a-27b41fbdb25a",
+  "calibrations": {
+    "start": {
+      "systemTime": null,
+      "displayTime": null
+    },
+    "end": {
+      "systemTime": null,
+      "displayTime": null
+    }
+  },
+  "egvs": {
+    "start": {
+      "systemTime": null,
+      "displayTime": null
+    },
+    "end": {
+      "systemTime": null,
+      "displayTime": null
+    }
+  },
+  "events": {
+    "start": {
+      "systemTime": null,
+      "displayTime": null
+    },
+    "end": {
+      "systemTime": null,
+      "displayTime": null
+    }
+  }
+}

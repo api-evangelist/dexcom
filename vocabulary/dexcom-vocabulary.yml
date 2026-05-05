@@ -1,0 +1,246 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Dexcom"
+  description: "Vocabulary for the Dexcom Developer API, mapping continuous glucose monitoring (CGM) operational resources (EGVs, events, calibrations, alerts, devices, dataRange) to capability workflows for digital health, research, and clinical use."
+  created: "2026-05-05"
+  modified: "2026-05-05"
+
+# ---------------------------------------------------------------------------
+# OPERATIONAL DIMENSION (derived from openapi/dexcom-dexcom-api.yml)
+# ---------------------------------------------------------------------------
+operational:
+
+  apis:
+    - name: "Dexcom Developer API"
+      namespace: dexcom-api
+      version: v3
+      baseUrl: https://api.dexcom.com
+      status: active
+      sandboxUrl: https://sandbox-api.dexcom.com
+      regions:
+        - https://api.dexcom.com
+        - https://api.dexcom.eu
+        - https://api.dexcom.jp
+
+  resources:
+    - name: estimated-glucose-values
+      label: "Estimated Glucose Values"
+      api: dexcom-api
+      path: /v3/users/self/egvs
+      actions: [list]
+      description: "CGM time-series glucose readings, including value, unit, trend, and rate."
+    - name: events
+      label: "Events"
+      api: dexcom-api
+      path: /v3/users/self/events
+      actions: [list]
+      description: "User-entered carbs, insulin, exercise, health, and notes events."
+    - name: calibrations
+      label: "Calibrations"
+      api: dexcom-api
+      path: /v3/users/self/calibrations
+      actions: [list]
+      description: "Fingerstick BG meter values entered by the user."
+    - name: alerts
+      label: "Alerts"
+      api: dexcom-api
+      path: /v3/users/self/alerts
+      actions: [list]
+      description: "High, low, urgent low, rise, fall, no readings, and out-of-range alerts."
+    - name: devices
+      label: "Devices"
+      api: dexcom-api
+      path: /v3/users/self/devices
+      actions: [list]
+      description: "Transmitters and display devices (G6, G7, Dexcom ONE / ONE+)."
+    - name: data-range
+      label: "Data Range"
+      api: dexcom-api
+      path: /v3/users/self/dataRange
+      actions: [get]
+      description: "Earliest and latest record times across calibrations, EGVs, and events."
+
+  actions:
+    - name: get
+      httpMethod: GET
+      pattern: read
+      description: "Retrieve a single resource state for the authorized user."
+    - name: list
+      httpMethod: GET
+      pattern: read
+      description: "Retrieve a collection of records over a time window."
+    - name: exchange
+      httpMethod: POST
+      pattern: write
+      description: "Exchange an authorization code (or refresh token) for tokens."
+
+  schemas:
+    core:
+      - EGVRecord
+      - EventRecord
+      - CalibrationRecord
+      - AlertRecord
+      - DeviceRecord
+      - DataRangeMoment
+      - DataRangeWindow
+    response-envelopes:
+      - EgvsResponse
+      - EventsResponse
+      - CalibrationsResponse
+      - AlertsResponse
+      - DevicesResponse
+      - DataRangeResponse
+    auth:
+      - TokenRequest
+      - TokenResponse
+    device-config:
+      - AlertSchedule
+      - AlertSetting
+
+  parameters:
+    time-window:
+      - name: startDate
+        in: query
+        format: date-time
+        description: "Inclusive ISO 8601 start of the query window."
+      - name: endDate
+        in: query
+        format: date-time
+        description: "Inclusive ISO 8601 end of the query window (max 30 days after startDate)."
+      - name: lastSyncTime
+        in: query
+        format: date-time
+        description: "Optional incremental-sync watermark for getDataRangeV3."
+
+  enums:
+    glucose-units: [unknown, mg/dL, mmol/L]
+    rate-units: [unknown, mg/dL/min, mmol/L/min]
+    egv-status: [unknown, high, low, ok]
+    trend: [none, unknown, doubleUp, singleUp, fortyFiveUp, flat, fortyFiveDown, singleDown, doubleDown, notComputable, rateOutOfRange]
+    transmitter-generation: [unknown, g4, g5, g6, g6+, dexcomPro, g7]
+    alert-name: [unknown, high, low, rise, fall, outOfRange, urgentLow, urgentLowSoon, noReadings, fixedLow]
+    alert-state: [unknown, inactive, activeSnoozed, activeAlarming]
+    event-type: [unknown, carbs, insulin, exercise, health, bloodGlucose, notes]
+    event-status: [created, updated, deleted]
+    display-device: [iOS, android, receiver]
+
+  authentication:
+    schemes:
+      - name: OAuth2
+        type: oauth2
+        flow: authorizationCode
+        authorizationUrl: https://api.dexcom.com/v2/oauth2/login
+        tokenUrl: https://api.dexcom.com/v2/oauth2/token
+        scopes:
+          offline_access: "Long-lived access via refresh tokens (only valid scope)."
+        usedBy:
+          - dexcom-api
+
+# ---------------------------------------------------------------------------
+# CAPABILITY DIMENSION (derived from capabilities/)
+# ---------------------------------------------------------------------------
+capability:
+
+  workflows:
+    - name: cgm-data-access
+      label: "Dexcom CGM Data Access"
+      file: capabilities/cgm-data-access.yaml
+      description: "Retrieve and analyze a user's Dexcom CGM data through unified REST and MCP adapters."
+      apis: [dexcom-api]
+      tools:
+        - get-data-range
+        - list-glucose-readings
+        - list-events
+        - list-calibrations
+        - list-alerts
+        - list-devices
+      toolCount: 6
+      personas: [digital-health-developer, diabetes-researcher, cgm-aware-agent]
+      domains: [Continuous Glucose Monitoring, Digital Health, Diabetes]
+
+  personas:
+    - id: digital-health-developer
+      name: "Digital Health Developer"
+      description: "Builds consumer or clinical apps that ingest CGM data alongside other wearable signals."
+      workflows: [cgm-data-access]
+    - id: diabetes-researcher
+      name: "Diabetes Researcher"
+      description: "Studies glycemic patterns, exercise/insulin/meal impact, and time-in-range across cohorts."
+      workflows: [cgm-data-access]
+    - id: cgm-aware-agent
+      name: "CGM-Aware AI Agent"
+      description: "AI assistant that uses MCP tools to reason about glucose trends, events, and alerts."
+      workflows: [cgm-data-access]
+
+  domains:
+    - name: "Continuous Glucose Monitoring"
+      resources: [estimated-glucose-values, calibrations, alerts, devices, data-range]
+      workflows: [cgm-data-access]
+    - name: "Diabetes Self-Management"
+      resources: [events, calibrations]
+      workflows: [cgm-data-access]
+    - name: "Authentication"
+      resources: []
+      workflows: []
+
+  namespaces:
+    consumed:
+      - name: dexcom-api
+        baseUri: https://api.dexcom.com
+    rest:
+      - name: cgm-data-access-api
+        port: 8080
+      - name: dexcom-rest
+        port: 8101
+    mcp:
+      - name: cgm-data-access-mcp
+        port: 9090
+      - name: dexcom-mcp
+        port: 9101
+
+  binds:
+    - key: DEXCOM_ACCESS_TOKEN
+      description: "Bearer access token returned from /v2/oauth2/token."
+      workflows: [cgm-data-access]
+    - key: DEXCOM_CLIENT_ID
+      description: "Registered application client identifier."
+      workflows: [cgm-data-access]
+    - key: DEXCOM_CLIENT_SECRET
+      description: "Registered application client secret."
+      workflows: [cgm-data-access]
+
+# ---------------------------------------------------------------------------
+# CROSS-REFERENCE: operational resource -> operations -> workflows -> personas
+# ---------------------------------------------------------------------------
+crossReference:
+  - resource: estimated-glucose-values
+    operations: [getEgvsV3]
+    workflows: [cgm-data-access]
+    tools: [list-glucose-readings]
+    personas: [digital-health-developer, diabetes-researcher, cgm-aware-agent]
+  - resource: events
+    operations: [getEventsV3]
+    workflows: [cgm-data-access]
+    tools: [list-events]
+    personas: [digital-health-developer, diabetes-researcher, cgm-aware-agent]
+  - resource: calibrations
+    operations: [getCalibrationsV3]
+    workflows: [cgm-data-access]
+    tools: [list-calibrations]
+    personas: [digital-health-developer, diabetes-researcher]
+  - resource: alerts
+    operations: [getAlertsV3]
+    workflows: [cgm-data-access]
+    tools: [list-alerts]
+    personas: [digital-health-developer, cgm-aware-agent]
+  - resource: devices
+    operations: [getDevicesV3]
+    workflows: [cgm-data-access]
+    tools: [list-devices]
+    personas: [digital-health-developer]
+  - resource: data-range
+    operations: [getDataRangeV3]
+    workflows: [cgm-data-access]
+    tools: [get-data-range]
+    personas: [digital-health-developer, diabetes-researcher, cgm-aware-agent]

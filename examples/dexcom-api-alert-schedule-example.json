@@ -1,0 +1,29 @@
+{
+  "alertScheduleSettings": {
+    "alertScheduleName": "example",
+    "isEnabled": true,
+    "isDefaultSchedule": true,
+    "startTime": "00:00",
+    "endTime": "00:00",
+    "daysOfWeek": [
+      "friday",
+      "thursday"
+    ]
+  },
+  "alertSettings": [
+    {
+      "alertName": "urgentLowSoon",
+      "value": 67.85,
+      "unit": "unknown",
+      "snooze": 30,
+      "enabled": true
+    },
+    {
+      "alertName": "urgentLow",
+      "value": 57.54,
+      "unit": "mg/dL",
+      "snooze": 30,
+      "enabled": true
+    }
+  ]
+}

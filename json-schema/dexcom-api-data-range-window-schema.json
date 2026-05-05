@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-window-schema.json",
+  "title": "DataRangeWindow",
+  "description": "DataRangeWindow schema from Dexcom Developer API",
+  "type": "object",
+  "properties": {
+    "start": {
+      "$ref": "#/$defs/DataRangeMoment"
+    },
+    "end": {
+      "$ref": "#/$defs/DataRangeMoment"
+    }
+  },
+  "$defs": {
+    "DataRangeMoment": {
+      "type": "object",
+      "properties": {
+        "systemTime": {
+          "$ref": "#/$defs/DateTime"
+        },
+        "displayTime": {
+          "$ref": "#/$defs/DateTime"
+        }
+      },
+      "required": [
+        "systemTime",
+        "displayTime"
+      ]
+    },
+    "DateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp."
+    }
+  }
+}
