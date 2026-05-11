@@ -393,6 +393,12 @@ common:
         description: Over-the-counter glucose biosensor for non-insulin users (US).
       - name: Clarity
         description: Cloud reporting for patients and clinicians with AGP, time-in-range, and pattern recognition.
+  - type: Integrations
+    url: https://www.dexcom.com/en-us/apps
+integrations:
+  - name: US flag
+  - name: Phones with Dexcom G6 App
+  - name: Dexcom Clarity app showing Glucose Levels
 maintainers:
   - FN: API Evangelist
     url: https://apievangelist.com
