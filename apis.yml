@@ -398,6 +398,8 @@ common:
     description: Cloud reporting for patients and clinicians with AGP, time-in-range, and pattern recognition.
 - type: Integrations
   url: https://www.dexcom.com/en-us/apps
+- type: LLMsTxt
+  url: https://developer.dexcom.com/llms.txt
 integrations:
 - name: US flag
 - name: Phones with Dexcom G6 App
