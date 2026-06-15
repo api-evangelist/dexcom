@@ -1,0 +1,266 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dexcom Developer API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://api.dexcom.com/v2/oauth2/login",
+      "accessTokenUrl": "https://api.dexcom.com/v2/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Initiate OAuth 2.0 Authorization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.dexcom.com/v2/oauth2/login",
+            "params": [
+              {
+                "name": "client_id",
+                "value": "",
+                "type": "query",
+                "description": "The application's registered client identifier."
+              },
+              {
+                "name": "redirect_uri",
+                "value": "",
+                "type": "query",
+                "description": "Registered redirect URI to which the authorization code is appended."
+              },
+              {
+                "name": "response_type",
+                "value": "",
+                "type": "query",
+                "description": "Must be set to `code` for authorization code flow."
+              },
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "Must be `offline_access` (the only currently accepted value)."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Opaque value used to maintain state between request and callback (CSRF protection)."
+              }
+            ]
+          },
+          "docs": "Redirect the end user to the Dexcom hosted login page to obtain an authorization code. The user authenticates with Dexcom credentials and consents to share CGM data with the requesting application."
+        },
+        {
+          "info": {
+            "name": "Exchange Authorization Code for Tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.dexcom.com/v2/oauth2/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": []
+            }
+          },
+          "docs": "Exchange a single-use authorization code for an access token and refresh token, or refresh an existing access token using a refresh token. Tokens must be stored on the partner's server."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Data Range",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Data Range",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.dexcom.com/v3/users/self/dataRange",
+            "params": [
+              {
+                "name": "lastSyncTime",
+                "value": "",
+                "type": "query",
+                "description": "Optional ISO 8601 timestamp; the response only reflects records updated since this time."
+              }
+            ]
+          },
+          "docs": "Retrieve the earliest and latest record timestamps available for the authorized user across calibrations, EGVs, and events. Use this to efficiently page historical data and to determine when new data is available."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Estimated Glucose Values",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Estimated Glucose Values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.dexcom.com/v3/users/self/egvs",
+            "params": [
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 timestamp for the start of the query window (UTC, no offset)."
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`."
+              }
+            ]
+          },
+          "docs": "Retrieve estimated glucose values (EGVs) for the authorized user between `startDate` and `endDate`. The maximum window is 30 days and timestamps are interpreted against the device `systemTime` field."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get User-Entered Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.dexcom.com/v3/users/self/events",
+            "params": [
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 timestamp for the start of the query window (UTC, no offset)."
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`."
+              }
+            ]
+          },
+          "docs": "Retrieve user-entered event records (carbohydrates, insulin, exercise, and health events) between `startDate` and `endDate`."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Calibrations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Calibration Entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.dexcom.com/v3/users/self/calibrations",
+            "params": [
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 timestamp for the start of the query window (UTC, no offset)."
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`."
+              }
+            ]
+          },
+          "docs": "Retrieve calibration entries (fingerstick blood glucose meter values entered by the user) between `startDate` and `endDate`."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Alerts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Alert Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.dexcom.com/v3/users/self/alerts",
+            "params": [
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 timestamp for the start of the query window (UTC, no offset)."
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`."
+              }
+            ]
+          },
+          "docs": "Retrieve alert events (high, low, urgent low, rise, fall, no readings, and out-of-range alerts) generated by the user's CGM display device between `startDate` and `endDate`."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Device Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.dexcom.com/v3/users/self/devices"
+          },
+          "docs": "Retrieve information about the user's Dexcom devices, including G6, G7, Dexcom ONE / ONE+ display devices and transmitters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1042 @@
+{
+  "item": [
+    {
+      "id": "1fce23d1-10c2-4c78-848c-61e8064c6b0f",
+      "name": "Authentication",
+      "description": {
+        "content": "OAuth 2.0 authorization and token operations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "96ee0332-5fa6-4471-afbc-6ac6ff54b399",
+          "name": "Initiate OAuth 2.0 Authorization",
+          "request": {
+            "name": "Initiate OAuth 2.0 Authorization",
+            "description": {
+              "content": "Redirect the end user to the Dexcom hosted login page to obtain an authorization code. The user authenticates with Dexcom credentials and consents to share CGM data with the requesting application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "oauth2",
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "client_id",
+                  "value": "<string>",
+                  "description": "(Required) The application's registered client identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "redirect_uri",
+                  "value": "<uri>",
+                  "description": "(Required) Registered redirect URI to which the authorization code is appended."
+                },
+                {
+                  "disabled": false,
+                  "key": "response_type",
+                  "value": "<string>",
+                  "description": "(Required) Must be set to `code` for authorization code flow."
+                },
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>",
+                  "description": "(Required) Must be `offline_access` (the only currently accepted value)."
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "Opaque value used to maintain state between request and callback (CSRF protection)."
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "468ca72b-61c8-4c45-a9f1-27043c3c53ae",
+              "name": "Redirect to the registered redirect URI with an authorization code.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "oauth2",
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "client_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "redirect_uri",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "response_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Location",
+                  "value": "https://dOBLZxaRWVANrDhLmmINKySejwJL.orzlRxQGV,u7doULWZ+jxrYXOFaLnZPeQq6anCbjGkgp7",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e74bbe8f-b9d8-497d-915a-18ff6b332af0",
+          "name": "Exchange Authorization Code for Tokens",
+          "request": {
+            "name": "Exchange Authorization Code for Tokens",
+            "description": {
+              "content": "Exchange a single-use authorization code for an access token and refresh token, or refresh an existing access token using a refresh token. Tokens must be stored on the partner's server.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "oauth2",
+                "token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "client_id",
+                  "value": "<string>",
+                  "description": "(Required) Application's registered client identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "client_secret",
+                  "value": "<string>",
+                  "description": "(Required) Application's client secret."
+                },
+                {
+                  "disabled": false,
+                  "key": "grant_type",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>",
+                  "description": "Single-use authorization code (required when `grant_type=authorization_code`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "refresh_token",
+                  "value": "<string>",
+                  "description": "Refresh token (required when `grant_type=refresh_token`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "redirect_uri",
+                  "value": "<uri>",
+                  "description": "Registered redirect URI (required for `authorization_code`)."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "62736c94-2770-4086-86a5-a62c5cecf40d",
+              "name": "Access token and refresh token returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "oauth2",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Application's registered client identifier.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Application's client secret.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_secret",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "grant_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Single-use authorization code (required when `grant_type=authorization_code`).",
+                        "type": "text/plain"
+                      },
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Refresh token (required when `grant_type=refresh_token`).",
+                        "type": "text/plain"
+                      },
+                      "key": "refresh_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Registered redirect URI (required for `authorization_code`).",
+                        "type": "text/plain"
+                      },
+                      "key": "redirect_uri",
+                      "value": "<uri>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"access_token\": \"{your_access_token}\",\n  \"expires_in\": 7200,\n  \"token_type\": \"Bearer\",\n  \"refresh_token\": \"{your_refresh_token}\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "99481701-ba7f-4145-a6be-250fc6637276",
+      "name": "Estimated Glucose Values",
+      "description": {
+        "content": "Time-series CGM glucose readings for the authorized user.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "88138be4-10e0-476b-874f-b0572763797e",
+          "name": "Get Estimated Glucose Values",
+          "request": {
+            "name": "Get Estimated Glucose Values",
+            "description": {
+              "content": "Retrieve estimated glucose values (EGVs) for the authorized user between `startDate` and `endDate`. The maximum window is 30 days and timestamps are interpreted against the device `systemTime` field.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "users",
+                "self",
+                "egvs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<dateTime>",
+                  "description": "(Required) ISO 8601 timestamp for the start of the query window (UTC, no offset)."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<dateTime>",
+                  "description": "(Required) ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ad890ee-12ea-4b4d-8dbb-570db4852d7a",
+              "name": "Successful EGV retrieval.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "users",
+                    "self",
+                    "egvs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "2026-04-01T00:00:00"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-04-30T23:59:59"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"recordType\": \"egv\",\n  \"recordVersion\": \"3.0\",\n  \"userId\": \"35d77a14-243f-4d5d-9f3f-3b3a7d7e9c3a\",\n  \"records\": [\n    {\n      \"recordId\": \"1f3a9b56-1f4f-4c70-9d2c-bb4f5d6e0001\",\n      \"systemTime\": \"2026-04-30T15:00:00\",\n      \"displayTime\": \"2026-04-30T08:00:00\",\n      \"transmitterId\": \"8GA1JK\",\n      \"transmitterTicks\": 12345678,\n      \"value\": 142,\n      \"status\": \"ok\",\n      \"trend\": \"flat\",\n      \"trendRate\": 0.3,\n      \"unit\": \"mg/dL\",\n      \"rateUnit\": \"mg/dL/min\",\n      \"displayDevice\": \"iOS\",\n      \"transmitterGeneration\": \"g7\"\n    },\n    {\n      \"recordId\": \"1f3a9b56-1f4f-4c70-9d2c-bb4f5d6e0002\",\n      \"systemTime\": \"2026-04-30T15:05:00\",\n      \"displayTime\": \"2026-04-30T08:05:00\",\n      \"transmitterId\": \"8GA1JK\",\n      \"transmitterTicks\": 12345978,\n      \"value\": 148,\n      \"status\": \"ok\",\n      \"trend\": \"fortyFiveUp\",\n      \"trendRate\": 1.2,\n      \"unit\": \"mg/dL\",\n      \"rateUnit\": \"mg/dL/min\",\n      \"displayDevice\": \"iOS\",\n      \"transmitterGeneration\": \"g7\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "69e342e0-1f78-4ed9-9a1c-c1140013d9c7",
+      "name": "Events",
+      "description": {
+        "content": "User-entered events such as carbohydrate intake, insulin doses, exercise, and health events.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3ef35aa1-d86f-47e3-a66e-e505f89c090f",
+          "name": "Get User-Entered Events",
+          "request": {
+            "name": "Get User-Entered Events",
+            "description": {
+              "content": "Retrieve user-entered event records (carbohydrates, insulin, exercise, and health events) between `startDate` and `endDate`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "users",
+                "self",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<dateTime>",
+                  "description": "(Required) ISO 8601 timestamp for the start of the query window (UTC, no offset)."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<dateTime>",
+                  "description": "(Required) ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3783302b-0b5e-40c0-a17a-e5605ef4991f",
+              "name": "Successful events retrieval.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "users",
+                    "self",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "2026-04-01T00:00:00"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-04-30T23:59:59"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"recordType\": \"event\",\n  \"recordVersion\": \"3.0\",\n  \"userId\": \"35d77a14-243f-4d5d-9f3f-3b3a7d7e9c3a\",\n  \"records\": [\n    {\n      \"recordId\": \"9b2e4f78-9aa4-4f10-aa01-2c0d1e7f0001\",\n      \"systemTime\": \"2026-04-30T12:30:00\",\n      \"displayTime\": \"2026-04-30T05:30:00\",\n      \"eventType\": \"carbs\",\n      \"eventSubType\": null,\n      \"value\": 45,\n      \"unit\": \"grams\",\n      \"eventStatus\": \"created\",\n      \"transmitterId\": \"8GA1JK\",\n      \"transmitterGeneration\": \"g7\",\n      \"displayDevice\": \"iOS\"\n    },\n    {\n      \"recordId\": \"9b2e4f78-9aa4-4f10-aa01-2c0d1e7f0002\",\n      \"systemTime\": \"2026-04-30T12:35:00\",\n      \"displayTime\": \"2026-04-30T05:35:00\",\n      \"eventType\": \"insulin\",\n      \"eventSubType\": \"fastActing\",\n      \"value\": 4.5,\n      \"unit\": \"units\",\n      \"eventStatus\": \"created\",\n      \"transmitterId\": \"8GA1JK\",\n      \"transmitterGeneration\": \"g7\",\n      \"displayDevice\": \"iOS\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ddcb7b5c-1171-4869-82dc-2c497aa4d97c",
+      "name": "Calibrations",
+      "description": {
+        "content": "User calibration entries from fingerstick blood glucose meter readings.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "384c3bd0-5f81-4f72-8314-39f1aa015a64",
+          "name": "Get Calibration Entries",
+          "request": {
+            "name": "Get Calibration Entries",
+            "description": {
+              "content": "Retrieve calibration entries (fingerstick blood glucose meter values entered by the user) between `startDate` and `endDate`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "users",
+                "self",
+                "calibrations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<dateTime>",
+                  "description": "(Required) ISO 8601 timestamp for the start of the query window (UTC, no offset)."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<dateTime>",
+                  "description": "(Required) ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee829c9e-863d-4fc9-8d7e-a785787d393e",
+              "name": "Successful calibrations retrieval.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "users",
+                    "self",
+                    "calibrations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "2026-04-01T00:00:00"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-04-30T23:59:59"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"recordType\": \"calibration\",\n  \"recordVersion\": \"3.0\",\n  \"userId\": \"35d77a14-243f-4d5d-9f3f-3b3a7d7e9c3a\",\n  \"records\": [\n    {\n      \"recordId\": \"7d8e0011-3a55-4b40-9c32-aa991100c001\",\n      \"systemTime\": \"2026-04-30T08:11:30\",\n      \"displayTime\": \"2026-04-30T01:11:30\",\n      \"unit\": \"mg/dL\",\n      \"value\": 117,\n      \"displayDevice\": \"receiver\",\n      \"transmitterId\": \"8GA1JK\",\n      \"transmitterTicks\": 12345610,\n      \"transmitterGeneration\": \"g6\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "4351a91c-6fbb-4e23-a504-e87eeb516867",
+      "name": "Alerts",
+      "description": {
+        "content": "Alert events generated by the user's CGM display device.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6158a97f-9223-4a75-891d-527bd4bc4ef1",
+          "name": "Get Alert Events",
+          "request": {
+            "name": "Get Alert Events",
+            "description": {
+              "content": "Retrieve alert events (high, low, urgent low, rise, fall, no readings, and out-of-range alerts) generated by the user's CGM display device between `startDate` and `endDate`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "users",
+                "self",
+                "alerts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<dateTime>",
+                  "description": "(Required) ISO 8601 timestamp for the start of the query window (UTC, no offset)."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<dateTime>",
+                  "description": "(Required) ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "da0de48e-d8ba-4596-85c3-e255d54c047e",
+              "name": "Successful alerts retrieval.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "users",
+                    "self",
+                    "alerts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "2026-04-01T00:00:00"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-04-30T23:59:59"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"recordType\": \"alert\",\n  \"recordVersion\": \"3.0\",\n  \"userId\": \"35d77a14-243f-4d5d-9f3f-3b3a7d7e9c3a\",\n  \"records\": [\n    {\n      \"recordId\": \"a1b2c3d4-aaaa-4bbb-9ccc-dddddddd0001\",\n      \"systemTime\": \"2026-04-30T03:14:00\",\n      \"displayTime\": \"2026-04-29T20:14:00\",\n      \"alertName\": \"low\",\n      \"alertState\": \"activeAlarming\",\n      \"displayDevice\": \"iOS\",\n      \"transmitterGeneration\": \"g7\",\n      \"transmitterId\": \"8GA1JK\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c56b7324-7191-46f3-8ef6-dad071e6fc3c",
+      "name": "Devices",
+      "description": {
+        "content": "Information about the user's CGM transmitters and display devices.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8df53cf9-0b2d-4f8d-ace4-a8a68ec3f9ea",
+          "name": "Get Device Information",
+          "request": {
+            "name": "Get Device Information",
+            "description": {
+              "content": "Retrieve information about the user's Dexcom devices, including G6, G7, Dexcom ONE / ONE+ display devices and transmitters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "users",
+                "self",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9700e855-ece2-44f9-b176-8029f5e0b6ef",
+              "name": "Successful device retrieval.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "users",
+                    "self",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"recordType\": \"device\",\n  \"recordVersion\": \"3.0\",\n  \"userId\": \"35d77a14-243f-4d5d-9f3f-3b3a7d7e9c3a\",\n  \"records\": [\n    {\n      \"lastUploadDate\": \"2026-04-30T15:05:00\",\n      \"transmitterId\": \"8GA1JK\",\n      \"transmitterGeneration\": \"g7\",\n      \"displayDevice\": \"iOS\",\n      \"displayApp\": \"Dexcom G7\",\n      \"alertSchedules\": [\n        {\n          \"alertScheduleSettings\": {\n            \"alertScheduleName\": \"Default\",\n            \"isEnabled\": true,\n            \"isDefaultSchedule\": true,\n            \"startTime\": \"00:00\",\n            \"endTime\": \"00:00\",\n            \"daysOfWeek\": [\n              \"sunday\",\n              \"monday\",\n              \"tuesday\",\n              \"wednesday\",\n              \"thursday\",\n              \"friday\",\n              \"saturday\"\n            ]\n          },\n          \"alertSettings\": [\n            {\n              \"alertName\": \"high\",\n              \"value\": 240,\n              \"unit\": \"mg/dL\",\n              \"snooze\": 30,\n              \"enabled\": true\n            },\n            {\n              \"alertName\": \"low\",\n              \"value\": 80,\n              \"unit\": \"mg/dL\",\n              \"snooze\": 30,\n              \"enabled\": true\n            },\n            {\n              \"alertName\": \"urgentLow\",\n              \"value\": 55,\n              \"unit\": \"mg/dL\",\n              \"snooze\": 30,\n              \"enabled\": true\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e1c5cd24-d796-4345-92f1-9bbbf0d21c12",
+      "name": "Data Range",
+      "description": {
+        "content": "Earliest and latest record times available for the authorized user.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "614aa6fa-19eb-4365-918d-6e8506207367",
+          "name": "Get Data Range",
+          "request": {
+            "name": "Get Data Range",
+            "description": {
+              "content": "Retrieve the earliest and latest record timestamps available for the authorized user across calibrations, EGVs, and events. Use this to efficiently page historical data and to determine when new data is available.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "users",
+                "self",
+                "dataRange"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lastSyncTime",
+                  "value": "<dateTime>",
+                  "description": "Optional ISO 8601 timestamp; the response only reflects records updated since this time."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0f15637e-de57-4cc8-8cbc-ae8fe6369049",
+              "name": "Data range retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "users",
+                    "self",
+                    "dataRange"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lastSyncTime",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"recordType\": \"dataRange\",\n  \"recordVersion\": \"3.0\",\n  \"userId\": \"35d77a14-243f-4d5d-9f3f-3b3a7d7e9c3a\",\n  \"calibrations\": {\n    \"start\": {\n      \"systemTime\": \"2026-01-15T08:32:11\",\n      \"displayTime\": \"2026-01-15T01:32:11\"\n    },\n    \"end\": {\n      \"systemTime\": \"2026-04-30T19:18:24\",\n      \"displayTime\": \"2026-04-30T12:18:24\"\n    }\n  },\n  \"egvs\": {\n    \"start\": {\n      \"systemTime\": \"2026-01-15T08:00:00\",\n      \"displayTime\": \"2026-01-15T01:00:00\"\n    },\n    \"end\": {\n      \"systemTime\": \"2026-04-30T23:55:00\",\n      \"displayTime\": \"2026-04-30T16:55:00\"\n    }\n  },\n  \"events\": {\n    \"start\": {\n      \"systemTime\": \"2026-01-15T09:14:02\",\n      \"displayTime\": \"2026-01-15T02:14:02\"\n    },\n    \"end\": {\n      \"systemTime\": \"2026-04-29T17:42:55\",\n      \"displayTime\": \"2026-04-29T10:42:55\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.dexcom.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "offline_access"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://api.dexcom.com/v2/oauth2/token"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.dexcom.com/v2/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://api.dexcom.com/v2/oauth2/login"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c8945209-15d3-4656-9dac-58cd8f7b52b3",
+    "name": "Dexcom Developer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Dexcom Developer API provides authorized third-party applications with read access to a Dexcom user's continuous glucose monitoring (CGM) data. Resources include estimated glucose values (EGVs), calibrations, events, alerts, devices, and data range. The API uses OAuth 2.0 authorization code flow and exposes separate sandbox and production environments.\n\nContact Support:\n Name: Dexcom Developer Program",
+      "type": "text/plain"
+    }
+  }
+}
