@@ -10,7 +10,7 @@ tags:
   - Medical Devices
   - Wearables
 type: Index
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 kind: company
 created: '2026-05-04'
@@ -27,7 +27,7 @@ apis:
     name: Dexcom Developer API
     humanURL: https://developer.dexcom.com/
     baseURL: https://api.dexcom.com
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     tags:
       - CGM
       - Glucose
