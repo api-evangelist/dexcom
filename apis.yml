@@ -264,111 +264,111 @@ apis:
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-date-time-structure.json
         title: Date Time Structure
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egv-record-example.json
         title: EGV Record Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egvs-response-example.json
         title: EGVs Response Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-record-example.json
         title: Event Record Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-events-response-example.json
         title: Events Response Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-calibration-record-example.json
         title: Calibration Record Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-calibrations-response-example.json
         title: Calibrations Response Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-record-example.json
         title: Alert Record Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alerts-response-example.json
         title: Alerts Response Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-schedule-example.json
         title: Alert Schedule Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-setting-example.json
         title: Alert Setting Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-device-record-example.json
         title: Device Record Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-devices-response-example.json
         title: Devices Response Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-moment-example.json
         title: Data Range Moment Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-window-example.json
         title: Data Range Window Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-response-example.json
         title: Data Range Response Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-token-request-example.json
         title: Token Request Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-token-response-example.json
         title: Token Response Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-glucose-unit-example.json
         title: Glucose Unit Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-rate-unit-example.json
         title: Rate Unit Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-trend-type-example.json
         title: Trend Type Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egv-status-example.json
         title: EGV Status Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-type-example.json
         title: Event Type Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-status-example.json
         title: Event Status Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-name-example.json
         title: Alert Name Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-state-example.json
         title: Alert State Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-transmitter-generation-example.json
         title: Transmitter Generation Example
-      - type: Example
+      - type: Examples
         url: >-
           https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-date-time-example.json
         title: Date Time Example
@@ -469,7 +469,7 @@ common:
         description: Cloud reporting for patients and clinicians with AGP, time-in-range, and pattern recognition.
   - type: Integrations
     url: https://www.dexcom.com/en-us/apps
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://developer.dexcom.com/llms.txt
 integrations:
   - name: US flag
