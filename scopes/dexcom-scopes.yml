@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/dexcom-dexcom-api.yml
+schemes:
+- name: OAuth2
+  source: openapi/dexcom-dexcom-api.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://api.dexcom.com/v2/oauth2/login
+    tokenUrl: https://api.dexcom.com/v2/oauth2/token
+  description: Dexcom uses OAuth 2.0 authorization code flow. The only acceptable scope value
+    is `offline_access`.
+scopes:
+- scope: offline_access
+  description: Long-lived access to the user's CGM data via refresh tokens.
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/dexcom-dexcom-api.yml

@@ -378,6 +378,8 @@ apis:
       estimated glucose values (EGVs), events, calibrations, alerts, devices, and data range. Intended for research,
       clinical, and consumer applications that integrate Dexcom CGM data with other digital health experiences.
 common:
+  - type: OAuthScopes
+    url: scopes/dexcom-scopes.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/dexcom
   - type: Website
