@@ -1,0 +1,28 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.dexcom.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 14 03:00:38 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: developer.dexcom.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 25 05:39:46 2026 GMT
+  hsts: true
+  hsts_max_age: 15780000
+- host: api.dexcom.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  8 05:33:10 2026 GMT
+  hsts: null
+domains:
+- domain: dexcom.com
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
