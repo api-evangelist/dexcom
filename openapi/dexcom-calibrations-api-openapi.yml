@@ -1,0 +1,156 @@
+openapi: 3.0.3
+info:
+  title: Dexcom Developer Alerts Calibrations API
+  version: v3
+  description: The Dexcom Developer API provides authorized third-party applications with read access to a Dexcom user's continuous glucose monitoring (CGM) data. Resources include estimated glucose values (EGVs), calibrations, events, alerts, devices, and data range. The API uses OAuth 2.0 authorization code flow and exposes separate sandbox and production environments.
+  contact:
+    name: Dexcom Developer Program
+    url: https://developer.dexcom.com/
+  termsOfService: https://developer.dexcom.com/terms-of-use
+  x-generated-from: documentation
+  x-source-url: https://developer.dexcom.com/docs/dexcomv3/endpoint-overview
+  x-last-validated: '2026-05-05'
+servers:
+- url: https://api.dexcom.com
+  description: Production (United States)
+- url: https://api.dexcom.eu
+  description: Production (Europe / International)
+- url: https://api.dexcom.jp
+  description: Production (Japan)
+- url: https://sandbox-api.dexcom.com
+  description: Sandbox (Development)
+security:
+- OAuth2: []
+tags:
+- name: Calibrations
+  description: User calibration entries from fingerstick blood glucose meter readings.
+paths:
+  /v3/users/self/calibrations:
+    get:
+      tags:
+      - Calibrations
+      operationId: getCalibrationsV3
+      summary: Get Calibration Entries
+      description: Retrieve calibration entries (fingerstick blood glucose meter values entered by the user) between `startDate` and `endDate`.
+      parameters:
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: Successful calibrations retrieval.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalibrationsResponse'
+              examples:
+                GetCalibrationsV3200Example:
+                  summary: Default getCalibrationsV3 200 response
+                  x-microcks-default: true
+                  value:
+                    recordType: calibration
+                    recordVersion: '3.0'
+                    userId: 35d77a14-243f-4d5d-9f3f-3b3a7d7e9c3a
+                    records:
+                    - recordId: 7d8e0011-3a55-4b40-9c32-aa991100c001
+                      systemTime: '2026-04-30T08:11:30'
+                      displayTime: '2026-04-30T01:11:30'
+                      unit: mg/dL
+                      value: 117
+                      displayDevice: receiver
+                      transmitterId: 8GA1JK
+                      transmitterTicks: 12345610
+                      transmitterGeneration: g6
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    TransmitterGeneration:
+      type: string
+      enum:
+      - unknown
+      - g4
+      - g5
+      - g6
+      - g6+
+      - dexcomPro
+      - g7
+    DateTime:
+      type: string
+      format: date-time
+      description: ISO 8601 timestamp.
+    CalibrationRecord:
+      type: object
+      properties:
+        recordId:
+          type: string
+        systemTime:
+          $ref: '#/components/schemas/DateTime'
+        displayTime:
+          $ref: '#/components/schemas/DateTime'
+        unit:
+          $ref: '#/components/schemas/GlucoseUnit'
+        value:
+          type: integer
+          format: int32
+        displayDevice:
+          type: string
+        transmitterId:
+          type: string
+          nullable: true
+        transmitterTicks:
+          type: integer
+          format: int64
+        transmitterGeneration:
+          $ref: '#/components/schemas/TransmitterGeneration'
+    CalibrationsResponse:
+      type: object
+      properties:
+        recordType:
+          type: string
+          example: calibration
+        recordVersion:
+          type: string
+          example: '3.0'
+        userId:
+          type: string
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/CalibrationRecord'
+    GlucoseUnit:
+      type: string
+      enum:
+      - unknown
+      - mg/dL
+      - mmol/L
+  parameters:
+    StartDate:
+      name: startDate
+      in: query
+      required: true
+      description: ISO 8601 timestamp for the start of the query window (UTC, no offset).
+      schema:
+        type: string
+        format: date-time
+        example: '2026-04-01T00:00:00'
+    EndDate:
+      name: endDate
+      in: query
+      required: true
+      description: ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`.
+      schema:
+        type: string
+        format: date-time
+        example: '2026-04-30T23:59:59'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: Dexcom uses OAuth 2.0 authorization code flow. The only acceptable scope value is `offline_access`.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.dexcom.com/v2/oauth2/login
+          tokenUrl: https://api.dexcom.com/v2/oauth2/token
+          refreshUrl: https://api.dexcom.com/v2/oauth2/token
+          scopes:
+            offline_access: Long-lived access to the user's CGM data via refresh tokens.

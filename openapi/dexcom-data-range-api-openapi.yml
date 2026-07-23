@@ -1,0 +1,132 @@
+openapi: 3.0.3
+info:
+  title: Dexcom Developer Alerts Data Range API
+  version: v3
+  description: The Dexcom Developer API provides authorized third-party applications with read access to a Dexcom user's continuous glucose monitoring (CGM) data. Resources include estimated glucose values (EGVs), calibrations, events, alerts, devices, and data range. The API uses OAuth 2.0 authorization code flow and exposes separate sandbox and production environments.
+  contact:
+    name: Dexcom Developer Program
+    url: https://developer.dexcom.com/
+  termsOfService: https://developer.dexcom.com/terms-of-use
+  x-generated-from: documentation
+  x-source-url: https://developer.dexcom.com/docs/dexcomv3/endpoint-overview
+  x-last-validated: '2026-05-05'
+servers:
+- url: https://api.dexcom.com
+  description: Production (United States)
+- url: https://api.dexcom.eu
+  description: Production (Europe / International)
+- url: https://api.dexcom.jp
+  description: Production (Japan)
+- url: https://sandbox-api.dexcom.com
+  description: Sandbox (Development)
+security:
+- OAuth2: []
+tags:
+- name: Data Range
+  description: Earliest and latest record times available for the authorized user.
+paths:
+  /v3/users/self/dataRange:
+    get:
+      tags:
+      - Data Range
+      operationId: getDataRangeV3
+      summary: Get Data Range
+      description: Retrieve the earliest and latest record timestamps available for the authorized user across calibrations, EGVs, and events. Use this to efficiently page historical data and to determine when new data is available.
+      parameters:
+      - name: lastSyncTime
+        in: query
+        required: false
+        description: Optional ISO 8601 timestamp; the response only reflects records updated since this time.
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: Data range retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataRangeResponse'
+              examples:
+                GetDataRangeV3200Example:
+                  summary: Default getDataRangeV3 200 response
+                  x-microcks-default: true
+                  value:
+                    recordType: dataRange
+                    recordVersion: '3.0'
+                    userId: 35d77a14-243f-4d5d-9f3f-3b3a7d7e9c3a
+                    calibrations:
+                      start:
+                        systemTime: '2026-01-15T08:32:11'
+                        displayTime: '2026-01-15T01:32:11'
+                      end:
+                        systemTime: '2026-04-30T19:18:24'
+                        displayTime: '2026-04-30T12:18:24'
+                    egvs:
+                      start:
+                        systemTime: '2026-01-15T08:00:00'
+                        displayTime: '2026-01-15T01:00:00'
+                      end:
+                        systemTime: '2026-04-30T23:55:00'
+                        displayTime: '2026-04-30T16:55:00'
+                    events:
+                      start:
+                        systemTime: '2026-01-15T09:14:02'
+                        displayTime: '2026-01-15T02:14:02'
+                      end:
+                        systemTime: '2026-04-29T17:42:55'
+                        displayTime: '2026-04-29T10:42:55'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    DataRangeResponse:
+      type: object
+      properties:
+        recordType:
+          type: string
+          example: dataRange
+        recordVersion:
+          type: string
+          example: '3.0'
+        userId:
+          type: string
+        calibrations:
+          $ref: '#/components/schemas/DataRangeWindow'
+        egvs:
+          $ref: '#/components/schemas/DataRangeWindow'
+        events:
+          $ref: '#/components/schemas/DataRangeWindow'
+    DateTime:
+      type: string
+      format: date-time
+      description: ISO 8601 timestamp.
+    DataRangeWindow:
+      type: object
+      properties:
+        start:
+          $ref: '#/components/schemas/DataRangeMoment'
+        end:
+          $ref: '#/components/schemas/DataRangeMoment'
+    DataRangeMoment:
+      type: object
+      properties:
+        systemTime:
+          $ref: '#/components/schemas/DateTime'
+        displayTime:
+          $ref: '#/components/schemas/DateTime'
+      required:
+      - systemTime
+      - displayTime
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: Dexcom uses OAuth 2.0 authorization code flow. The only acceptable scope value is `offline_access`.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.dexcom.com/v2/oauth2/login
+          tokenUrl: https://api.dexcom.com/v2/oauth2/token
+          refreshUrl: https://api.dexcom.com/v2/oauth2/token
+          scopes:
+            offline_access: Long-lived access to the user's CGM data via refresh tokens.

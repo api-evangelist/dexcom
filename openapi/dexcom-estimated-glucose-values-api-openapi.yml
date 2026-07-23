@@ -1,0 +1,215 @@
+openapi: 3.0.3
+info:
+  title: Dexcom Developer Alerts Estimated Glucose Values API
+  version: v3
+  description: The Dexcom Developer API provides authorized third-party applications with read access to a Dexcom user's continuous glucose monitoring (CGM) data. Resources include estimated glucose values (EGVs), calibrations, events, alerts, devices, and data range. The API uses OAuth 2.0 authorization code flow and exposes separate sandbox and production environments.
+  contact:
+    name: Dexcom Developer Program
+    url: https://developer.dexcom.com/
+  termsOfService: https://developer.dexcom.com/terms-of-use
+  x-generated-from: documentation
+  x-source-url: https://developer.dexcom.com/docs/dexcomv3/endpoint-overview
+  x-last-validated: '2026-05-05'
+servers:
+- url: https://api.dexcom.com
+  description: Production (United States)
+- url: https://api.dexcom.eu
+  description: Production (Europe / International)
+- url: https://api.dexcom.jp
+  description: Production (Japan)
+- url: https://sandbox-api.dexcom.com
+  description: Sandbox (Development)
+security:
+- OAuth2: []
+tags:
+- name: Estimated Glucose Values
+  description: Time-series CGM glucose readings for the authorized user.
+paths:
+  /v3/users/self/egvs:
+    get:
+      tags:
+      - Estimated Glucose Values
+      operationId: getEgvsV3
+      summary: Get Estimated Glucose Values
+      description: Retrieve estimated glucose values (EGVs) for the authorized user between `startDate` and `endDate`. The maximum window is 30 days and timestamps are interpreted against the device `systemTime` field.
+      parameters:
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: Successful EGV retrieval.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EgvsResponse'
+              examples:
+                GetEgvsV3200Example:
+                  summary: Default getEgvsV3 200 response
+                  x-microcks-default: true
+                  value:
+                    recordType: egv
+                    recordVersion: '3.0'
+                    userId: 35d77a14-243f-4d5d-9f3f-3b3a7d7e9c3a
+                    records:
+                    - recordId: 1f3a9b56-1f4f-4c70-9d2c-bb4f5d6e0001
+                      systemTime: '2026-04-30T15:00:00'
+                      displayTime: '2026-04-30T08:00:00'
+                      transmitterId: 8GA1JK
+                      transmitterTicks: 12345678
+                      value: 142
+                      status: ok
+                      trend: flat
+                      trendRate: 0.3
+                      unit: mg/dL
+                      rateUnit: mg/dL/min
+                      displayDevice: iOS
+                      transmitterGeneration: g7
+                    - recordId: 1f3a9b56-1f4f-4c70-9d2c-bb4f5d6e0002
+                      systemTime: '2026-04-30T15:05:00'
+                      displayTime: '2026-04-30T08:05:00'
+                      transmitterId: 8GA1JK
+                      transmitterTicks: 12345978
+                      value: 148
+                      status: ok
+                      trend: fortyFiveUp
+                      trendRate: 1.2
+                      unit: mg/dL
+                      rateUnit: mg/dL/min
+                      displayDevice: iOS
+                      transmitterGeneration: g7
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    EgvsResponse:
+      type: object
+      properties:
+        recordType:
+          type: string
+          example: egv
+        recordVersion:
+          type: string
+          example: '3.0'
+        userId:
+          type: string
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/EGVRecord'
+    EgvStatus:
+      type: string
+      enum:
+      - unknown
+      - high
+      - low
+      - ok
+    RateUnit:
+      type: string
+      enum:
+      - unknown
+      - mg/dL/min
+      - mmol/L/min
+    TransmitterGeneration:
+      type: string
+      enum:
+      - unknown
+      - g4
+      - g5
+      - g6
+      - g6+
+      - dexcomPro
+      - g7
+    DateTime:
+      type: string
+      format: date-time
+      description: ISO 8601 timestamp.
+    EGVRecord:
+      type: object
+      description: A single estimated glucose value record.
+      x-schema-source: documentation
+      x-source-url: https://developer.dexcom.com/docs/dexcomv3/endpoint-overview
+      properties:
+        recordId:
+          type: string
+        systemTime:
+          $ref: '#/components/schemas/DateTime'
+        displayTime:
+          $ref: '#/components/schemas/DateTime'
+        transmitterId:
+          type: string
+          nullable: true
+        transmitterTicks:
+          type: integer
+          format: int64
+        value:
+          type: integer
+          format: int32
+          description: Estimated glucose value, in `unit`.
+        status:
+          $ref: '#/components/schemas/EgvStatus'
+        trend:
+          $ref: '#/components/schemas/TrendType'
+        trendRate:
+          type: number
+          format: double
+          nullable: true
+        unit:
+          $ref: '#/components/schemas/GlucoseUnit'
+        rateUnit:
+          $ref: '#/components/schemas/RateUnit'
+        displayDevice:
+          type: string
+          description: One of `iOS`, `android`, or `receiver`.
+        transmitterGeneration:
+          $ref: '#/components/schemas/TransmitterGeneration'
+    TrendType:
+      type: string
+      enum:
+      - none
+      - unknown
+      - doubleUp
+      - singleUp
+      - fortyFiveUp
+      - flat
+      - fortyFiveDown
+      - singleDown
+      - doubleDown
+      - notComputable
+      - rateOutOfRange
+    GlucoseUnit:
+      type: string
+      enum:
+      - unknown
+      - mg/dL
+      - mmol/L
+  parameters:
+    StartDate:
+      name: startDate
+      in: query
+      required: true
+      description: ISO 8601 timestamp for the start of the query window (UTC, no offset).
+      schema:
+        type: string
+        format: date-time
+        example: '2026-04-01T00:00:00'
+    EndDate:
+      name: endDate
+      in: query
+      required: true
+      description: ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`.
+      schema:
+        type: string
+        format: date-time
+        example: '2026-04-30T23:59:59'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: Dexcom uses OAuth 2.0 authorization code flow. The only acceptable scope value is `offline_access`.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.dexcom.com/v2/oauth2/login
+          tokenUrl: https://api.dexcom.com/v2/oauth2/token
+          refreshUrl: https://api.dexcom.com/v2/oauth2/token
+          scopes:
+            offline_access: Long-lived access to the user's CGM data via refresh tokens.

@@ -1,0 +1,187 @@
+openapi: 3.0.3
+info:
+  title: Dexcom Developer Alerts Events API
+  version: v3
+  description: The Dexcom Developer API provides authorized third-party applications with read access to a Dexcom user's continuous glucose monitoring (CGM) data. Resources include estimated glucose values (EGVs), calibrations, events, alerts, devices, and data range. The API uses OAuth 2.0 authorization code flow and exposes separate sandbox and production environments.
+  contact:
+    name: Dexcom Developer Program
+    url: https://developer.dexcom.com/
+  termsOfService: https://developer.dexcom.com/terms-of-use
+  x-generated-from: documentation
+  x-source-url: https://developer.dexcom.com/docs/dexcomv3/endpoint-overview
+  x-last-validated: '2026-05-05'
+servers:
+- url: https://api.dexcom.com
+  description: Production (United States)
+- url: https://api.dexcom.eu
+  description: Production (Europe / International)
+- url: https://api.dexcom.jp
+  description: Production (Japan)
+- url: https://sandbox-api.dexcom.com
+  description: Sandbox (Development)
+security:
+- OAuth2: []
+tags:
+- name: Events
+  description: User-entered events such as carbohydrate intake, insulin doses, exercise, and health events.
+paths:
+  /v3/users/self/events:
+    get:
+      tags:
+      - Events
+      operationId: getEventsV3
+      summary: Get User-Entered Events
+      description: Retrieve user-entered event records (carbohydrates, insulin, exercise, and health events) between `startDate` and `endDate`.
+      parameters:
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: Successful events retrieval.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventsResponse'
+              examples:
+                GetEventsV3200Example:
+                  summary: Default getEventsV3 200 response
+                  x-microcks-default: true
+                  value:
+                    recordType: event
+                    recordVersion: '3.0'
+                    userId: 35d77a14-243f-4d5d-9f3f-3b3a7d7e9c3a
+                    records:
+                    - recordId: 9b2e4f78-9aa4-4f10-aa01-2c0d1e7f0001
+                      systemTime: '2026-04-30T12:30:00'
+                      displayTime: '2026-04-30T05:30:00'
+                      eventType: carbs
+                      eventSubType: null
+                      value: 45
+                      unit: grams
+                      eventStatus: created
+                      transmitterId: 8GA1JK
+                      transmitterGeneration: g7
+                      displayDevice: iOS
+                    - recordId: 9b2e4f78-9aa4-4f10-aa01-2c0d1e7f0002
+                      systemTime: '2026-04-30T12:35:00'
+                      displayTime: '2026-04-30T05:35:00'
+                      eventType: insulin
+                      eventSubType: fastActing
+                      value: 4.5
+                      unit: units
+                      eventStatus: created
+                      transmitterId: 8GA1JK
+                      transmitterGeneration: g7
+                      displayDevice: iOS
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    EventRecord:
+      type: object
+      properties:
+        recordId:
+          type: string
+        systemTime:
+          $ref: '#/components/schemas/DateTime'
+        displayTime:
+          $ref: '#/components/schemas/DateTime'
+        eventType:
+          $ref: '#/components/schemas/EventType'
+        eventSubType:
+          type: string
+          nullable: true
+          description: For example `fastActing` or `longActing` for `insulin`, or `light` / `medium` / `heavy` for `exercise`.
+        value:
+          type: number
+          nullable: true
+        unit:
+          type: string
+          nullable: true
+          description: Unit appropriate to `eventType` (e.g. `grams`, `units`, `minutes`).
+        eventStatus:
+          $ref: '#/components/schemas/EventStatus'
+        transmitterId:
+          type: string
+          nullable: true
+        transmitterGeneration:
+          $ref: '#/components/schemas/TransmitterGeneration'
+        displayDevice:
+          type: string
+          nullable: true
+    TransmitterGeneration:
+      type: string
+      enum:
+      - unknown
+      - g4
+      - g5
+      - g6
+      - g6+
+      - dexcomPro
+      - g7
+    DateTime:
+      type: string
+      format: date-time
+      description: ISO 8601 timestamp.
+    EventStatus:
+      type: string
+      enum:
+      - created
+      - updated
+      - deleted
+    EventType:
+      type: string
+      enum:
+      - unknown
+      - carbs
+      - insulin
+      - exercise
+      - health
+      - bloodGlucose
+      - notes
+    EventsResponse:
+      type: object
+      properties:
+        recordType:
+          type: string
+          example: event
+        recordVersion:
+          type: string
+          example: '3.0'
+        userId:
+          type: string
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventRecord'
+  parameters:
+    StartDate:
+      name: startDate
+      in: query
+      required: true
+      description: ISO 8601 timestamp for the start of the query window (UTC, no offset).
+      schema:
+        type: string
+        format: date-time
+        example: '2026-04-01T00:00:00'
+    EndDate:
+      name: endDate
+      in: query
+      required: true
+      description: ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`.
+      schema:
+        type: string
+        format: date-time
+        example: '2026-04-30T23:59:59'
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: Dexcom uses OAuth 2.0 authorization code flow. The only acceptable scope value is `offline_access`.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.dexcom.com/v2/oauth2/login
+          tokenUrl: https://api.dexcom.com/v2/oauth2/token
+          refreshUrl: https://api.dexcom.com/v2/oauth2/token
+          scopes:
+            offline_access: Long-lived access to the user's CGM data via refresh tokens.

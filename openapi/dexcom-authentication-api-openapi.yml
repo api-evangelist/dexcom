@@ -1,0 +1,171 @@
+openapi: 3.0.3
+info:
+  title: Dexcom Developer Alerts Authentication API
+  version: v3
+  description: The Dexcom Developer API provides authorized third-party applications with read access to a Dexcom user's continuous glucose monitoring (CGM) data. Resources include estimated glucose values (EGVs), calibrations, events, alerts, devices, and data range. The API uses OAuth 2.0 authorization code flow and exposes separate sandbox and production environments.
+  contact:
+    name: Dexcom Developer Program
+    url: https://developer.dexcom.com/
+  termsOfService: https://developer.dexcom.com/terms-of-use
+  x-generated-from: documentation
+  x-source-url: https://developer.dexcom.com/docs/dexcomv3/endpoint-overview
+  x-last-validated: '2026-05-05'
+servers:
+- url: https://api.dexcom.com
+  description: Production (United States)
+- url: https://api.dexcom.eu
+  description: Production (Europe / International)
+- url: https://api.dexcom.jp
+  description: Production (Japan)
+- url: https://sandbox-api.dexcom.com
+  description: Sandbox (Development)
+security:
+- OAuth2: []
+tags:
+- name: Authentication
+  description: OAuth 2.0 authorization and token operations.
+paths:
+  /v2/oauth2/login:
+    get:
+      tags:
+      - Authentication
+      operationId: userAuthorization
+      summary: Initiate OAuth 2.0 Authorization
+      description: Redirect the end user to the Dexcom hosted login page to obtain an authorization code. The user authenticates with Dexcom credentials and consents to share CGM data with the requesting application.
+      parameters:
+      - name: client_id
+        in: query
+        required: true
+        description: The application's registered client identifier.
+        schema:
+          type: string
+      - name: redirect_uri
+        in: query
+        required: true
+        description: Registered redirect URI to which the authorization code is appended.
+        schema:
+          type: string
+          format: uri
+      - name: response_type
+        in: query
+        required: true
+        description: Must be set to `code` for authorization code flow.
+        schema:
+          type: string
+          enum:
+          - code
+      - name: scope
+        in: query
+        required: true
+        description: Must be `offline_access` (the only currently accepted value).
+        schema:
+          type: string
+          enum:
+          - offline_access
+      - name: state
+        in: query
+        required: false
+        description: Opaque value used to maintain state between request and callback (CSRF protection).
+        schema:
+          type: string
+      responses:
+        '302':
+          description: Redirect to the registered redirect URI with an authorization code.
+          headers:
+            Location:
+              schema:
+                type: string
+                format: uri
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v2/oauth2/token:
+    post:
+      tags:
+      - Authentication
+      operationId: exchangeAuthorizationCode
+      summary: Exchange Authorization Code for Tokens
+      description: Exchange a single-use authorization code for an access token and refresh token, or refresh an existing access token using a refresh token. Tokens must be stored on the partner's server.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+      responses:
+        '200':
+          description: Access token and refresh token returned.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+              examples:
+                ExchangeAuthorizationCode200Example:
+                  summary: Default exchangeAuthorizationCode 200 response
+                  x-microcks-default: true
+                  value:
+                    access_token: '{your_access_token}'
+                    expires_in: 7200
+                    token_type: Bearer
+                    refresh_token: '{your_refresh_token}'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    TokenRequest:
+      type: object
+      description: Form-encoded request body for the token endpoint.
+      properties:
+        client_id:
+          type: string
+          description: Application's registered client identifier.
+        client_secret:
+          type: string
+          description: Application's client secret.
+        code:
+          type: string
+          description: Single-use authorization code (required when `grant_type=authorization_code`).
+        refresh_token:
+          type: string
+          description: Refresh token (required when `grant_type=refresh_token`).
+        grant_type:
+          type: string
+          enum:
+          - authorization_code
+          - refresh_token
+        redirect_uri:
+          type: string
+          format: uri
+          description: Registered redirect URI (required for `authorization_code`).
+      required:
+      - client_id
+      - client_secret
+      - grant_type
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: Bearer token used in the `Authorization` header for subsequent requests.
+        expires_in:
+          type: integer
+          description: Lifetime in seconds of the access token.
+          example: 7200
+        token_type:
+          type: string
+          example: Bearer
+        refresh_token:
+          type: string
+          description: Refresh token used to obtain a new access token.
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      description: Dexcom uses OAuth 2.0 authorization code flow. The only acceptable scope value is `offline_access`.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://api.dexcom.com/v2/oauth2/login
+          tokenUrl: https://api.dexcom.com/v2/oauth2/token
+          refreshUrl: https://api.dexcom.com/v2/oauth2/token
+          scopes:
+            offline_access: Long-lived access to the user's CGM data via refresh tokens.
