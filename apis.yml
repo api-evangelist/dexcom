@@ -10,7 +10,20 @@ tags:
   - Medical Devices
   - Wearables
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: free
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Free · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/dexcom.png
 access: 3rd-Party
 kind: company
 created: '2026-05-04'
@@ -23,361 +36,1865 @@ description: >-
   through an OAuth 2.0 secured REST API, with a sandbox for development and a production environment for live patient
   data.
 apis:
-  - aid: dexcom:dexcom-api
-    name: Dexcom Developer API
-    humanURL: https://developer.dexcom.com/
-    baseURL: https://api.dexcom.com
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    tags:
-      - CGM
-      - Glucose
-      - Healthcare
-      - REST
-    properties:
-      - type: Documentation
-        url: https://developer.dexcom.com/
-      - type: GettingStarted
-        url: https://developer.dexcom.com/get-started
-      - type: APIReference
-        url: https://developer.dexcom.com/docs/dexcomv3/endpoint-overview
-      - type: Authentication
-        url: https://developer.dexcom.com/docs/dexcom/authentication/
-      - type: Sandbox
-        url: https://sandbox-api.dexcom.com
-      - type: TermsOfService
-        url: https://developer.dexcom.com/terms-of-use
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/openapi/dexcom-dexcom-api.yml
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egv-record-schema.json
-        title: EGV Record Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egvs-response-schema.json
-        title: EGVs Response Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-record-schema.json
-        title: Event Record Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-events-response-schema.json
-        title: Events Response Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-calibration-record-schema.json
-        title: Calibration Record Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-calibrations-response-schema.json
-        title: Calibrations Response Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-record-schema.json
-        title: Alert Record Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alerts-response-schema.json
-        title: Alerts Response Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-schedule-schema.json
-        title: Alert Schedule Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-setting-schema.json
-        title: Alert Setting Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-device-record-schema.json
-        title: Device Record Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-devices-response-schema.json
-        title: Devices Response Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-moment-schema.json
-        title: Data Range Moment Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-window-schema.json
-        title: Data Range Window Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-response-schema.json
-        title: Data Range Response Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-token-request-schema.json
-        title: Token Request Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-token-response-schema.json
-        title: Token Response Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-glucose-unit-schema.json
-        title: Glucose Unit Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-rate-unit-schema.json
-        title: Rate Unit Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-trend-type-schema.json
-        title: Trend Type Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egv-status-schema.json
-        title: EGV Status Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-type-schema.json
-        title: Event Type Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-status-schema.json
-        title: Event Status Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-name-schema.json
-        title: Alert Name Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-state-schema.json
-        title: Alert State Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-transmitter-generation-schema.json
-        title: Transmitter Generation Schema
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-date-time-schema.json
-        title: Date Time Schema
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egv-record-structure.json
-        title: EGV Record Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egvs-response-structure.json
-        title: EGVs Response Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-record-structure.json
-        title: Event Record Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-events-response-structure.json
-        title: Events Response Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-calibration-record-structure.json
-        title: Calibration Record Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-calibrations-response-structure.json
-        title: Calibrations Response Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-record-structure.json
-        title: Alert Record Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alerts-response-structure.json
-        title: Alerts Response Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-schedule-structure.json
-        title: Alert Schedule Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-setting-structure.json
-        title: Alert Setting Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-device-record-structure.json
-        title: Device Record Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-devices-response-structure.json
-        title: Devices Response Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-moment-structure.json
-        title: Data Range Moment Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-window-structure.json
-        title: Data Range Window Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-response-structure.json
-        title: Data Range Response Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-token-request-structure.json
-        title: Token Request Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-token-response-structure.json
-        title: Token Response Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-glucose-unit-structure.json
-        title: Glucose Unit Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-rate-unit-structure.json
-        title: Rate Unit Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-trend-type-structure.json
-        title: Trend Type Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egv-status-structure.json
-        title: EGV Status Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-type-structure.json
-        title: Event Type Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-status-structure.json
-        title: Event Status Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-name-structure.json
-        title: Alert Name Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-state-structure.json
-        title: Alert State Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-transmitter-generation-structure.json
-        title: Transmitter Generation Structure
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-date-time-structure.json
-        title: Date Time Structure
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egv-record-example.json
-        title: EGV Record Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egvs-response-example.json
-        title: EGVs Response Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-record-example.json
-        title: Event Record Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-events-response-example.json
-        title: Events Response Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-calibration-record-example.json
-        title: Calibration Record Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-calibrations-response-example.json
-        title: Calibrations Response Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-record-example.json
-        title: Alert Record Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alerts-response-example.json
-        title: Alerts Response Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-schedule-example.json
-        title: Alert Schedule Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-setting-example.json
-        title: Alert Setting Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-device-record-example.json
-        title: Device Record Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-devices-response-example.json
-        title: Devices Response Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-moment-example.json
-        title: Data Range Moment Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-window-example.json
-        title: Data Range Window Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-response-example.json
-        title: Data Range Response Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-token-request-example.json
-        title: Token Request Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-token-response-example.json
-        title: Token Response Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-glucose-unit-example.json
-        title: Glucose Unit Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-rate-unit-example.json
-        title: Rate Unit Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-trend-type-example.json
-        title: Trend Type Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egv-status-example.json
-        title: EGV Status Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-type-example.json
-        title: Event Type Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-status-example.json
-        title: Event Status Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-name-example.json
-        title: Alert Name Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-state-example.json
-        title: Alert State Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-transmitter-generation-example.json
-        title: Transmitter Generation Example
-      - type: Examples
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-date-time-example.json
-        title: Date Time Example
-    description: >-
-      REST API for retrieving Dexcom continuous glucose monitoring data on behalf of authorized end users.
-      Authentication is OAuth 2.0 authorization code flow; sandbox and production hosts are separate. Resources include
-      estimated glucose values (EGVs), events, calibrations, alerts, devices, and data range. Intended for research,
-      clinical, and consumer applications that integrate Dexcom CGM data with other digital health experiences.
+- aid: dexcom:dexcom-alerts-api
+  name: Dexcom Alerts API
+  description: Alert events generated by the user's CGM display device.
+  humanURL: https://developer.dexcom.com/
+  baseURL: https://api.dexcom.com
+  tags:
+  - Alerts
+  properties:
+  - type: OpenAPI
+    url: openapi/dexcom-alerts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.dexcom.com/
+  - type: GettingStarted
+    url: https://developer.dexcom.com/get-started
+  - type: APIReference
+    url: https://developer.dexcom.com/docs/dexcomv3/endpoint-overview
+  - type: Authentication
+    url: https://developer.dexcom.com/docs/dexcom/authentication/
+  - type: Sandbox
+    url: https://sandbox-api.dexcom.com
+  - type: TermsOfService
+    url: https://developer.dexcom.com/terms-of-use
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egv-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egvs-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-events-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-calibration-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-calibrations-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alerts-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-schedule-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-setting-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-device-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-devices-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-moment-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-window-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-token-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-token-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-glucose-unit-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-rate-unit-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-trend-type-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egv-status-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-type-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-status-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-name-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-state-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-transmitter-generation-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-date-time-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egv-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egvs-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-events-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-calibration-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-calibrations-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alerts-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-schedule-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-setting-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-device-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-devices-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-moment-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-window-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-token-request-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-token-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-glucose-unit-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-rate-unit-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-trend-type-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egv-status-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-type-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-status-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-name-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-state-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-transmitter-generation-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-date-time-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egv-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egvs-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-events-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-calibration-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-calibrations-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alerts-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-schedule-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-setting-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-device-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-devices-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-moment-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-window-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-token-request-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-token-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-glucose-unit-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-rate-unit-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-trend-type-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egv-status-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-type-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-status-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-name-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-state-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-transmitter-generation-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-date-time-example.json
+- aid: dexcom:dexcom-authentication-api
+  name: Dexcom Authentication API
+  description: OAuth 2.0 authorization and token operations.
+  humanURL: https://developer.dexcom.com/
+  baseURL: https://api.dexcom.com
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/dexcom-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://developer.dexcom.com/
+  - type: GettingStarted
+    url: https://developer.dexcom.com/get-started
+  - type: APIReference
+    url: https://developer.dexcom.com/docs/dexcomv3/endpoint-overview
+  - type: Authentication
+    url: https://developer.dexcom.com/docs/dexcom/authentication/
+  - type: Sandbox
+    url: https://sandbox-api.dexcom.com
+  - type: TermsOfService
+    url: https://developer.dexcom.com/terms-of-use
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egv-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egvs-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-events-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-calibration-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-calibrations-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alerts-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-schedule-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-setting-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-device-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-devices-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-moment-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-window-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-token-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-token-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-glucose-unit-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-rate-unit-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-trend-type-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egv-status-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-type-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-status-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-name-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-state-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-transmitter-generation-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-date-time-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egv-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egvs-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-events-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-calibration-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-calibrations-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alerts-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-schedule-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-setting-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-device-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-devices-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-moment-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-window-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-token-request-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-token-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-glucose-unit-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-rate-unit-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-trend-type-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egv-status-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-type-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-status-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-name-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-state-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-transmitter-generation-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-date-time-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egv-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egvs-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-events-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-calibration-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-calibrations-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alerts-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-schedule-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-setting-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-device-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-devices-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-moment-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-window-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-token-request-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-token-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-glucose-unit-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-rate-unit-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-trend-type-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egv-status-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-type-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-status-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-name-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-state-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-transmitter-generation-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-date-time-example.json
+- aid: dexcom:dexcom-calibrations-api
+  name: Dexcom Calibrations API
+  description: User calibration entries from fingerstick blood glucose meter readings.
+  humanURL: https://developer.dexcom.com/
+  baseURL: https://api.dexcom.com
+  tags:
+  - Calibrations
+  properties:
+  - type: OpenAPI
+    url: openapi/dexcom-calibrations-api-openapi.yml
+  - type: Documentation
+    url: https://developer.dexcom.com/
+  - type: GettingStarted
+    url: https://developer.dexcom.com/get-started
+  - type: APIReference
+    url: https://developer.dexcom.com/docs/dexcomv3/endpoint-overview
+  - type: Authentication
+    url: https://developer.dexcom.com/docs/dexcom/authentication/
+  - type: Sandbox
+    url: https://sandbox-api.dexcom.com
+  - type: TermsOfService
+    url: https://developer.dexcom.com/terms-of-use
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egv-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egvs-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-events-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-calibration-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-calibrations-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alerts-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-schedule-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-setting-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-device-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-devices-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-moment-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-window-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-token-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-token-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-glucose-unit-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-rate-unit-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-trend-type-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egv-status-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-type-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-status-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-name-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-state-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-transmitter-generation-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-date-time-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egv-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egvs-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-events-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-calibration-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-calibrations-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alerts-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-schedule-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-setting-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-device-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-devices-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-moment-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-window-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-token-request-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-token-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-glucose-unit-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-rate-unit-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-trend-type-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egv-status-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-type-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-status-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-name-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-state-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-transmitter-generation-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-date-time-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egv-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egvs-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-events-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-calibration-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-calibrations-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alerts-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-schedule-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-setting-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-device-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-devices-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-moment-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-window-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-token-request-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-token-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-glucose-unit-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-rate-unit-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-trend-type-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egv-status-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-type-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-status-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-name-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-state-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-transmitter-generation-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-date-time-example.json
+- aid: dexcom:dexcom-data-range-api
+  name: Dexcom Data Range API
+  description: Earliest and latest record times available for the authorized user.
+  humanURL: https://developer.dexcom.com/
+  baseURL: https://api.dexcom.com
+  tags:
+  - Data Range
+  properties:
+  - type: OpenAPI
+    url: openapi/dexcom-data-range-api-openapi.yml
+  - type: Documentation
+    url: https://developer.dexcom.com/
+  - type: GettingStarted
+    url: https://developer.dexcom.com/get-started
+  - type: APIReference
+    url: https://developer.dexcom.com/docs/dexcomv3/endpoint-overview
+  - type: Authentication
+    url: https://developer.dexcom.com/docs/dexcom/authentication/
+  - type: Sandbox
+    url: https://sandbox-api.dexcom.com
+  - type: TermsOfService
+    url: https://developer.dexcom.com/terms-of-use
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egv-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egvs-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-events-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-calibration-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-calibrations-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alerts-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-schedule-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-setting-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-device-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-devices-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-moment-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-window-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-token-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-token-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-glucose-unit-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-rate-unit-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-trend-type-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egv-status-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-type-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-status-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-name-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-state-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-transmitter-generation-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-date-time-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egv-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egvs-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-events-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-calibration-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-calibrations-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alerts-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-schedule-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-setting-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-device-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-devices-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-moment-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-window-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-token-request-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-token-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-glucose-unit-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-rate-unit-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-trend-type-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egv-status-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-type-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-status-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-name-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-state-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-transmitter-generation-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-date-time-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egv-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egvs-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-events-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-calibration-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-calibrations-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alerts-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-schedule-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-setting-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-device-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-devices-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-moment-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-window-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-token-request-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-token-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-glucose-unit-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-rate-unit-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-trend-type-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egv-status-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-type-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-status-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-name-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-state-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-transmitter-generation-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-date-time-example.json
+- aid: dexcom:dexcom-devices-api
+  name: Dexcom Devices API
+  description: Information about the user's CGM transmitters and display devices.
+  humanURL: https://developer.dexcom.com/
+  baseURL: https://api.dexcom.com
+  tags:
+  - Devices
+  properties:
+  - type: OpenAPI
+    url: openapi/dexcom-devices-api-openapi.yml
+  - type: Documentation
+    url: https://developer.dexcom.com/
+  - type: GettingStarted
+    url: https://developer.dexcom.com/get-started
+  - type: APIReference
+    url: https://developer.dexcom.com/docs/dexcomv3/endpoint-overview
+  - type: Authentication
+    url: https://developer.dexcom.com/docs/dexcom/authentication/
+  - type: Sandbox
+    url: https://sandbox-api.dexcom.com
+  - type: TermsOfService
+    url: https://developer.dexcom.com/terms-of-use
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egv-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egvs-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-events-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-calibration-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-calibrations-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alerts-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-schedule-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-setting-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-device-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-devices-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-moment-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-window-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-token-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-token-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-glucose-unit-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-rate-unit-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-trend-type-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egv-status-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-type-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-status-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-name-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-state-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-transmitter-generation-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-date-time-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egv-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egvs-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-events-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-calibration-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-calibrations-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alerts-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-schedule-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-setting-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-device-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-devices-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-moment-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-window-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-token-request-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-token-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-glucose-unit-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-rate-unit-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-trend-type-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egv-status-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-type-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-status-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-name-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-state-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-transmitter-generation-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-date-time-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egv-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egvs-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-events-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-calibration-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-calibrations-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alerts-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-schedule-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-setting-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-device-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-devices-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-moment-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-window-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-token-request-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-token-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-glucose-unit-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-rate-unit-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-trend-type-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egv-status-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-type-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-status-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-name-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-state-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-transmitter-generation-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-date-time-example.json
+- aid: dexcom:dexcom-estimated-glucose-values-api
+  name: Dexcom Estimated Glucose Values API
+  description: Time-series CGM glucose readings for the authorized user.
+  humanURL: https://developer.dexcom.com/
+  baseURL: https://api.dexcom.com
+  tags:
+  - Estimated Glucose Values
+  properties:
+  - type: OpenAPI
+    url: openapi/dexcom-estimated-glucose-values-api-openapi.yml
+  - type: Documentation
+    url: https://developer.dexcom.com/
+  - type: GettingStarted
+    url: https://developer.dexcom.com/get-started
+  - type: APIReference
+    url: https://developer.dexcom.com/docs/dexcomv3/endpoint-overview
+  - type: Authentication
+    url: https://developer.dexcom.com/docs/dexcom/authentication/
+  - type: Sandbox
+    url: https://sandbox-api.dexcom.com
+  - type: TermsOfService
+    url: https://developer.dexcom.com/terms-of-use
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egv-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egvs-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-events-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-calibration-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-calibrations-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alerts-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-schedule-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-setting-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-device-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-devices-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-moment-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-window-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-token-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-token-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-glucose-unit-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-rate-unit-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-trend-type-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egv-status-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-type-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-status-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-name-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-state-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-transmitter-generation-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-date-time-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egv-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egvs-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-events-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-calibration-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-calibrations-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alerts-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-schedule-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-setting-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-device-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-devices-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-moment-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-window-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-token-request-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-token-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-glucose-unit-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-rate-unit-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-trend-type-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egv-status-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-type-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-status-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-name-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-state-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-transmitter-generation-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-date-time-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egv-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egvs-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-events-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-calibration-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-calibrations-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alerts-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-schedule-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-setting-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-device-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-devices-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-moment-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-window-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-token-request-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-token-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-glucose-unit-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-rate-unit-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-trend-type-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egv-status-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-type-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-status-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-name-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-state-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-transmitter-generation-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-date-time-example.json
+- aid: dexcom:dexcom-events-api
+  name: Dexcom Events API
+  description: >-
+    User-entered events such as carbohydrate intake, insulin doses, exercise, and health events.
+  humanURL: https://developer.dexcom.com/
+  baseURL: https://api.dexcom.com
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/dexcom-events-api-openapi.yml
+  - type: Documentation
+    url: https://developer.dexcom.com/
+  - type: GettingStarted
+    url: https://developer.dexcom.com/get-started
+  - type: APIReference
+    url: https://developer.dexcom.com/docs/dexcomv3/endpoint-overview
+  - type: Authentication
+    url: https://developer.dexcom.com/docs/dexcom/authentication/
+  - type: Sandbox
+    url: https://sandbox-api.dexcom.com
+  - type: TermsOfService
+    url: https://developer.dexcom.com/terms-of-use
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egv-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egvs-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-events-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-calibration-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-calibrations-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alerts-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-schedule-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-setting-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-device-record-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-devices-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-moment-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-window-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-data-range-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-token-request-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-token-response-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-glucose-unit-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-rate-unit-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-trend-type-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-egv-status-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-type-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-event-status-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-name-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-alert-state-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-transmitter-generation-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-schema/dexcom-api-date-time-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egv-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egvs-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-events-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-calibration-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-calibrations-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alerts-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-schedule-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-setting-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-device-record-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-devices-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-moment-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-window-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-data-range-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-token-request-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-token-response-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-glucose-unit-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-rate-unit-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-trend-type-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-egv-status-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-type-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-event-status-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-name-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-alert-state-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-transmitter-generation-structure.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/json-structure/dexcom-api-date-time-structure.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egv-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egvs-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-events-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-calibration-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-calibrations-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alerts-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-schedule-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-setting-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-device-record-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-devices-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-moment-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-window-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-data-range-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-token-request-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-token-response-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-glucose-unit-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-rate-unit-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-trend-type-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-egv-status-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-type-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-event-status-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-name-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-alert-state-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-transmitter-generation-example.json
+  - type: Examples
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-date-time-example.json
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/dexcom/overview
   - type: AgenticAccess
     url: agentic-access/dexcom-agentic-access.yml
   - type: DomainSecurity
