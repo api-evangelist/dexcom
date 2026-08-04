@@ -1,0 +1,189 @@
+{
+  "info": {
+    "_postman_id": "beda9373-3cfc-4da7-be2c-c3bc6092a969",
+    "name": "Dexcom Developer Alerts Estimated Glucose Values API",
+    "description": "The Dexcom Developer API provides authorized third-party applications with read access to a Dexcom user's continuous glucose monitoring (CGM) data. Resources include estimated glucose values (EGVs), calibrations, events, alerts, devices, and data range. The API uses OAuth 2.0 authorization code flow and exposes separate sandbox and production environments.\n\nContact Support:\n Name: Dexcom Developer Program",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:30:26.000Z",
+    "updatedAt": "2026-07-28T01:30:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-beda9373-3cfc-4da7-be2c-c3bc6092a969"
+  },
+  "item": [
+    {
+      "name": "v3",
+      "item": [
+        {
+          "name": "users",
+          "item": [
+            {
+              "name": "self",
+              "item": [
+                {
+                  "name": "egvs",
+                  "item": [
+                    {
+                      "name": "Get Estimated Glucose Values",
+                      "id": "70fbc04f-9e29-4196-8ffb-350e77cab8a6",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/users/self/egvs?startDate=<dateTime>&endDate=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "users",
+                            "self",
+                            "egvs"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ISO 8601 timestamp for the start of the query window (UTC, no offset).",
+                              "key": "startDate",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "(Required) ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`.",
+                              "key": "endDate",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve estimated glucose values (EGVs) for the authorized user between `startDate` and `endDate`. The maximum window is 30 days and timestamps are interpreted against the device `systemTime` field."
+                      },
+                      "response": [
+                        {
+                          "id": "e6edb798-d608-46ce-a5e5-262cdc909044",
+                          "name": "Successful EGV retrieval.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/users/self/egvs?startDate=<dateTime>&endDate=<dateTime>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "users",
+                                "self",
+                                "egvs"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ISO 8601 timestamp for the start of the query window (UTC, no offset).",
+                                  "key": "startDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`.",
+                                  "key": "endDate",
+                                  "value": "<dateTime>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"recordType\": \"<string>\",\n  \"recordVersion\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"records\": [\n    {\n      \"recordId\": \"<string>\",\n      \"systemTime\": \"<dateTime>\",\n      \"displayTime\": \"<dateTime>\",\n      \"transmitterId\": \"<string>\",\n      \"transmitterTicks\": \"<long>\",\n      \"value\": \"<integer>\",\n      \"status\": \"unknown\",\n      \"trend\": \"none\",\n      \"trendRate\": \"<double>\",\n      \"unit\": \"mmol/L\",\n      \"rateUnit\": \"mg/dL/min\",\n      \"displayDevice\": \"<string>\",\n      \"transmitterGeneration\": \"g5\"\n    },\n    {\n      \"recordId\": \"<string>\",\n      \"systemTime\": \"<dateTime>\",\n      \"displayTime\": \"<dateTime>\",\n      \"transmitterId\": \"<string>\",\n      \"transmitterTicks\": \"<long>\",\n      \"value\": \"<integer>\",\n      \"status\": \"ok\",\n      \"trend\": \"singleDown\",\n      \"trendRate\": \"<double>\",\n      \"unit\": \"mg/dL\",\n      \"rateUnit\": \"unknown\",\n      \"displayDevice\": \"<string>\",\n      \"transmitterGeneration\": \"g6\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:30:27.000Z",
+                          "updatedAt": "2026-07-28T01:30:27.000Z",
+                          "uid": "35240-e6edb798-d608-46ce-a5e5-262cdc909044"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:30:26.000Z",
+                      "updatedAt": "2026-07-28T01:30:26.000Z",
+                      "uid": "35240-70fbc04f-9e29-4196-8ffb-350e77cab8a6"
+                    }
+                  ],
+                  "id": "64bef4a8-511c-44a3-aa9f-f5860740d018",
+                  "createdAt": "2026-07-28T01:30:26.000Z",
+                  "updatedAt": "2026-07-28T01:30:26.000Z",
+                  "uid": "35240-64bef4a8-511c-44a3-aa9f-f5860740d018"
+                }
+              ],
+              "id": "46ddc89a-ca80-4059-b209-9713d929b605",
+              "createdAt": "2026-07-28T01:30:26.000Z",
+              "updatedAt": "2026-07-28T01:30:26.000Z",
+              "uid": "35240-46ddc89a-ca80-4059-b209-9713d929b605"
+            }
+          ],
+          "id": "3aaa6da7-d5a4-455c-be31-30e8e812ae57",
+          "createdAt": "2026-07-28T01:30:26.000Z",
+          "updatedAt": "2026-07-28T01:30:26.000Z",
+          "uid": "35240-3aaa6da7-d5a4-455c-be31-30e8e812ae57"
+        }
+      ],
+      "id": "661d4b87-0fef-4205-8fb8-7a281a42d29c",
+      "createdAt": "2026-07-28T01:30:26.000Z",
+      "updatedAt": "2026-07-28T01:30:26.000Z",
+      "uid": "35240-661d4b87-0fef-4205-8fb8-7a281a42d29c"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "offline_access",
+        "type": "string"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://api.dexcom.com/v2/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.dexcom.com/v2/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://api.dexcom.com/v2/oauth2/login",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.dexcom.com"
+    }
+  ]
+}

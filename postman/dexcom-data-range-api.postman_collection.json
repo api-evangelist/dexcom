@@ -1,0 +1,179 @@
+{
+  "info": {
+    "_postman_id": "e1aab806-6294-4f1f-904e-a5fffc504040",
+    "name": "Dexcom Developer Alerts Data Range API",
+    "description": "The Dexcom Developer API provides authorized third-party applications with read access to a Dexcom user's continuous glucose monitoring (CGM) data. Resources include estimated glucose values (EGVs), calibrations, events, alerts, devices, and data range. The API uses OAuth 2.0 authorization code flow and exposes separate sandbox and production environments.\n\nContact Support:\n Name: Dexcom Developer Program",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:30:24.000Z",
+    "updatedAt": "2026-07-28T01:30:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e1aab806-6294-4f1f-904e-a5fffc504040"
+  },
+  "item": [
+    {
+      "name": "v3",
+      "item": [
+        {
+          "name": "users",
+          "item": [
+            {
+              "name": "self",
+              "item": [
+                {
+                  "name": "dataRange",
+                  "item": [
+                    {
+                      "name": "Get Data Range",
+                      "id": "4f589cf2-5c17-4835-8f8a-41f989e47044",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/users/self/dataRange?lastSyncTime=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "users",
+                            "self",
+                            "dataRange"
+                          ],
+                          "query": [
+                            {
+                              "description": "Optional ISO 8601 timestamp; the response only reflects records updated since this time.",
+                              "key": "lastSyncTime",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve the earliest and latest record timestamps available for the authorized user across calibrations, EGVs, and events. Use this to efficiently page historical data and to determine when new data is available."
+                      },
+                      "response": [
+                        {
+                          "id": "cf42d61a-926d-4aef-9c75-b1845f7594bd",
+                          "name": "Data range retrieved successfully.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/users/self/dataRange?lastSyncTime=<dateTime>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "users",
+                                "self",
+                                "dataRange"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Optional ISO 8601 timestamp; the response only reflects records updated since this time.",
+                                  "key": "lastSyncTime",
+                                  "value": "<dateTime>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"recordType\": \"<string>\",\n  \"recordVersion\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"calibrations\": {\n    \"start\": {\n      \"systemTime\": \"<dateTime>\",\n      \"displayTime\": \"<dateTime>\"\n    },\n    \"end\": {\n      \"systemTime\": \"<dateTime>\",\n      \"displayTime\": \"<dateTime>\"\n    }\n  },\n  \"egvs\": {\n    \"start\": {\n      \"systemTime\": \"<dateTime>\",\n      \"displayTime\": \"<dateTime>\"\n    },\n    \"end\": {\n      \"systemTime\": \"<dateTime>\",\n      \"displayTime\": \"<dateTime>\"\n    }\n  },\n  \"events\": {\n    \"start\": {\n      \"systemTime\": \"<dateTime>\",\n      \"displayTime\": \"<dateTime>\"\n    },\n    \"end\": {\n      \"systemTime\": \"<dateTime>\",\n      \"displayTime\": \"<dateTime>\"\n    }\n  }\n}",
+                          "createdAt": "2026-07-28T01:30:25.000Z",
+                          "updatedAt": "2026-07-28T01:30:25.000Z",
+                          "uid": "35240-cf42d61a-926d-4aef-9c75-b1845f7594bd"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:30:25.000Z",
+                      "updatedAt": "2026-07-28T01:30:25.000Z",
+                      "uid": "35240-4f589cf2-5c17-4835-8f8a-41f989e47044"
+                    }
+                  ],
+                  "id": "77852ada-d52d-44d9-ac8c-b0afef5b0e75",
+                  "createdAt": "2026-07-28T01:30:25.000Z",
+                  "updatedAt": "2026-07-28T01:30:25.000Z",
+                  "uid": "35240-77852ada-d52d-44d9-ac8c-b0afef5b0e75"
+                }
+              ],
+              "id": "c480ce15-68a6-433a-870f-bfbd20c66733",
+              "createdAt": "2026-07-28T01:30:25.000Z",
+              "updatedAt": "2026-07-28T01:30:25.000Z",
+              "uid": "35240-c480ce15-68a6-433a-870f-bfbd20c66733"
+            }
+          ],
+          "id": "500a82ae-a648-43cb-aa1d-279102f87ed0",
+          "createdAt": "2026-07-28T01:30:25.000Z",
+          "updatedAt": "2026-07-28T01:30:25.000Z",
+          "uid": "35240-500a82ae-a648-43cb-aa1d-279102f87ed0"
+        }
+      ],
+      "id": "ac18c362-4a95-4cd8-a5d5-f962c301dd39",
+      "createdAt": "2026-07-28T01:30:25.000Z",
+      "updatedAt": "2026-07-28T01:30:25.000Z",
+      "uid": "35240-ac18c362-4a95-4cd8-a5d5-f962c301dd39"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "offline_access",
+        "type": "string"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://api.dexcom.com/v2/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.dexcom.com/v2/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://api.dexcom.com/v2/oauth2/login",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.dexcom.com"
+    }
+  ]
+}

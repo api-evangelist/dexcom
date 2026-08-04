@@ -1,0 +1,189 @@
+{
+  "info": {
+    "_postman_id": "33c4e8d3-dc0e-4f4b-b15d-bcc0f98661dc",
+    "name": "Dexcom Developer Alerts Calibrations API",
+    "description": "The Dexcom Developer API provides authorized third-party applications with read access to a Dexcom user's continuous glucose monitoring (CGM) data. Resources include estimated glucose values (EGVs), calibrations, events, alerts, devices, and data range. The API uses OAuth 2.0 authorization code flow and exposes separate sandbox and production environments.\n\nContact Support:\n Name: Dexcom Developer Program",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:30:23.000Z",
+    "updatedAt": "2026-07-28T01:30:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-33c4e8d3-dc0e-4f4b-b15d-bcc0f98661dc"
+  },
+  "item": [
+    {
+      "name": "v3",
+      "item": [
+        {
+          "name": "users",
+          "item": [
+            {
+              "name": "self",
+              "item": [
+                {
+                  "name": "calibrations",
+                  "item": [
+                    {
+                      "name": "Get Calibration Entries",
+                      "id": "1753a3b4-be51-4d96-b16a-0872fa0ef0d8",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/users/self/calibrations?startDate=<dateTime>&endDate=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "users",
+                            "self",
+                            "calibrations"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) ISO 8601 timestamp for the start of the query window (UTC, no offset).",
+                              "key": "startDate",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "(Required) ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`.",
+                              "key": "endDate",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        },
+                        "description": "Retrieve calibration entries (fingerstick blood glucose meter values entered by the user) between `startDate` and `endDate`."
+                      },
+                      "response": [
+                        {
+                          "id": "39893610-da70-441f-a695-7f1bada39c9f",
+                          "name": "Successful calibrations retrieval.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/users/self/calibrations?startDate=<dateTime>&endDate=<dateTime>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "users",
+                                "self",
+                                "calibrations"
+                              ],
+                              "query": [
+                                {
+                                  "description": "(Required) ISO 8601 timestamp for the start of the query window (UTC, no offset).",
+                                  "key": "startDate",
+                                  "value": "<dateTime>"
+                                },
+                                {
+                                  "description": "(Required) ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`.",
+                                  "key": "endDate",
+                                  "value": "<dateTime>"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"recordType\": \"<string>\",\n  \"recordVersion\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"records\": [\n    {\n      \"recordId\": \"<string>\",\n      \"systemTime\": \"<dateTime>\",\n      \"displayTime\": \"<dateTime>\",\n      \"unit\": \"unknown\",\n      \"value\": \"<integer>\",\n      \"displayDevice\": \"<string>\",\n      \"transmitterId\": \"<string>\",\n      \"transmitterTicks\": \"<long>\",\n      \"transmitterGeneration\": \"g7\"\n    },\n    {\n      \"recordId\": \"<string>\",\n      \"systemTime\": \"<dateTime>\",\n      \"displayTime\": \"<dateTime>\",\n      \"unit\": \"mg/dL\",\n      \"value\": \"<integer>\",\n      \"displayDevice\": \"<string>\",\n      \"transmitterId\": \"<string>\",\n      \"transmitterTicks\": \"<long>\",\n      \"transmitterGeneration\": \"g7\"\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:30:24.000Z",
+                          "updatedAt": "2026-07-28T01:30:24.000Z",
+                          "uid": "35240-39893610-da70-441f-a695-7f1bada39c9f"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:30:24.000Z",
+                      "updatedAt": "2026-07-28T01:30:24.000Z",
+                      "uid": "35240-1753a3b4-be51-4d96-b16a-0872fa0ef0d8"
+                    }
+                  ],
+                  "id": "c783148b-a980-4f98-8374-d4a3b9d13757",
+                  "createdAt": "2026-07-28T01:30:24.000Z",
+                  "updatedAt": "2026-07-28T01:30:24.000Z",
+                  "uid": "35240-c783148b-a980-4f98-8374-d4a3b9d13757"
+                }
+              ],
+              "id": "980a624c-a9c5-4897-8869-630142f26dd7",
+              "createdAt": "2026-07-28T01:30:24.000Z",
+              "updatedAt": "2026-07-28T01:30:24.000Z",
+              "uid": "35240-980a624c-a9c5-4897-8869-630142f26dd7"
+            }
+          ],
+          "id": "4e46f055-be2a-412b-bfad-80a2ab9cfc8e",
+          "createdAt": "2026-07-28T01:30:24.000Z",
+          "updatedAt": "2026-07-28T01:30:24.000Z",
+          "uid": "35240-4e46f055-be2a-412b-bfad-80a2ab9cfc8e"
+        }
+      ],
+      "id": "4c4680ea-1e4e-4302-a2e8-2cc600620b0c",
+      "createdAt": "2026-07-28T01:30:24.000Z",
+      "updatedAt": "2026-07-28T01:30:24.000Z",
+      "uid": "35240-4c4680ea-1e4e-4302-a2e8-2cc600620b0c"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "offline_access",
+        "type": "string"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://api.dexcom.com/v2/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.dexcom.com/v2/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://api.dexcom.com/v2/oauth2/login",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.dexcom.com"
+    }
+  ]
+}

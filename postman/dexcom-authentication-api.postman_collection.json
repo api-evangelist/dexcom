@@ -1,0 +1,368 @@
+{
+  "info": {
+    "_postman_id": "b1c61d2f-a351-4529-90f7-fce56f14ef4e",
+    "name": "Dexcom Developer Alerts Authentication API",
+    "description": "The Dexcom Developer API provides authorized third-party applications with read access to a Dexcom user's continuous glucose monitoring (CGM) data. Resources include estimated glucose values (EGVs), calibrations, events, alerts, devices, and data range. The API uses OAuth 2.0 authorization code flow and exposes separate sandbox and production environments.\n\nContact Support:\n Name: Dexcom Developer Program",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:30:22.000Z",
+    "updatedAt": "2026-07-28T01:30:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b1c61d2f-a351-4529-90f7-fce56f14ef4e"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "oauth2",
+          "item": [
+            {
+              "name": "login",
+              "item": [
+                {
+                  "name": "Initiate OAuth 2.0 Authorization",
+                  "id": "1b871b2e-d705-4bba-8d55-edce20d9f213",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/oauth2/login?client_id=<string>&redirect_uri=<uri>&response_type=code&scope=offline_access&state=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "oauth2",
+                        "login"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) The application's registered client identifier.",
+                          "key": "client_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Registered redirect URI to which the authorization code is appended.",
+                          "key": "redirect_uri",
+                          "value": "<uri>"
+                        },
+                        {
+                          "description": "(Required) Must be set to `code` for authorization code flow.",
+                          "key": "response_type",
+                          "value": "code"
+                        },
+                        {
+                          "description": "(Required) Must be `offline_access` (the only currently accepted value).",
+                          "key": "scope",
+                          "value": "offline_access"
+                        },
+                        {
+                          "description": "Opaque value used to maintain state between request and callback (CSRF protection).",
+                          "key": "state",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Redirect the end user to the Dexcom hosted login page to obtain an authorization code. The user authenticates with Dexcom credentials and consents to share CGM data with the requesting application."
+                  },
+                  "response": [
+                    {
+                      "id": "760de7f5-c85e-453a-bfdd-2669e75f55a6",
+                      "name": "Redirect to the registered redirect URI with an authorization code.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/oauth2/login?client_id=<string>&redirect_uri=<uri>&response_type=code&scope=offline_access&state=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "oauth2",
+                            "login"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) The application's registered client identifier.",
+                              "key": "client_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Registered redirect URI to which the authorization code is appended.",
+                              "key": "redirect_uri",
+                              "value": "<uri>"
+                            },
+                            {
+                              "description": "(Required) Must be set to `code` for authorization code flow.",
+                              "key": "response_type",
+                              "value": "code"
+                            },
+                            {
+                              "description": "(Required) Must be `offline_access` (the only currently accepted value).",
+                              "key": "scope",
+                              "value": "offline_access"
+                            },
+                            {
+                              "description": "Opaque value used to maintain state between request and callback (CSRF protection).",
+                              "key": "state",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Found",
+                      "code": 302,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "disabled": false,
+                          "description": {
+                            "content": "",
+                            "type": "text/plain"
+                          },
+                          "key": "Location",
+                          "value": "<uri>"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:30:23.000Z",
+                      "updatedAt": "2026-07-28T01:30:23.000Z",
+                      "uid": "35240-760de7f5-c85e-453a-bfdd-2669e75f55a6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:30:23.000Z",
+                  "updatedAt": "2026-07-28T01:30:23.000Z",
+                  "uid": "35240-1b871b2e-d705-4bba-8d55-edce20d9f213"
+                }
+              ],
+              "id": "999efefd-c7e2-4464-9e9d-b6cc5eb24315",
+              "createdAt": "2026-07-28T01:30:23.000Z",
+              "updatedAt": "2026-07-28T01:30:23.000Z",
+              "uid": "35240-999efefd-c7e2-4464-9e9d-b6cc5eb24315"
+            },
+            {
+              "name": "token",
+              "item": [
+                {
+                  "name": "Exchange Authorization Code for Tokens",
+                  "id": "3bf63ee3-a4ae-498d-9b5b-f73516c3fec6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) Application's registered client identifier.",
+                          "key": "client_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) Application's client secret.",
+                          "key": "client_secret",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "grant_type",
+                          "value": "refresh_token"
+                        },
+                        {
+                          "description": "Single-use authorization code (required when `grant_type=authorization_code`).",
+                          "key": "code",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Refresh token (required when `grant_type=refresh_token`).",
+                          "key": "refresh_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Registered redirect URI (required for `authorization_code`).",
+                          "key": "redirect_uri",
+                          "value": "<uri>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/oauth2/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "oauth2",
+                        "token"
+                      ]
+                    },
+                    "description": "Exchange a single-use authorization code for an access token and refresh token, or refresh an existing access token using a refresh token. Tokens must be stored on the partner's server."
+                  },
+                  "response": [
+                    {
+                      "id": "d74d7062-6250-467f-8355-341f2a9689c6",
+                      "name": "Access token and refresh token returned.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/x-www-form-urlencoded"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: oauth2",
+                            "key": "Authorization",
+                            "value": "<token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "urlencoded",
+                          "urlencoded": [
+                            {
+                              "description": "(Required) Application's registered client identifier.",
+                              "key": "client_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) Application's client secret.",
+                              "key": "client_secret",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "(Required) ",
+                              "key": "grant_type",
+                              "value": "refresh_token"
+                            },
+                            {
+                              "description": "Single-use authorization code (required when `grant_type=authorization_code`).",
+                              "key": "code",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Refresh token (required when `grant_type=refresh_token`).",
+                              "key": "refresh_token",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Registered redirect URI (required for `authorization_code`).",
+                              "key": "redirect_uri",
+                              "value": "<uri>"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/oauth2/token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "oauth2",
+                            "token"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"access_token\": \"<string>\",\n  \"expires_in\": \"<integer>\",\n  \"token_type\": \"<string>\",\n  \"refresh_token\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:30:23.000Z",
+                      "updatedAt": "2026-07-28T01:30:23.000Z",
+                      "uid": "35240-d74d7062-6250-467f-8355-341f2a9689c6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:30:23.000Z",
+                  "updatedAt": "2026-07-28T01:30:23.000Z",
+                  "uid": "35240-3bf63ee3-a4ae-498d-9b5b-f73516c3fec6"
+                }
+              ],
+              "id": "ad6f2bd8-65b4-4a1f-8308-a36f8195c662",
+              "createdAt": "2026-07-28T01:30:23.000Z",
+              "updatedAt": "2026-07-28T01:30:23.000Z",
+              "uid": "35240-ad6f2bd8-65b4-4a1f-8308-a36f8195c662"
+            }
+          ],
+          "id": "8472dde9-18fb-46f0-bf88-22d5c62ad2df",
+          "createdAt": "2026-07-28T01:30:23.000Z",
+          "updatedAt": "2026-07-28T01:30:23.000Z",
+          "uid": "35240-8472dde9-18fb-46f0-bf88-22d5c62ad2df"
+        }
+      ],
+      "id": "ac6b8828-673d-4fdf-86ad-0c80a29b2de0",
+      "createdAt": "2026-07-28T01:30:23.000Z",
+      "updatedAt": "2026-07-28T01:30:23.000Z",
+      "uid": "35240-ac6b8828-673d-4fdf-86ad-0c80a29b2de0"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "offline_access",
+        "type": "string"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://api.dexcom.com/v2/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.dexcom.com/v2/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://api.dexcom.com/v2/oauth2/login",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.dexcom.com"
+    }
+  ]
+}

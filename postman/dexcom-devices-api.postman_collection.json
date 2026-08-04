@@ -1,0 +1,165 @@
+{
+  "info": {
+    "_postman_id": "38c02aa4-ff2c-49b8-9de9-e828c67a864d",
+    "name": "Dexcom Developer Alerts Devices API",
+    "description": "The Dexcom Developer API provides authorized third-party applications with read access to a Dexcom user's continuous glucose monitoring (CGM) data. Resources include estimated glucose values (EGVs), calibrations, events, alerts, devices, and data range. The API uses OAuth 2.0 authorization code flow and exposes separate sandbox and production environments.\n\nContact Support:\n Name: Dexcom Developer Program",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:30:25.000Z",
+    "updatedAt": "2026-07-28T01:30:25.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-38c02aa4-ff2c-49b8-9de9-e828c67a864d"
+  },
+  "item": [
+    {
+      "name": "v3",
+      "item": [
+        {
+          "name": "users",
+          "item": [
+            {
+              "name": "self",
+              "item": [
+                {
+                  "name": "devices",
+                  "item": [
+                    {
+                      "name": "Get Device Information",
+                      "id": "71728a23-0fe1-48f4-9be7-817c380b6018",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v3/users/self/devices",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v3",
+                            "users",
+                            "self",
+                            "devices"
+                          ]
+                        },
+                        "description": "Retrieve information about the user's Dexcom devices, including G6, G7, Dexcom ONE / ONE+ display devices and transmitters."
+                      },
+                      "response": [
+                        {
+                          "id": "56d47a5d-cb5e-4220-be7d-290a31707128",
+                          "name": "Successful device retrieval.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: oauth2",
+                                "key": "Authorization",
+                                "value": "<token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v3/users/self/devices",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v3",
+                                "users",
+                                "self",
+                                "devices"
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"recordType\": \"<string>\",\n  \"recordVersion\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"records\": [\n    {\n      \"lastUploadDate\": \"<dateTime>\",\n      \"transmitterId\": \"<string>\",\n      \"transmitterGeneration\": \"dexcomPro\",\n      \"displayDevice\": \"<string>\",\n      \"displayApp\": \"<string>\",\n      \"alertSchedules\": [\n        {\n          \"alertScheduleSettings\": {\n            \"alertScheduleName\": \"<string>\",\n            \"isEnabled\": \"<boolean>\",\n            \"isDefaultSchedule\": \"<boolean>\",\n            \"startTime\": \"<string>\",\n            \"endTime\": \"<string>\",\n            \"daysOfWeek\": [\n              \"thursday\",\n              \"saturday\"\n            ]\n          },\n          \"alertSettings\": [\n            {\n              \"alertName\": \"noReadings\",\n              \"value\": \"<number>\",\n              \"unit\": \"mmol/L\",\n              \"snooze\": \"<integer>\",\n              \"enabled\": \"<boolean>\"\n            },\n            {\n              \"alertName\": \"unknown\",\n              \"value\": \"<number>\",\n              \"unit\": \"mg/dL\",\n              \"snooze\": \"<integer>\",\n              \"enabled\": \"<boolean>\"\n            }\n          ]\n        },\n        {\n          \"alertScheduleSettings\": {\n            \"alertScheduleName\": \"<string>\",\n            \"isEnabled\": \"<boolean>\",\n            \"isDefaultSchedule\": \"<boolean>\",\n            \"startTime\": \"<string>\",\n            \"endTime\": \"<string>\",\n            \"daysOfWeek\": [\n              \"sunday\",\n              \"sunday\"\n            ]\n          },\n          \"alertSettings\": [\n            {\n              \"alertName\": \"fall\",\n              \"value\": \"<number>\",\n              \"unit\": \"unknown\",\n              \"snooze\": \"<integer>\",\n              \"enabled\": \"<boolean>\"\n            },\n            {\n              \"alertName\": \"urgentLow\",\n              \"value\": \"<number>\",\n              \"unit\": \"mmol/L\",\n              \"snooze\": \"<integer>\",\n              \"enabled\": \"<boolean>\"\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"lastUploadDate\": \"<dateTime>\",\n      \"transmitterId\": \"<string>\",\n      \"transmitterGeneration\": \"g6\",\n      \"displayDevice\": \"<string>\",\n      \"displayApp\": \"<string>\",\n      \"alertSchedules\": [\n        {\n          \"alertScheduleSettings\": {\n            \"alertScheduleName\": \"<string>\",\n            \"isEnabled\": \"<boolean>\",\n            \"isDefaultSchedule\": \"<boolean>\",\n            \"startTime\": \"<string>\",\n            \"endTime\": \"<string>\",\n            \"daysOfWeek\": [\n              \"monday\",\n              \"wednesday\"\n            ]\n          },\n          \"alertSettings\": [\n            {\n              \"alertName\": \"outOfRange\",\n              \"value\": \"<number>\",\n              \"unit\": \"unknown\",\n              \"snooze\": \"<integer>\",\n              \"enabled\": \"<boolean>\"\n            },\n            {\n              \"alertName\": \"high\",\n              \"value\": \"<number>\",\n              \"unit\": \"unknown\",\n              \"snooze\": \"<integer>\",\n              \"enabled\": \"<boolean>\"\n            }\n          ]\n        },\n        {\n          \"alertScheduleSettings\": {\n            \"alertScheduleName\": \"<string>\",\n            \"isEnabled\": \"<boolean>\",\n            \"isDefaultSchedule\": \"<boolean>\",\n            \"startTime\": \"<string>\",\n            \"endTime\": \"<string>\",\n            \"daysOfWeek\": [\n              \"friday\",\n              \"thursday\"\n            ]\n          },\n          \"alertSettings\": [\n            {\n              \"alertName\": \"rise\",\n              \"value\": \"<number>\",\n              \"unit\": \"mmol/L\",\n              \"snooze\": \"<integer>\",\n              \"enabled\": \"<boolean>\"\n            },\n            {\n              \"alertName\": \"urgentLow\",\n              \"value\": \"<number>\",\n              \"unit\": \"mmol/L\",\n              \"snooze\": \"<integer>\",\n              \"enabled\": \"<boolean>\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+                          "createdAt": "2026-07-28T01:30:26.000Z",
+                          "updatedAt": "2026-07-28T01:30:26.000Z",
+                          "uid": "35240-56d47a5d-cb5e-4220-be7d-290a31707128"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:30:26.000Z",
+                      "updatedAt": "2026-07-28T01:30:26.000Z",
+                      "uid": "35240-71728a23-0fe1-48f4-9be7-817c380b6018"
+                    }
+                  ],
+                  "id": "a6b087dd-3c73-4562-bc4a-ea1d615db044",
+                  "createdAt": "2026-07-28T01:30:26.000Z",
+                  "updatedAt": "2026-07-28T01:30:26.000Z",
+                  "uid": "35240-a6b087dd-3c73-4562-bc4a-ea1d615db044"
+                }
+              ],
+              "id": "caf7dfdb-2510-4744-af1a-aab7681046cf",
+              "createdAt": "2026-07-28T01:30:26.000Z",
+              "updatedAt": "2026-07-28T01:30:26.000Z",
+              "uid": "35240-caf7dfdb-2510-4744-af1a-aab7681046cf"
+            }
+          ],
+          "id": "7989168a-ea50-4958-b65a-4c36d9886d37",
+          "createdAt": "2026-07-28T01:30:26.000Z",
+          "updatedAt": "2026-07-28T01:30:26.000Z",
+          "uid": "35240-7989168a-ea50-4958-b65a-4c36d9886d37"
+        }
+      ],
+      "id": "13976170-6341-42e5-834d-e9d1325cda9a",
+      "createdAt": "2026-07-28T01:30:26.000Z",
+      "updatedAt": "2026-07-28T01:30:26.000Z",
+      "uid": "35240-13976170-6341-42e5-834d-e9d1325cda9a"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "offline_access",
+        "type": "string"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://api.dexcom.com/v2/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.dexcom.com/v2/oauth2/token",
+        "type": "string"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://api.dexcom.com/v2/oauth2/login",
+        "type": "string"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.dexcom.com"
+    }
+  ]
+}

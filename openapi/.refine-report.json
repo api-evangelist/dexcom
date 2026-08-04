@@ -1,0 +1,26 @@
+{
+  "provider": "dexcom",
+  "sources": [
+    "dexcom-alerts-api-openapi.yml",
+    "dexcom-authentication-api-openapi.yml",
+    "dexcom-calibrations-api-openapi.yml",
+    "dexcom-data-range-api-openapi.yml",
+    "dexcom-devices-api-openapi.yml",
+    "dexcom-estimated-glucose-values-api-openapi.yml",
+    "dexcom-events-api-openapi.yml"
+  ],
+  "outputs": [
+    "dexcom-alerts-api-openapi.yml",
+    "dexcom-authentication-api-openapi.yml",
+    "dexcom-calibrations-api-openapi.yml",
+    "dexcom-data-range-api-openapi.yml",
+    "dexcom-devices-api-openapi.yml",
+    "dexcom-estimated-glucose-values-api-openapi.yml",
+    "dexcom-events-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
