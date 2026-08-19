@@ -1,0 +1,163 @@
+{
+  "item": [
+    {
+      "id": "f77d4afd-9a94-4ba6-8043-0cef2bcbbbd5",
+      "name": "Estimated Glucose Values",
+      "description": {
+        "content": "Time-series CGM glucose readings for the authorized user.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "914dd0c5-088f-4806-ac98-17006a295675",
+          "name": "Get Estimated Glucose Values",
+          "request": {
+            "name": "Get Estimated Glucose Values",
+            "description": {
+              "content": "Retrieve estimated glucose values (EGVs) for the authorized user between `startDate` and `endDate`. The maximum window is 30 days and timestamps are interpreted against the device `systemTime` field.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "users",
+                "self",
+                "egvs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<dateTime>",
+                  "description": "(Required) ISO 8601 timestamp for the start of the query window (UTC, no offset)."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<dateTime>",
+                  "description": "(Required) ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9e6db74e-579e-4ca8-bc73-b6044d6fc290",
+              "name": "Successful EGV retrieval.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "users",
+                    "self",
+                    "egvs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "2026-04-01T00:00:00"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-04-30T23:59:59"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"recordType\": \"egv\",\n  \"recordVersion\": \"3.0\",\n  \"userId\": \"35d77a14-243f-4d5d-9f3f-3b3a7d7e9c3a\",\n  \"records\": [\n    {\n      \"recordId\": \"1f3a9b56-1f4f-4c70-9d2c-bb4f5d6e0001\",\n      \"systemTime\": \"2026-04-30T15:00:00\",\n      \"displayTime\": \"2026-04-30T08:00:00\",\n      \"transmitterId\": \"8GA1JK\",\n      \"transmitterTicks\": 12345678,\n      \"value\": 142,\n      \"status\": \"ok\",\n      \"trend\": \"flat\",\n      \"trendRate\": 0.3,\n      \"unit\": \"mg/dL\",\n      \"rateUnit\": \"mg/dL/min\",\n      \"displayDevice\": \"iOS\",\n      \"transmitterGeneration\": \"g7\"\n    },\n    {\n      \"recordId\": \"1f3a9b56-1f4f-4c70-9d2c-bb4f5d6e0002\",\n      \"systemTime\": \"2026-04-30T15:05:00\",\n      \"displayTime\": \"2026-04-30T08:05:00\",\n      \"transmitterId\": \"8GA1JK\",\n      \"transmitterTicks\": 12345978,\n      \"value\": 148,\n      \"status\": \"ok\",\n      \"trend\": \"fortyFiveUp\",\n      \"trendRate\": 1.2,\n      \"unit\": \"mg/dL\",\n      \"rateUnit\": \"mg/dL/min\",\n      \"displayDevice\": \"iOS\",\n      \"transmitterGeneration\": \"g7\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.dexcom.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "offline_access"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://api.dexcom.com/v2/oauth2/token"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.dexcom.com/v2/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://api.dexcom.com/v2/oauth2/login"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "96dd0eaf-144b-4aad-a107-bc6999cc5539",
+    "name": "Dexcom Developer Alerts Estimated Glucose Values API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Dexcom Developer API provides authorized third-party applications with read access to a Dexcom user's continuous glucose monitoring (CGM) data. Resources include estimated glucose values (EGVs), calibrations, events, alerts, devices, and data range. The API uses OAuth 2.0 authorization code flow and exposes separate sandbox and production environments.\n\nContact Support:\n Name: Dexcom Developer Program",
+      "type": "text/plain"
+    }
+  }
+}

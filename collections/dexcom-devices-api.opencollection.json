@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dexcom Developer Alerts Devices API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://api.dexcom.com/v2/oauth2/login",
+      "accessTokenUrl": "https://api.dexcom.com/v2/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Device Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.dexcom.com/v3/users/self/devices"
+          },
+          "docs": "Retrieve information about the user's Dexcom devices, including G6, G7, Dexcom ONE / ONE+ display devices and transmitters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

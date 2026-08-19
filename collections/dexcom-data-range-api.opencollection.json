@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dexcom Developer Alerts Data Range API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://api.dexcom.com/v2/oauth2/login",
+      "accessTokenUrl": "https://api.dexcom.com/v2/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data Range",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Data Range",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.dexcom.com/v3/users/self/dataRange",
+            "params": [
+              {
+                "name": "lastSyncTime",
+                "value": "",
+                "type": "query",
+                "description": "Optional ISO 8601 timestamp; the response only reflects records updated since this time."
+              }
+            ]
+          },
+          "docs": "Retrieve the earliest and latest record timestamps available for the authorized user across calibrations, EGVs, and events. Use this to efficiently page historical data and to determine when new data is available."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

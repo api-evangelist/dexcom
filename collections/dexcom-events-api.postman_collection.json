@@ -1,0 +1,163 @@
+{
+  "item": [
+    {
+      "id": "83639eec-475c-4176-b8b7-95c629039a7b",
+      "name": "Events",
+      "description": {
+        "content": "User-entered events such as carbohydrate intake, insulin doses, exercise, and health events.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "24005ed0-3cd6-4fdb-8f26-ea5667a16466",
+          "name": "Get User-Entered Events",
+          "request": {
+            "name": "Get User-Entered Events",
+            "description": {
+              "content": "Retrieve user-entered event records (carbohydrates, insulin, exercise, and health events) between `startDate` and `endDate`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "users",
+                "self",
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<dateTime>",
+                  "description": "(Required) ISO 8601 timestamp for the start of the query window (UTC, no offset)."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<dateTime>",
+                  "description": "(Required) ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e31f9387-c40d-4fe4-ae29-293d11ee3e67",
+              "name": "Successful events retrieval.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "users",
+                    "self",
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "2026-04-01T00:00:00"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "2026-04-30T23:59:59"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"recordType\": \"event\",\n  \"recordVersion\": \"3.0\",\n  \"userId\": \"35d77a14-243f-4d5d-9f3f-3b3a7d7e9c3a\",\n  \"records\": [\n    {\n      \"recordId\": \"9b2e4f78-9aa4-4f10-aa01-2c0d1e7f0001\",\n      \"systemTime\": \"2026-04-30T12:30:00\",\n      \"displayTime\": \"2026-04-30T05:30:00\",\n      \"eventType\": \"carbs\",\n      \"eventSubType\": null,\n      \"value\": 45,\n      \"unit\": \"grams\",\n      \"eventStatus\": \"created\",\n      \"transmitterId\": \"8GA1JK\",\n      \"transmitterGeneration\": \"g7\",\n      \"displayDevice\": \"iOS\"\n    },\n    {\n      \"recordId\": \"9b2e4f78-9aa4-4f10-aa01-2c0d1e7f0002\",\n      \"systemTime\": \"2026-04-30T12:35:00\",\n      \"displayTime\": \"2026-04-30T05:35:00\",\n      \"eventType\": \"insulin\",\n      \"eventSubType\": \"fastActing\",\n      \"value\": 4.5,\n      \"unit\": \"units\",\n      \"eventStatus\": \"created\",\n      \"transmitterId\": \"8GA1JK\",\n      \"transmitterGeneration\": \"g7\",\n      \"displayDevice\": \"iOS\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.dexcom.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "offline_access"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://api.dexcom.com/v2/oauth2/token"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.dexcom.com/v2/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://api.dexcom.com/v2/oauth2/login"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b0ac9135-dba7-49f2-ab6c-2797a6f6ee04",
+    "name": "Dexcom Developer Alerts Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Dexcom Developer API provides authorized third-party applications with read access to a Dexcom user's continuous glucose monitoring (CGM) data. Resources include estimated glucose values (EGVs), calibrations, events, alerts, devices, and data range. The API uses OAuth 2.0 authorization code flow and exposes separate sandbox and production environments.\n\nContact Support:\n Name: Dexcom Developer Program",
+      "type": "text/plain"
+    }
+  }
+}

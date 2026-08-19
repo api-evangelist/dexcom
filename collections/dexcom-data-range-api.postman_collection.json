@@ -1,0 +1,153 @@
+{
+  "item": [
+    {
+      "id": "7ff84f67-0958-4ec0-b319-cb52afc9856f",
+      "name": "Data Range",
+      "description": {
+        "content": "Earliest and latest record times available for the authorized user.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5e4e1c72-98ba-4988-9568-e2582724b965",
+          "name": "Get Data Range",
+          "request": {
+            "name": "Get Data Range",
+            "description": {
+              "content": "Retrieve the earliest and latest record timestamps available for the authorized user across calibrations, EGVs, and events. Use this to efficiently page historical data and to determine when new data is available.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "users",
+                "self",
+                "dataRange"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lastSyncTime",
+                  "value": "<dateTime>",
+                  "description": "Optional ISO 8601 timestamp; the response only reflects records updated since this time."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fef6d2f4-3d9a-4691-b3be-4a4857c8ffeb",
+              "name": "Data range retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "users",
+                    "self",
+                    "dataRange"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lastSyncTime",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"recordType\": \"dataRange\",\n  \"recordVersion\": \"3.0\",\n  \"userId\": \"35d77a14-243f-4d5d-9f3f-3b3a7d7e9c3a\",\n  \"calibrations\": {\n    \"start\": {\n      \"systemTime\": \"2026-01-15T08:32:11\",\n      \"displayTime\": \"2026-01-15T01:32:11\"\n    },\n    \"end\": {\n      \"systemTime\": \"2026-04-30T19:18:24\",\n      \"displayTime\": \"2026-04-30T12:18:24\"\n    }\n  },\n  \"egvs\": {\n    \"start\": {\n      \"systemTime\": \"2026-01-15T08:00:00\",\n      \"displayTime\": \"2026-01-15T01:00:00\"\n    },\n    \"end\": {\n      \"systemTime\": \"2026-04-30T23:55:00\",\n      \"displayTime\": \"2026-04-30T16:55:00\"\n    }\n  },\n  \"events\": {\n    \"start\": {\n      \"systemTime\": \"2026-01-15T09:14:02\",\n      \"displayTime\": \"2026-01-15T02:14:02\"\n    },\n    \"end\": {\n      \"systemTime\": \"2026-04-29T17:42:55\",\n      \"displayTime\": \"2026-04-29T10:42:55\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.dexcom.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "offline_access"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://api.dexcom.com/v2/oauth2/token"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.dexcom.com/v2/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://api.dexcom.com/v2/oauth2/login"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b787a307-6bf2-4432-a071-b8b96c5d1ab3",
+    "name": "Dexcom Developer Alerts Data Range API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Dexcom Developer API provides authorized third-party applications with read access to a Dexcom user's continuous glucose monitoring (CGM) data. Resources include estimated glucose values (EGVs), calibrations, events, alerts, devices, and data range. The API uses OAuth 2.0 authorization code flow and exposes separate sandbox and production environments.\n\nContact Support:\n Name: Dexcom Developer Program",
+      "type": "text/plain"
+    }
+  }
+}

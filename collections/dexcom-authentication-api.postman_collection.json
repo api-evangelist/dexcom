@@ -1,0 +1,372 @@
+{
+  "item": [
+    {
+      "id": "ee5dcb9f-ad87-472f-8c94-19d37ff25203",
+      "name": "Authentication",
+      "description": {
+        "content": "OAuth 2.0 authorization and token operations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f80ab794-aa36-48d8-b9ce-2d63e352381a",
+          "name": "Initiate OAuth 2.0 Authorization",
+          "request": {
+            "name": "Initiate OAuth 2.0 Authorization",
+            "description": {
+              "content": "Redirect the end user to the Dexcom hosted login page to obtain an authorization code. The user authenticates with Dexcom credentials and consents to share CGM data with the requesting application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "oauth2",
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "client_id",
+                  "value": "<string>",
+                  "description": "(Required) The application's registered client identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "redirect_uri",
+                  "value": "<uri>",
+                  "description": "(Required) Registered redirect URI to which the authorization code is appended."
+                },
+                {
+                  "disabled": false,
+                  "key": "response_type",
+                  "value": "<string>",
+                  "description": "(Required) Must be set to `code` for authorization code flow."
+                },
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>",
+                  "description": "(Required) Must be `offline_access` (the only currently accepted value)."
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "Opaque value used to maintain state between request and callback (CSRF protection)."
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1ddc5277-1e64-4945-a503-54a4f34964e1",
+              "name": "Redirect to the registered redirect URI with an authorization code.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "oauth2",
+                    "login"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "client_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "redirect_uri",
+                      "value": "<uri>"
+                    },
+                    {
+                      "key": "response_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Found",
+              "code": 302,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Location",
+                  "value": "https://srkFYJPiB.muo7gbcf,U10A-bQntOURKBc3pYDtIK-SgOj2lJkV",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "571aaccf-f46f-4677-a987-d681b9898ffe",
+          "name": "Exchange Authorization Code for Tokens",
+          "request": {
+            "name": "Exchange Authorization Code for Tokens",
+            "description": {
+              "content": "Exchange a single-use authorization code for an access token and refresh token, or refresh an existing access token using a refresh token. Tokens must be stored on the partner's server.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "oauth2",
+                "token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "client_id",
+                  "value": "<string>",
+                  "description": "(Required) Application's registered client identifier."
+                },
+                {
+                  "disabled": false,
+                  "key": "client_secret",
+                  "value": "<string>",
+                  "description": "(Required) Application's client secret."
+                },
+                {
+                  "disabled": false,
+                  "key": "grant_type",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>",
+                  "description": "Single-use authorization code (required when `grant_type=authorization_code`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "refresh_token",
+                  "value": "<string>",
+                  "description": "Refresh token (required when `grant_type=refresh_token`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "redirect_uri",
+                  "value": "<uri>",
+                  "description": "Registered redirect URI (required for `authorization_code`)."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1f9089f8-6aa4-4fd4-9b69-b2d46d4a923b",
+              "name": "Access token and refresh token returned.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "oauth2",
+                    "token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Application's registered client identifier.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Application's client secret.",
+                        "type": "text/plain"
+                      },
+                      "key": "client_secret",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "grant_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Single-use authorization code (required when `grant_type=authorization_code`).",
+                        "type": "text/plain"
+                      },
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Refresh token (required when `grant_type=refresh_token`).",
+                        "type": "text/plain"
+                      },
+                      "key": "refresh_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "Registered redirect URI (required for `authorization_code`).",
+                        "type": "text/plain"
+                      },
+                      "key": "redirect_uri",
+                      "value": "<uri>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"access_token\": \"{your_access_token}\",\n  \"expires_in\": 7200,\n  \"token_type\": \"Bearer\",\n  \"refresh_token\": \"{your_refresh_token}\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.dexcom.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "offline_access"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://api.dexcom.com/v2/oauth2/token"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.dexcom.com/v2/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://api.dexcom.com/v2/oauth2/login"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8df566fe-547a-4825-b28f-7266a3c375a6",
+    "name": "Dexcom Developer Alerts Authentication API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Dexcom Developer API provides authorized third-party applications with read access to a Dexcom user's continuous glucose monitoring (CGM) data. Resources include estimated glucose values (EGVs), calibrations, events, alerts, devices, and data range. The API uses OAuth 2.0 authorization code flow and exposes separate sandbox and production environments.\n\nContact Support:\n Name: Dexcom Developer Program",
+      "type": "text/plain"
+    }
+  }
+}

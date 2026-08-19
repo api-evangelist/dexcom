@@ -1,0 +1,141 @@
+{
+  "item": [
+    {
+      "id": "7f5c3d11-6079-47f4-8788-b597705a6ccb",
+      "name": "Devices",
+      "description": {
+        "content": "Information about the user's CGM transmitters and display devices.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f5708922-c6d3-4632-8ad6-a4f81cd16b4c",
+          "name": "Get Device Information",
+          "request": {
+            "name": "Get Device Information",
+            "description": {
+              "content": "Retrieve information about the user's Dexcom devices, including G6, G7, Dexcom ONE / ONE+ display devices and transmitters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "users",
+                "self",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2fc15258-b4a5-40b0-bd10-b8f19e45cd1b",
+              "name": "Successful device retrieval.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "users",
+                    "self",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"recordType\": \"device\",\n  \"recordVersion\": \"3.0\",\n  \"userId\": \"35d77a14-243f-4d5d-9f3f-3b3a7d7e9c3a\",\n  \"records\": [\n    {\n      \"lastUploadDate\": \"2026-04-30T15:05:00\",\n      \"transmitterId\": \"8GA1JK\",\n      \"transmitterGeneration\": \"g7\",\n      \"displayDevice\": \"iOS\",\n      \"displayApp\": \"Dexcom G7\",\n      \"alertSchedules\": [\n        {\n          \"alertScheduleSettings\": {\n            \"alertScheduleName\": \"Default\",\n            \"isEnabled\": true,\n            \"isDefaultSchedule\": true,\n            \"startTime\": \"00:00\",\n            \"endTime\": \"00:00\",\n            \"daysOfWeek\": [\n              \"sunday\",\n              \"monday\",\n              \"tuesday\",\n              \"wednesday\",\n              \"thursday\",\n              \"friday\",\n              \"saturday\"\n            ]\n          },\n          \"alertSettings\": [\n            {\n              \"alertName\": \"high\",\n              \"value\": 240,\n              \"unit\": \"mg/dL\",\n              \"snooze\": 30,\n              \"enabled\": true\n            },\n            {\n              \"alertName\": \"low\",\n              \"value\": 80,\n              \"unit\": \"mg/dL\",\n              \"snooze\": 30,\n              \"enabled\": true\n            },\n            {\n              \"alertName\": \"urgentLow\",\n              \"value\": 55,\n              \"unit\": \"mg/dL\",\n              \"snooze\": 30,\n              \"enabled\": true\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.dexcom.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "offline_access"
+      },
+      {
+        "key": "redirect_uri",
+        "value": "https://api.dexcom.com/v2/oauth2/token"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://api.dexcom.com/v2/oauth2/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://api.dexcom.com/v2/oauth2/login"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7ae02acf-44c3-4a5d-9aba-2d5f0d869d58",
+    "name": "Dexcom Developer Alerts Devices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Dexcom Developer API provides authorized third-party applications with read access to a Dexcom user's continuous glucose monitoring (CGM) data. Resources include estimated glucose values (EGVs), calibrations, events, alerts, devices, and data range. The API uses OAuth 2.0 authorization code flow and exposes separate sandbox and production environments.\n\nContact Support:\n Name: Dexcom Developer Program",
+      "type": "text/plain"
+    }
+  }
+}

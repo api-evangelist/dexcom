@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Dexcom Developer Alerts Calibrations API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "oauth2",
+      "flow": "authorization_code",
+      "authorizationUrl": "https://api.dexcom.com/v2/oauth2/login",
+      "accessTokenUrl": "https://api.dexcom.com/v2/oauth2/token",
+      "credentials": {
+        "clientId": "{{clientId}}",
+        "clientSecret": "{{clientSecret}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Calibrations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Calibration Entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.dexcom.com/v3/users/self/calibrations",
+            "params": [
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 timestamp for the start of the query window (UTC, no offset)."
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`."
+              }
+            ]
+          },
+          "docs": "Retrieve calibration entries (fingerstick blood glucose meter values entered by the user) between `startDate` and `endDate`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
