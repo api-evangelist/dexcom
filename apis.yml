@@ -1633,6 +1633,8 @@ apis:
   humanURL: https://developer.dexcom.com/
   baseURL: https://api.dexcom.com
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
