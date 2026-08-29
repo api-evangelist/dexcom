@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Dexcom Developer Alerts Events API
   version: v3
@@ -78,6 +78,12 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    EventStatus:
+      type: string
+      enum:
+      - created
+      - updated
+      - deleted
     EventRecord:
       type: object
       properties:
@@ -90,46 +96,31 @@ components:
         eventType:
           $ref: '#/components/schemas/EventType'
         eventSubType:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: For example `fastActing` or `longActing` for `insulin`, or `light` / `medium` / `heavy` for `exercise`.
         value:
-          type: number
-          nullable: true
+          type:
+          - number
+          - 'null'
         unit:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           description: Unit appropriate to `eventType` (e.g. `grams`, `units`, `minutes`).
         eventStatus:
           $ref: '#/components/schemas/EventStatus'
         transmitterId:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         transmitterGeneration:
           $ref: '#/components/schemas/TransmitterGeneration'
         displayDevice:
-          type: string
-          nullable: true
-    TransmitterGeneration:
-      type: string
-      enum:
-      - unknown
-      - g4
-      - g5
-      - g6
-      - g6+
-      - dexcomPro
-      - g7
-    DateTime:
-      type: string
-      format: date-time
-      description: ISO 8601 timestamp.
-    EventStatus:
-      type: string
-      enum:
-      - created
-      - updated
-      - deleted
+          type:
+          - string
+          - 'null'
     EventType:
       type: string
       enum:
@@ -140,6 +131,16 @@ components:
       - health
       - bloodGlucose
       - notes
+    TransmitterGeneration:
+      type: string
+      enum:
+      - unknown
+      - g4
+      - g5
+      - g6
+      - g6+
+      - dexcomPro
+      - g7
     EventsResponse:
       type: object
       properties:
@@ -155,6 +156,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EventRecord'
+    DateTime:
+      type: string
+      format: date-time
+      description: ISO 8601 timestamp.
   parameters:
     StartDate:
       name: startDate

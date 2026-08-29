@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Dexcom Developer Alerts API
   version: v3
@@ -63,76 +63,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  schemas:
-    AlertsResponse:
-      type: object
-      properties:
-        recordType:
-          type: string
-          example: alert
-        recordVersion:
-          type: string
-          example: '3.0'
-        userId:
-          type: string
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/AlertRecord'
-    AlertRecord:
-      type: object
-      properties:
-        recordId:
-          type: string
-        systemTime:
-          $ref: '#/components/schemas/DateTime'
-        displayTime:
-          $ref: '#/components/schemas/DateTime'
-        alertName:
-          $ref: '#/components/schemas/AlertName'
-        alertState:
-          $ref: '#/components/schemas/AlertState'
-        displayDevice:
-          type: string
-        transmitterGeneration:
-          $ref: '#/components/schemas/TransmitterGeneration'
-        transmitterId:
-          type: string
-          nullable: true
-    AlertState:
-      type: string
-      enum:
-      - unknown
-      - inactive
-      - activeSnoozed
-      - activeAlarming
-    AlertName:
-      type: string
-      enum:
-      - unknown
-      - high
-      - low
-      - rise
-      - fall
-      - outOfRange
-      - urgentLow
-      - urgentLowSoon
-      - noReadings
-      - fixedLow
-    TransmitterGeneration:
-      type: string
-      enum:
-      - unknown
-      - g4
-      - g5
-      - g6
-      - g6+
-      - dexcomPro
-      - g7
-    DateTime:
-      type: string
-      format: date-time
-      description: ISO 8601 timestamp.
   parameters:
     StartDate:
       name: startDate
@@ -152,6 +82,77 @@ components:
         type: string
         format: date-time
         example: '2026-04-30T23:59:59'
+  schemas:
+    AlertsResponse:
+      type: object
+      properties:
+        recordType:
+          type: string
+          example: alert
+        recordVersion:
+          type: string
+          example: '3.0'
+        userId:
+          type: string
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlertRecord'
+    AlertState:
+      type: string
+      enum:
+      - unknown
+      - inactive
+      - activeSnoozed
+      - activeAlarming
+    TransmitterGeneration:
+      type: string
+      enum:
+      - unknown
+      - g4
+      - g5
+      - g6
+      - g6+
+      - dexcomPro
+      - g7
+    DateTime:
+      type: string
+      format: date-time
+      description: ISO 8601 timestamp.
+    AlertName:
+      type: string
+      enum:
+      - unknown
+      - high
+      - low
+      - rise
+      - fall
+      - outOfRange
+      - urgentLow
+      - urgentLowSoon
+      - noReadings
+      - fixedLow
+    AlertRecord:
+      type: object
+      properties:
+        recordId:
+          type: string
+        systemTime:
+          $ref: '#/components/schemas/DateTime'
+        displayTime:
+          $ref: '#/components/schemas/DateTime'
+        alertName:
+          $ref: '#/components/schemas/AlertName'
+        alertState:
+          $ref: '#/components/schemas/AlertState'
+        displayDevice:
+          type: string
+        transmitterGeneration:
+          $ref: '#/components/schemas/TransmitterGeneration'
+        transmitterId:
+          type:
+          - string
+          - 'null'
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Dexcom Developer Alerts Data Range API
   version: v3
@@ -81,6 +81,27 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    DataRangeMoment:
+      type: object
+      properties:
+        systemTime:
+          $ref: '#/components/schemas/DateTime'
+        displayTime:
+          $ref: '#/components/schemas/DateTime'
+      required:
+      - systemTime
+      - displayTime
+    DataRangeWindow:
+      type: object
+      properties:
+        start:
+          $ref: '#/components/schemas/DataRangeMoment'
+        end:
+          $ref: '#/components/schemas/DataRangeMoment'
+    DateTime:
+      type: string
+      format: date-time
+      description: ISO 8601 timestamp.
     DataRangeResponse:
       type: object
       properties:
@@ -98,27 +119,6 @@ components:
           $ref: '#/components/schemas/DataRangeWindow'
         events:
           $ref: '#/components/schemas/DataRangeWindow'
-    DateTime:
-      type: string
-      format: date-time
-      description: ISO 8601 timestamp.
-    DataRangeWindow:
-      type: object
-      properties:
-        start:
-          $ref: '#/components/schemas/DataRangeMoment'
-        end:
-          $ref: '#/components/schemas/DataRangeMoment'
-    DataRangeMoment:
-      type: object
-      properties:
-        systemTime:
-          $ref: '#/components/schemas/DateTime'
-        displayTime:
-          $ref: '#/components/schemas/DateTime'
-      required:
-      - systemTime
-      - displayTime
   securitySchemes:
     OAuth2:
       type: oauth2

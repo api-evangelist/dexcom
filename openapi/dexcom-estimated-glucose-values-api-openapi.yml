@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Dexcom Developer Alerts Estimated Glucose Values API
   version: v3
@@ -82,6 +82,57 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    RateUnit:
+      type: string
+      enum:
+      - unknown
+      - mg/dL/min
+      - mmol/L/min
+    EGVRecord:
+      type: object
+      description: A single estimated glucose value record.
+      x-schema-source: documentation
+      x-source-url: https://developer.dexcom.com/docs/dexcomv3/endpoint-overview
+      properties:
+        recordId:
+          type: string
+        systemTime:
+          $ref: '#/components/schemas/DateTime'
+        displayTime:
+          $ref: '#/components/schemas/DateTime'
+        transmitterId:
+          type:
+          - string
+          - 'null'
+        transmitterTicks:
+          type: integer
+          format: int64
+        value:
+          type: integer
+          format: int32
+          description: Estimated glucose value, in `unit`.
+        status:
+          $ref: '#/components/schemas/EgvStatus'
+        trend:
+          $ref: '#/components/schemas/TrendType'
+        trendRate:
+          type:
+          - number
+          - 'null'
+          format: double
+        unit:
+          $ref: '#/components/schemas/GlucoseUnit'
+        rateUnit:
+          $ref: '#/components/schemas/RateUnit'
+        displayDevice:
+          type: string
+          description: One of `iOS`, `android`, or `receiver`.
+        transmitterGeneration:
+          $ref: '#/components/schemas/TransmitterGeneration'
+    DateTime:
+      type: string
+      format: date-time
+      description: ISO 8601 timestamp.
     EgvsResponse:
       type: object
       properties:
@@ -104,12 +155,6 @@ components:
       - high
       - low
       - ok
-    RateUnit:
-      type: string
-      enum:
-      - unknown
-      - mg/dL/min
-      - mmol/L/min
     TransmitterGeneration:
       type: string
       enum:
@@ -120,49 +165,12 @@ components:
       - g6+
       - dexcomPro
       - g7
-    DateTime:
+    GlucoseUnit:
       type: string
-      format: date-time
-      description: ISO 8601 timestamp.
-    EGVRecord:
-      type: object
-      description: A single estimated glucose value record.
-      x-schema-source: documentation
-      x-source-url: https://developer.dexcom.com/docs/dexcomv3/endpoint-overview
-      properties:
-        recordId:
-          type: string
-        systemTime:
-          $ref: '#/components/schemas/DateTime'
-        displayTime:
-          $ref: '#/components/schemas/DateTime'
-        transmitterId:
-          type: string
-          nullable: true
-        transmitterTicks:
-          type: integer
-          format: int64
-        value:
-          type: integer
-          format: int32
-          description: Estimated glucose value, in `unit`.
-        status:
-          $ref: '#/components/schemas/EgvStatus'
-        trend:
-          $ref: '#/components/schemas/TrendType'
-        trendRate:
-          type: number
-          format: double
-          nullable: true
-        unit:
-          $ref: '#/components/schemas/GlucoseUnit'
-        rateUnit:
-          $ref: '#/components/schemas/RateUnit'
-        displayDevice:
-          type: string
-          description: One of `iOS`, `android`, or `receiver`.
-        transmitterGeneration:
-          $ref: '#/components/schemas/TransmitterGeneration'
+      enum:
+      - unknown
+      - mg/dL
+      - mmol/L
     TrendType:
       type: string
       enum:
@@ -177,12 +185,6 @@ components:
       - doubleDown
       - notComputable
       - rateOutOfRange
-    GlucoseUnit:
-      type: string
-      enum:
-      - unknown
-      - mg/dL
-      - mmol/L
   parameters:
     StartDate:
       name: startDate

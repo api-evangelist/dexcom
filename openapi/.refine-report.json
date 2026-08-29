@@ -21,6 +21,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "dexcom-alerts-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "dexcom-authentication-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "dexcom-calibrations-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "dexcom-data-range-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "dexcom-devices-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "dexcom-estimated-glucose-values-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "dexcom-events-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

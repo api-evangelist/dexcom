@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Dexcom Developer Alerts Devices API
   version: v3
@@ -89,43 +89,32 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    AlertName:
-      type: string
-      enum:
-      - unknown
-      - high
-      - low
-      - rise
-      - fall
-      - outOfRange
-      - urgentLow
-      - urgentLowSoon
-      - noReadings
-      - fixedLow
-    AlertSetting:
+    DeviceRecord:
       type: object
       properties:
-        alertName:
-          $ref: '#/components/schemas/AlertName'
-        value:
-          type: number
-        unit:
-          $ref: '#/components/schemas/GlucoseUnit'
-        snooze:
-          type: integer
-          description: Snooze interval in minutes.
-        enabled:
-          type: boolean
-    TransmitterGeneration:
+        lastUploadDate:
+          $ref: '#/components/schemas/DateTime'
+        transmitterId:
+          type:
+          - string
+          - 'null'
+        transmitterGeneration:
+          $ref: '#/components/schemas/TransmitterGeneration'
+        displayDevice:
+          type: string
+          description: For example `iOS`, `android`, or `receiver`.
+        displayApp:
+          type:
+          - string
+          - 'null'
+        alertSchedules:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlertSchedule'
+    DateTime:
       type: string
-      enum:
-      - unknown
-      - g4
-      - g5
-      - g6
-      - g6+
-      - dexcomPro
-      - g7
+      format: date-time
+      description: ISO 8601 timestamp.
     DevicesResponse:
       type: object
       properties:
@@ -141,30 +130,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DeviceRecord'
-    DateTime:
-      type: string
-      format: date-time
-      description: ISO 8601 timestamp.
-    DeviceRecord:
-      type: object
-      properties:
-        lastUploadDate:
-          $ref: '#/components/schemas/DateTime'
-        transmitterId:
-          type: string
-          nullable: true
-        transmitterGeneration:
-          $ref: '#/components/schemas/TransmitterGeneration'
-        displayDevice:
-          type: string
-          description: For example `iOS`, `android`, or `receiver`.
-        displayApp:
-          type: string
-          nullable: true
-        alertSchedules:
-          type: array
-          items:
-            $ref: '#/components/schemas/AlertSchedule'
     AlertSchedule:
       type: object
       properties:
@@ -199,12 +164,49 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AlertSetting'
+    TransmitterGeneration:
+      type: string
+      enum:
+      - unknown
+      - g4
+      - g5
+      - g6
+      - g6+
+      - dexcomPro
+      - g7
     GlucoseUnit:
       type: string
       enum:
       - unknown
       - mg/dL
       - mmol/L
+    AlertName:
+      type: string
+      enum:
+      - unknown
+      - high
+      - low
+      - rise
+      - fall
+      - outOfRange
+      - urgentLow
+      - urgentLowSoon
+      - noReadings
+      - fixedLow
+    AlertSetting:
+      type: object
+      properties:
+        alertName:
+          $ref: '#/components/schemas/AlertName'
+        value:
+          type: number
+        unit:
+          $ref: '#/components/schemas/GlucoseUnit'
+        snooze:
+          type: integer
+          description: Snooze interval in minutes.
+        enabled:
+          type: boolean
   securitySchemes:
     OAuth2:
       type: oauth2
