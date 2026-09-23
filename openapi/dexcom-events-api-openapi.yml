@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Dexcom Developer Alerts Events API
+  title: Dexcom Developer Events API
   version: v3
   description: The Dexcom Developer API provides authorized third-party applications with read access to a Dexcom user's continuous glucose monitoring (CGM) data. Resources include estimated glucose values (EGVs), calibrations, events, alerts, devices, and data range. The API uses OAuth 2.0 authorization code flow and exposes separate sandbox and production environments.
   contact:
@@ -78,12 +78,31 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    EventsResponse:
+      type: object
+      properties:
+        recordType:
+          type: string
+          example: event
+        recordVersion:
+          type: string
+          example: '3.0'
+        userId:
+          type: string
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventRecord'
     EventStatus:
       type: string
       enum:
       - created
       - updated
       - deleted
+    DateTime:
+      type: string
+      format: date-time
+      description: ISO 8601 timestamp.
     EventRecord:
       type: object
       properties:
@@ -141,25 +160,6 @@ components:
       - g6+
       - dexcomPro
       - g7
-    EventsResponse:
-      type: object
-      properties:
-        recordType:
-          type: string
-          example: event
-        recordVersion:
-          type: string
-          example: '3.0'
-        userId:
-          type: string
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventRecord'
-    DateTime:
-      type: string
-      format: date-time
-      description: ISO 8601 timestamp.
   parameters:
     StartDate:
       name: startDate

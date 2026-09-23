@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Dexcom Developer Alerts Devices API
+  title: Dexcom Developer Devices API
   version: v3
   description: The Dexcom Developer API provides authorized third-party applications with read access to a Dexcom user's continuous glucose monitoring (CGM) data. Resources include estimated glucose values (EGVs), calibrations, events, alerts, devices, and data range. The API uses OAuth 2.0 authorization code flow and exposes separate sandbox and production environments.
   contact:
@@ -89,6 +89,10 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    DateTime:
+      type: string
+      format: date-time
+      description: ISO 8601 timestamp.
     DeviceRecord:
       type: object
       properties:
@@ -111,25 +115,25 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AlertSchedule'
-    DateTime:
+    GlucoseUnit:
       type: string
-      format: date-time
-      description: ISO 8601 timestamp.
-    DevicesResponse:
-      type: object
-      properties:
-        recordType:
-          type: string
-          example: device
-        recordVersion:
-          type: string
-          example: '3.0'
-        userId:
-          type: string
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeviceRecord'
+      enum:
+      - unknown
+      - mg/dL
+      - mmol/L
+    AlertName:
+      type: string
+      enum:
+      - unknown
+      - high
+      - low
+      - rise
+      - fall
+      - outOfRange
+      - urgentLow
+      - urgentLowSoon
+      - noReadings
+      - fixedLow
     AlertSchedule:
       type: object
       properties:
@@ -164,35 +168,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AlertSetting'
-    TransmitterGeneration:
-      type: string
-      enum:
-      - unknown
-      - g4
-      - g5
-      - g6
-      - g6+
-      - dexcomPro
-      - g7
-    GlucoseUnit:
-      type: string
-      enum:
-      - unknown
-      - mg/dL
-      - mmol/L
-    AlertName:
-      type: string
-      enum:
-      - unknown
-      - high
-      - low
-      - rise
-      - fall
-      - outOfRange
-      - urgentLow
-      - urgentLowSoon
-      - noReadings
-      - fixedLow
     AlertSetting:
       type: object
       properties:
@@ -207,6 +182,31 @@ components:
           description: Snooze interval in minutes.
         enabled:
           type: boolean
+    TransmitterGeneration:
+      type: string
+      enum:
+      - unknown
+      - g4
+      - g5
+      - g6
+      - g6+
+      - dexcomPro
+      - g7
+    DevicesResponse:
+      type: object
+      properties:
+        recordType:
+          type: string
+          example: device
+        recordVersion:
+          type: string
+          example: '3.0'
+        userId:
+          type: string
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceRecord'
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Dexcom Developer Alerts Calibrations API
+  title: Dexcom Developer Calibrations API
   version: v3
   description: The Dexcom Developer API provides authorized third-party applications with read access to a Dexcom user's continuous glucose monitoring (CGM) data. Resources include estimated glucose values (EGVs), calibrations, events, alerts, devices, and data range. The API uses OAuth 2.0 authorization code flow and exposes separate sandbox and production environments.
   contact:
@@ -65,10 +65,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DateTime:
-      type: string
-      format: date-time
-      description: ISO 8601 timestamp.
     CalibrationRecord:
       type: object
       properties:
@@ -94,16 +90,16 @@ components:
           format: int64
         transmitterGeneration:
           $ref: '#/components/schemas/TransmitterGeneration'
-    TransmitterGeneration:
+    DateTime:
+      type: string
+      format: date-time
+      description: ISO 8601 timestamp.
+    GlucoseUnit:
       type: string
       enum:
       - unknown
-      - g4
-      - g5
-      - g6
-      - g6+
-      - dexcomPro
-      - g7
+      - mg/dL
+      - mmol/L
     CalibrationsResponse:
       type: object
       properties:
@@ -119,12 +115,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CalibrationRecord'
-    GlucoseUnit:
+    TransmitterGeneration:
       type: string
       enum:
       - unknown
-      - mg/dL
-      - mmol/L
+      - g4
+      - g5
+      - g6
+      - g6+
+      - dexcomPro
+      - g7
   parameters:
     StartDate:
       name: startDate

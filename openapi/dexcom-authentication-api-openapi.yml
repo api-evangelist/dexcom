@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Dexcom Developer Alerts Authentication API
+  title: Dexcom Developer Authentication API
   version: v3
   description: The Dexcom Developer API provides authorized third-party applications with read access to a Dexcom user's continuous glucose monitoring (CGM) data. Resources include estimated glucose values (EGVs), calibrations, events, alerts, devices, and data range. The API uses OAuth 2.0 authorization code flow and exposes separate sandbox and production environments.
   contact:
@@ -113,6 +113,22 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: Bearer token used in the `Authorization` header for subsequent requests.
+        expires_in:
+          type: integer
+          description: Lifetime in seconds of the access token.
+          example: 7200
+        token_type:
+          type: string
+          example: Bearer
+        refresh_token:
+          type: string
+          description: Refresh token used to obtain a new access token.
     TokenRequest:
       type: object
       description: Form-encoded request body for the token endpoint.
@@ -142,22 +158,6 @@ components:
       - client_id
       - client_secret
       - grant_type
-    TokenResponse:
-      type: object
-      properties:
-        access_token:
-          type: string
-          description: Bearer token used in the `Authorization` header for subsequent requests.
-        expires_in:
-          type: integer
-          description: Lifetime in seconds of the access token.
-          example: 7200
-        token_type:
-          type: string
-          example: Bearer
-        refresh_token:
-          type: string
-          description: Refresh token used to obtain a new access token.
   securitySchemes:
     OAuth2:
       type: oauth2

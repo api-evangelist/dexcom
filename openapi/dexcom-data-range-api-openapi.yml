@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Dexcom Developer Alerts Data Range API
+  title: Dexcom Developer Data Range API
   version: v3
   description: The Dexcom Developer API provides authorized third-party applications with read access to a Dexcom user's continuous glucose monitoring (CGM) data. Resources include estimated glucose values (EGVs), calibrations, events, alerts, devices, and data range. The API uses OAuth 2.0 authorization code flow and exposes separate sandbox and production environments.
   contact:
@@ -98,10 +98,6 @@ components:
           $ref: '#/components/schemas/DataRangeMoment'
         end:
           $ref: '#/components/schemas/DataRangeMoment'
-    DateTime:
-      type: string
-      format: date-time
-      description: ISO 8601 timestamp.
     DataRangeResponse:
       type: object
       properties:
@@ -119,6 +115,10 @@ components:
           $ref: '#/components/schemas/DataRangeWindow'
         events:
           $ref: '#/components/schemas/DataRangeWindow'
+    DateTime:
+      type: string
+      format: date-time
+      description: ISO 8601 timestamp.
   securitySchemes:
     OAuth2:
       type: oauth2

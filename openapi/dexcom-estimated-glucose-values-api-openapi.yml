@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Dexcom Developer Alerts Estimated Glucose Values API
+  title: Dexcom Developer Estimated Glucose Values API
   version: v3
   description: The Dexcom Developer API provides authorized third-party applications with read access to a Dexcom user's continuous glucose monitoring (CGM) data. Resources include estimated glucose values (EGVs), calibrations, events, alerts, devices, and data range. The API uses OAuth 2.0 authorization code flow and exposes separate sandbox and production environments.
   contact:
@@ -81,13 +81,49 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    EndDate:
+      name: endDate
+      in: query
+      required: true
+      description: ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`.
+      schema:
+        type: string
+        format: date-time
+        example: '2026-04-30T23:59:59'
+    StartDate:
+      name: startDate
+      in: query
+      required: true
+      description: ISO 8601 timestamp for the start of the query window (UTC, no offset).
+      schema:
+        type: string
+        format: date-time
+        example: '2026-04-01T00:00:00'
   schemas:
+    DateTime:
+      type: string
+      format: date-time
+      description: ISO 8601 timestamp.
+    GlucoseUnit:
+      type: string
+      enum:
+      - unknown
+      - mg/dL
+      - mmol/L
     RateUnit:
       type: string
       enum:
       - unknown
       - mg/dL/min
       - mmol/L/min
+    EgvStatus:
+      type: string
+      enum:
+      - unknown
+      - high
+      - low
+      - ok
     EGVRecord:
       type: object
       description: A single estimated glucose value record.
@@ -129,10 +165,30 @@ components:
           description: One of `iOS`, `android`, or `receiver`.
         transmitterGeneration:
           $ref: '#/components/schemas/TransmitterGeneration'
-    DateTime:
+    TrendType:
       type: string
-      format: date-time
-      description: ISO 8601 timestamp.
+      enum:
+      - none
+      - unknown
+      - doubleUp
+      - singleUp
+      - fortyFiveUp
+      - flat
+      - fortyFiveDown
+      - singleDown
+      - doubleDown
+      - notComputable
+      - rateOutOfRange
+    TransmitterGeneration:
+      type: string
+      enum:
+      - unknown
+      - g4
+      - g5
+      - g6
+      - g6+
+      - dexcomPro
+      - g7
     EgvsResponse:
       type: object
       properties:
@@ -148,62 +204,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/EGVRecord'
-    EgvStatus:
-      type: string
-      enum:
-      - unknown
-      - high
-      - low
-      - ok
-    TransmitterGeneration:
-      type: string
-      enum:
-      - unknown
-      - g4
-      - g5
-      - g6
-      - g6+
-      - dexcomPro
-      - g7
-    GlucoseUnit:
-      type: string
-      enum:
-      - unknown
-      - mg/dL
-      - mmol/L
-    TrendType:
-      type: string
-      enum:
-      - none
-      - unknown
-      - doubleUp
-      - singleUp
-      - fortyFiveUp
-      - flat
-      - fortyFiveDown
-      - singleDown
-      - doubleDown
-      - notComputable
-      - rateOutOfRange
-  parameters:
-    StartDate:
-      name: startDate
-      in: query
-      required: true
-      description: ISO 8601 timestamp for the start of the query window (UTC, no offset).
-      schema:
-        type: string
-        format: date-time
-        example: '2026-04-01T00:00:00'
-    EndDate:
-      name: endDate
-      in: query
-      required: true
-      description: ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`.
-      schema:
-        type: string
-        format: date-time
-        example: '2026-04-30T23:59:59'
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -1,13 +1,7 @@
 {
   "provider": "dexcom",
   "sources": [
-    "dexcom-alerts-api-openapi.yml",
-    "dexcom-authentication-api-openapi.yml",
-    "dexcom-calibrations-api-openapi.yml",
-    "dexcom-data-range-api-openapi.yml",
-    "dexcom-devices-api-openapi.yml",
-    "dexcom-estimated-glucose-values-api-openapi.yml",
-    "dexcom-events-api-openapi.yml"
+    "_ae-authored/dexcom-dexcom-api.yml"
   ],
   "outputs": [
     "dexcom-alerts-api-openapi.yml",
@@ -22,14 +16,17 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "dexcom-alerts-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "dexcom-authentication-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "dexcom-calibrations-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "dexcom-data-range-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "dexcom-devices-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "dexcom-estimated-glucose-values-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "dexcom-events-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "dexcom-dexcom-api.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "dexcom-alerts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dexcom-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dexcom-calibrations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dexcom-data-range-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dexcom-devices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dexcom-estimated-glucose-values-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "dexcom-events-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
