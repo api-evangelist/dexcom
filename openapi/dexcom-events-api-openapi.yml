@@ -77,32 +77,40 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    StartDate:
+      name: startDate
+      in: query
+      required: true
+      description: ISO 8601 timestamp for the start of the query window (UTC, no offset).
+      schema:
+        type: string
+        format: date-time
+        example: '2026-04-01T00:00:00'
+    EndDate:
+      name: endDate
+      in: query
+      required: true
+      description: ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`.
+      schema:
+        type: string
+        format: date-time
+        example: '2026-04-30T23:59:59'
   schemas:
-    EventsResponse:
-      type: object
-      properties:
-        recordType:
-          type: string
-          example: event
-        recordVersion:
-          type: string
-          example: '3.0'
-        userId:
-          type: string
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/EventRecord'
-    EventStatus:
-      type: string
-      enum:
-      - created
-      - updated
-      - deleted
     DateTime:
       type: string
       format: date-time
       description: ISO 8601 timestamp.
+    TransmitterGeneration:
+      type: string
+      enum:
+      - unknown
+      - g4
+      - g5
+      - g6
+      - g6+
+      - dexcomPro
+      - g7
     EventRecord:
       type: object
       properties:
@@ -140,6 +148,27 @@ components:
           type:
           - string
           - 'null'
+    EventStatus:
+      type: string
+      enum:
+      - created
+      - updated
+      - deleted
+    EventsResponse:
+      type: object
+      properties:
+        recordType:
+          type: string
+          example: event
+        recordVersion:
+          type: string
+          example: '3.0'
+        userId:
+          type: string
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventRecord'
     EventType:
       type: string
       enum:
@@ -150,35 +179,6 @@ components:
       - health
       - bloodGlucose
       - notes
-    TransmitterGeneration:
-      type: string
-      enum:
-      - unknown
-      - g4
-      - g5
-      - g6
-      - g6+
-      - dexcomPro
-      - g7
-  parameters:
-    StartDate:
-      name: startDate
-      in: query
-      required: true
-      description: ISO 8601 timestamp for the start of the query window (UTC, no offset).
-      schema:
-        type: string
-        format: date-time
-        example: '2026-04-01T00:00:00'
-    EndDate:
-      name: endDate
-      in: query
-      required: true
-      description: ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`.
-      schema:
-        type: string
-        format: date-time
-        example: '2026-04-30T23:59:59'
   securitySchemes:
     OAuth2:
       type: oauth2

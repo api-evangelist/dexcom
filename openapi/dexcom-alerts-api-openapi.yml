@@ -63,39 +63,26 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    StartDate:
+      name: startDate
+      in: query
+      required: true
+      description: ISO 8601 timestamp for the start of the query window (UTC, no offset).
+      schema:
+        type: string
+        format: date-time
+        example: '2026-04-01T00:00:00'
+    EndDate:
+      name: endDate
+      in: query
+      required: true
+      description: ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`.
+      schema:
+        type: string
+        format: date-time
+        example: '2026-04-30T23:59:59'
   schemas:
-    AlertsResponse:
-      type: object
-      properties:
-        recordType:
-          type: string
-          example: alert
-        recordVersion:
-          type: string
-          example: '3.0'
-        userId:
-          type: string
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/AlertRecord'
-    DateTime:
-      type: string
-      format: date-time
-      description: ISO 8601 timestamp.
-    AlertName:
-      type: string
-      enum:
-      - unknown
-      - high
-      - low
-      - rise
-      - fall
-      - outOfRange
-      - urgentLow
-      - urgentLowSoon
-      - noReadings
-      - fixedLow
     AlertState:
       type: string
       enum:
@@ -124,6 +111,21 @@ components:
           type:
           - string
           - 'null'
+    AlertsResponse:
+      type: object
+      properties:
+        recordType:
+          type: string
+          example: alert
+        recordVersion:
+          type: string
+          example: '3.0'
+        userId:
+          type: string
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlertRecord'
     TransmitterGeneration:
       type: string
       enum:
@@ -134,25 +136,23 @@ components:
       - g6+
       - dexcomPro
       - g7
-  parameters:
-    StartDate:
-      name: startDate
-      in: query
-      required: true
-      description: ISO 8601 timestamp for the start of the query window (UTC, no offset).
-      schema:
-        type: string
-        format: date-time
-        example: '2026-04-01T00:00:00'
-    EndDate:
-      name: endDate
-      in: query
-      required: true
-      description: ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`.
-      schema:
-        type: string
-        format: date-time
-        example: '2026-04-30T23:59:59'
+    AlertName:
+      type: string
+      enum:
+      - unknown
+      - high
+      - low
+      - rise
+      - fall
+      - outOfRange
+      - urgentLow
+      - urgentLowSoon
+      - noReadings
+      - fixedLow
+    DateTime:
+      type: string
+      format: date-time
+      description: ISO 8601 timestamp.
   securitySchemes:
     OAuth2:
       type: oauth2

@@ -89,10 +89,20 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DateTime:
-      type: string
-      format: date-time
-      description: ISO 8601 timestamp.
+    AlertSetting:
+      type: object
+      properties:
+        alertName:
+          $ref: '#/components/schemas/AlertName'
+        value:
+          type: number
+        unit:
+          $ref: '#/components/schemas/GlucoseUnit'
+        snooze:
+          type: integer
+          description: Snooze interval in minutes.
+        enabled:
+          type: boolean
     DeviceRecord:
       type: object
       properties:
@@ -115,12 +125,37 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AlertSchedule'
+    DevicesResponse:
+      type: object
+      properties:
+        recordType:
+          type: string
+          example: device
+        recordVersion:
+          type: string
+          example: '3.0'
+        userId:
+          type: string
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceRecord'
     GlucoseUnit:
       type: string
       enum:
       - unknown
       - mg/dL
       - mmol/L
+    TransmitterGeneration:
+      type: string
+      enum:
+      - unknown
+      - g4
+      - g5
+      - g6
+      - g6+
+      - dexcomPro
+      - g7
     AlertName:
       type: string
       enum:
@@ -168,45 +203,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AlertSetting'
-    AlertSetting:
-      type: object
-      properties:
-        alertName:
-          $ref: '#/components/schemas/AlertName'
-        value:
-          type: number
-        unit:
-          $ref: '#/components/schemas/GlucoseUnit'
-        snooze:
-          type: integer
-          description: Snooze interval in minutes.
-        enabled:
-          type: boolean
-    TransmitterGeneration:
+    DateTime:
       type: string
-      enum:
-      - unknown
-      - g4
-      - g5
-      - g6
-      - g6+
-      - dexcomPro
-      - g7
-    DevicesResponse:
-      type: object
-      properties:
-        recordType:
-          type: string
-          example: device
-        recordVersion:
-          type: string
-          example: '3.0'
-        userId:
-          type: string
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeviceRecord'
+      format: date-time
+      description: ISO 8601 timestamp.
   securitySchemes:
     OAuth2:
       type: oauth2

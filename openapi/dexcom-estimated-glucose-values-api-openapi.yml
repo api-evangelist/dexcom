@@ -82,15 +82,6 @@ paths:
         dispatcher: FALLBACK
 components:
   parameters:
-    EndDate:
-      name: endDate
-      in: query
-      required: true
-      description: ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`.
-      schema:
-        type: string
-        format: date-time
-        example: '2026-04-30T23:59:59'
     StartDate:
       name: startDate
       in: query
@@ -100,30 +91,61 @@ components:
         type: string
         format: date-time
         example: '2026-04-01T00:00:00'
+    EndDate:
+      name: endDate
+      in: query
+      required: true
+      description: ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`.
+      schema:
+        type: string
+        format: date-time
+        example: '2026-04-30T23:59:59'
   schemas:
-    DateTime:
-      type: string
-      format: date-time
-      description: ISO 8601 timestamp.
+    EgvsResponse:
+      type: object
+      properties:
+        recordType:
+          type: string
+          example: egv
+        recordVersion:
+          type: string
+          example: '3.0'
+        userId:
+          type: string
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/EGVRecord'
     GlucoseUnit:
       type: string
       enum:
       - unknown
       - mg/dL
       - mmol/L
-    RateUnit:
+    TransmitterGeneration:
       type: string
       enum:
       - unknown
-      - mg/dL/min
-      - mmol/L/min
-    EgvStatus:
+      - g4
+      - g5
+      - g6
+      - g6+
+      - dexcomPro
+      - g7
+    TrendType:
       type: string
       enum:
+      - none
       - unknown
-      - high
-      - low
-      - ok
+      - doubleUp
+      - singleUp
+      - fortyFiveUp
+      - flat
+      - fortyFiveDown
+      - singleDown
+      - doubleDown
+      - notComputable
+      - rateOutOfRange
     EGVRecord:
       type: object
       description: A single estimated glucose value record.
@@ -165,45 +187,23 @@ components:
           description: One of `iOS`, `android`, or `receiver`.
         transmitterGeneration:
           $ref: '#/components/schemas/TransmitterGeneration'
-    TrendType:
-      type: string
-      enum:
-      - none
-      - unknown
-      - doubleUp
-      - singleUp
-      - fortyFiveUp
-      - flat
-      - fortyFiveDown
-      - singleDown
-      - doubleDown
-      - notComputable
-      - rateOutOfRange
-    TransmitterGeneration:
+    RateUnit:
       type: string
       enum:
       - unknown
-      - g4
-      - g5
-      - g6
-      - g6+
-      - dexcomPro
-      - g7
-    EgvsResponse:
-      type: object
-      properties:
-        recordType:
-          type: string
-          example: egv
-        recordVersion:
-          type: string
-          example: '3.0'
-        userId:
-          type: string
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/EGVRecord'
+      - mg/dL/min
+      - mmol/L/min
+    DateTime:
+      type: string
+      format: date-time
+      description: ISO 8601 timestamp.
+    EgvStatus:
+      type: string
+      enum:
+      - unknown
+      - high
+      - low
+      - ok
   securitySchemes:
     OAuth2:
       type: oauth2
