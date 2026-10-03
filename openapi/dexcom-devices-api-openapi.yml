@@ -103,72 +103,12 @@ components:
           description: Snooze interval in minutes.
         enabled:
           type: boolean
-    DeviceRecord:
-      type: object
-      properties:
-        lastUploadDate:
-          $ref: '#/components/schemas/DateTime'
-        transmitterId:
-          type:
-          - string
-          - 'null'
-        transmitterGeneration:
-          $ref: '#/components/schemas/TransmitterGeneration'
-        displayDevice:
-          type: string
-          description: For example `iOS`, `android`, or `receiver`.
-        displayApp:
-          type:
-          - string
-          - 'null'
-        alertSchedules:
-          type: array
-          items:
-            $ref: '#/components/schemas/AlertSchedule'
-    DevicesResponse:
-      type: object
-      properties:
-        recordType:
-          type: string
-          example: device
-        recordVersion:
-          type: string
-          example: '3.0'
-        userId:
-          type: string
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeviceRecord'
     GlucoseUnit:
       type: string
       enum:
       - unknown
       - mg/dL
       - mmol/L
-    TransmitterGeneration:
-      type: string
-      enum:
-      - unknown
-      - g4
-      - g5
-      - g6
-      - g6+
-      - dexcomPro
-      - g7
-    AlertName:
-      type: string
-      enum:
-      - unknown
-      - high
-      - low
-      - rise
-      - fall
-      - outOfRange
-      - urgentLow
-      - urgentLowSoon
-      - noReadings
-      - fixedLow
     AlertSchedule:
       type: object
       properties:
@@ -203,10 +143,70 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AlertSetting'
+    AlertName:
+      type: string
+      enum:
+      - unknown
+      - high
+      - low
+      - rise
+      - fall
+      - outOfRange
+      - urgentLow
+      - urgentLowSoon
+      - noReadings
+      - fixedLow
     DateTime:
       type: string
       format: date-time
       description: ISO 8601 timestamp.
+    TransmitterGeneration:
+      type: string
+      enum:
+      - unknown
+      - g4
+      - g5
+      - g6
+      - g6+
+      - dexcomPro
+      - g7
+    DevicesResponse:
+      type: object
+      properties:
+        recordType:
+          type: string
+          example: device
+        recordVersion:
+          type: string
+          example: '3.0'
+        userId:
+          type: string
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceRecord'
+    DeviceRecord:
+      type: object
+      properties:
+        lastUploadDate:
+          $ref: '#/components/schemas/DateTime'
+        transmitterId:
+          type:
+          - string
+          - 'null'
+        transmitterGeneration:
+          $ref: '#/components/schemas/TransmitterGeneration'
+        displayDevice:
+          type: string
+          description: For example `iOS`, `android`, or `receiver`.
+        displayApp:
+          type:
+          - string
+          - 'null'
+        alertSchedules:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlertSchedule'
   securitySchemes:
     OAuth2:
       type: oauth2

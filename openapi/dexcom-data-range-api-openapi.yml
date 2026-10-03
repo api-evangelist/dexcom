@@ -81,13 +81,10 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DataRangeWindow:
-      type: object
-      properties:
-        start:
-          $ref: '#/components/schemas/DataRangeMoment'
-        end:
-          $ref: '#/components/schemas/DataRangeMoment'
+    DateTime:
+      type: string
+      format: date-time
+      description: ISO 8601 timestamp.
     DataRangeMoment:
       type: object
       properties:
@@ -98,10 +95,6 @@ components:
       required:
       - systemTime
       - displayTime
-    DateTime:
-      type: string
-      format: date-time
-      description: ISO 8601 timestamp.
     DataRangeResponse:
       type: object
       properties:
@@ -119,6 +112,13 @@ components:
           $ref: '#/components/schemas/DataRangeWindow'
         events:
           $ref: '#/components/schemas/DataRangeWindow'
+    DataRangeWindow:
+      type: object
+      properties:
+        start:
+          $ref: '#/components/schemas/DataRangeMoment'
+        end:
+          $ref: '#/components/schemas/DataRangeMoment'
   securitySchemes:
     OAuth2:
       type: oauth2
