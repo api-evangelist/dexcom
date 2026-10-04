@@ -64,54 +64,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    AlertRecord:
-      type: object
-      properties:
-        recordId:
-          type: string
-        systemTime:
-          $ref: '#/components/schemas/DateTime'
-        displayTime:
-          $ref: '#/components/schemas/DateTime'
-        alertName:
-          $ref: '#/components/schemas/AlertName'
-        alertState:
-          $ref: '#/components/schemas/AlertState'
-        displayDevice:
-          type: string
-        transmitterGeneration:
-          $ref: '#/components/schemas/TransmitterGeneration'
-        transmitterId:
-          type:
-          - string
-          - 'null'
-    AlertName:
-      type: string
-      enum:
-      - unknown
-      - high
-      - low
-      - rise
-      - fall
-      - outOfRange
-      - urgentLow
-      - urgentLowSoon
-      - noReadings
-      - fixedLow
-    DateTime:
-      type: string
-      format: date-time
-      description: ISO 8601 timestamp.
-    TransmitterGeneration:
-      type: string
-      enum:
-      - unknown
-      - g4
-      - g5
-      - g6
-      - g6+
-      - dexcomPro
-      - g7
     AlertState:
       type: string
       enum:
@@ -134,6 +86,54 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AlertRecord'
+    TransmitterGeneration:
+      type: string
+      enum:
+      - unknown
+      - g4
+      - g5
+      - g6
+      - g6+
+      - dexcomPro
+      - g7
+    DateTime:
+      type: string
+      format: date-time
+      description: ISO 8601 timestamp.
+    AlertName:
+      type: string
+      enum:
+      - unknown
+      - high
+      - low
+      - rise
+      - fall
+      - outOfRange
+      - urgentLow
+      - urgentLowSoon
+      - noReadings
+      - fixedLow
+    AlertRecord:
+      type: object
+      properties:
+        recordId:
+          type: string
+        systemTime:
+          $ref: '#/components/schemas/DateTime'
+        displayTime:
+          $ref: '#/components/schemas/DateTime'
+        alertName:
+          $ref: '#/components/schemas/AlertName'
+        alertState:
+          $ref: '#/components/schemas/AlertState'
+        displayDevice:
+          type: string
+        transmitterGeneration:
+          $ref: '#/components/schemas/TransmitterGeneration'
+        transmitterId:
+          type:
+          - string
+          - 'null'
   parameters:
     EndDate:
       name: endDate

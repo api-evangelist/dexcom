@@ -84,12 +84,20 @@ components:
         format: date-time
         example: '2026-04-01T00:00:00'
   schemas:
-    GlucoseUnit:
+    TransmitterGeneration:
       type: string
       enum:
       - unknown
-      - mg/dL
-      - mmol/L
+      - g4
+      - g5
+      - g6
+      - g6+
+      - dexcomPro
+      - g7
+    DateTime:
+      type: string
+      format: date-time
+      description: ISO 8601 timestamp.
     CalibrationRecord:
       type: object
       properties:
@@ -115,20 +123,12 @@ components:
           format: int64
         transmitterGeneration:
           $ref: '#/components/schemas/TransmitterGeneration'
-    DateTime:
-      type: string
-      format: date-time
-      description: ISO 8601 timestamp.
-    TransmitterGeneration:
+    GlucoseUnit:
       type: string
       enum:
       - unknown
-      - g4
-      - g5
-      - g6
-      - g6+
-      - dexcomPro
-      - g7
+      - mg/dL
+      - mmol/L
     CalibrationsResponse:
       type: object
       properties:

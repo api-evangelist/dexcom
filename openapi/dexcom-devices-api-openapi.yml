@@ -89,87 +89,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    AlertSetting:
-      type: object
-      properties:
-        alertName:
-          $ref: '#/components/schemas/AlertName'
-        value:
-          type: number
-        unit:
-          $ref: '#/components/schemas/GlucoseUnit'
-        snooze:
-          type: integer
-          description: Snooze interval in minutes.
-        enabled:
-          type: boolean
-    GlucoseUnit:
-      type: string
-      enum:
-      - unknown
-      - mg/dL
-      - mmol/L
-    AlertSchedule:
-      type: object
-      properties:
-        alertScheduleSettings:
-          type: object
-          properties:
-            alertScheduleName:
-              type: string
-            isEnabled:
-              type: boolean
-            isDefaultSchedule:
-              type: boolean
-            startTime:
-              type: string
-              description: Local time of day in `HH:mm` format.
-            endTime:
-              type: string
-              description: Local time of day in `HH:mm` format.
-            daysOfWeek:
-              type: array
-              items:
-                type: string
-                enum:
-                - sunday
-                - monday
-                - tuesday
-                - wednesday
-                - thursday
-                - friday
-                - saturday
-        alertSettings:
-          type: array
-          items:
-            $ref: '#/components/schemas/AlertSetting'
-    AlertName:
-      type: string
-      enum:
-      - unknown
-      - high
-      - low
-      - rise
-      - fall
-      - outOfRange
-      - urgentLow
-      - urgentLowSoon
-      - noReadings
-      - fixedLow
-    DateTime:
-      type: string
-      format: date-time
-      description: ISO 8601 timestamp.
-    TransmitterGeneration:
-      type: string
-      enum:
-      - unknown
-      - g4
-      - g5
-      - g6
-      - g6+
-      - dexcomPro
-      - g7
     DevicesResponse:
       type: object
       properties:
@@ -207,6 +126,87 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AlertSchedule'
+    DateTime:
+      type: string
+      format: date-time
+      description: ISO 8601 timestamp.
+    TransmitterGeneration:
+      type: string
+      enum:
+      - unknown
+      - g4
+      - g5
+      - g6
+      - g6+
+      - dexcomPro
+      - g7
+    AlertName:
+      type: string
+      enum:
+      - unknown
+      - high
+      - low
+      - rise
+      - fall
+      - outOfRange
+      - urgentLow
+      - urgentLowSoon
+      - noReadings
+      - fixedLow
+    GlucoseUnit:
+      type: string
+      enum:
+      - unknown
+      - mg/dL
+      - mmol/L
+    AlertSetting:
+      type: object
+      properties:
+        alertName:
+          $ref: '#/components/schemas/AlertName'
+        value:
+          type: number
+        unit:
+          $ref: '#/components/schemas/GlucoseUnit'
+        snooze:
+          type: integer
+          description: Snooze interval in minutes.
+        enabled:
+          type: boolean
+    AlertSchedule:
+      type: object
+      properties:
+        alertScheduleSettings:
+          type: object
+          properties:
+            alertScheduleName:
+              type: string
+            isEnabled:
+              type: boolean
+            isDefaultSchedule:
+              type: boolean
+            startTime:
+              type: string
+              description: Local time of day in `HH:mm` format.
+            endTime:
+              type: string
+              description: Local time of day in `HH:mm` format.
+            daysOfWeek:
+              type: array
+              items:
+                type: string
+                enum:
+                - sunday
+                - monday
+                - tuesday
+                - wednesday
+                - thursday
+                - friday
+                - saturday
+        alertSettings:
+          type: array
+          items:
+            $ref: '#/components/schemas/AlertSetting'
   securitySchemes:
     OAuth2:
       type: oauth2

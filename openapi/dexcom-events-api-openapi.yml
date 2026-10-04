@@ -77,7 +77,40 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    EndDate:
+      name: endDate
+      in: query
+      required: true
+      description: ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`.
+      schema:
+        type: string
+        format: date-time
+        example: '2026-04-30T23:59:59'
+    StartDate:
+      name: startDate
+      in: query
+      required: true
+      description: ISO 8601 timestamp for the start of the query window (UTC, no offset).
+      schema:
+        type: string
+        format: date-time
+        example: '2026-04-01T00:00:00'
   schemas:
+    TransmitterGeneration:
+      type: string
+      enum:
+      - unknown
+      - g4
+      - g5
+      - g6
+      - g6+
+      - dexcomPro
+      - g7
+    DateTime:
+      type: string
+      format: date-time
+      description: ISO 8601 timestamp.
     EventStatus:
       type: string
       enum:
@@ -136,20 +169,6 @@ components:
           type:
           - string
           - 'null'
-    DateTime:
-      type: string
-      format: date-time
-      description: ISO 8601 timestamp.
-    TransmitterGeneration:
-      type: string
-      enum:
-      - unknown
-      - g4
-      - g5
-      - g6
-      - g6+
-      - dexcomPro
-      - g7
     EventType:
       type: string
       enum:
@@ -160,25 +179,6 @@ components:
       - health
       - bloodGlucose
       - notes
-  parameters:
-    EndDate:
-      name: endDate
-      in: query
-      required: true
-      description: ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`.
-      schema:
-        type: string
-        format: date-time
-        example: '2026-04-30T23:59:59'
-    StartDate:
-      name: startDate
-      in: query
-      required: true
-      description: ISO 8601 timestamp for the start of the query window (UTC, no offset).
-      schema:
-        type: string
-        format: date-time
-        example: '2026-04-01T00:00:00'
   securitySchemes:
     OAuth2:
       type: oauth2
