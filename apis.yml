@@ -1907,6 +1907,12 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/dexcom/refs/heads/main/examples/dexcom-api-date-time-example.json
 common:
+  - type: Plans
+    url: plans/dexcom-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/dexcom-rate-limits.yml
+  - type: FinOps
+    url: finops/dexcom-finops.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/dexcom/overview
   - type: AgenticAccess
