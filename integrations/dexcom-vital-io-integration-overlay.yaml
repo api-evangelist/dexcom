@@ -1,0 +1,19 @@
+# DERIVED by build-integration-preconfigs.py (roadmap#949). Overlay on the PARTNER's contract:
+# where vital-io's enum names dexcom, and what that value is.
+overlay: 1.0.0
+info:
+  title: dexcom as a processor-connection in vital-io's contract
+  version: 1.0.0
+extends: https://raw.githubusercontent.com/api-evangelist/vital-io/refs/heads/main/openapi/vital-io-summary-api-openapi.yml
+actions:
+- target: $.components.schemas.Providers
+  update:
+    x-apievangelist-integration:
+      values:
+        dexcom:
+          provider: dexcom
+          relationship: processor-connection
+          evidence: https://github.com/api-evangelist/vital-io/blob/main/openapi/vital-io-summary-api-openapi.yml
+      method: derived
+      generated: '2026-10-12'
+      generator: build-integration-preconfigs.py
