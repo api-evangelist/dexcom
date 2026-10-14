@@ -14,6 +14,26 @@ edges:
     property: components.schemas.Providers
     detected_by: detect-payment-method-edges.py
     detected: '2026-10-12'
+- partner_name: eClinicalWorks (own)
+  partner: eclinicalworks
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.eclinicalworks.com/about-us/partners/partners-health-fitness-trackers/
+  mirror_of: eclinicalworks/integrations/eclinicalworks-integration-edges.yml
+  apps:
+  - Dexcom
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: health fitness trackers
 generated: '2026-10-12'
 method: searched
-checked: []
+checked:
+- eclinicalworks/integrations/eclinicalworks-integration-edges.yml
+source:
+- eclinicalworks/integrations/eclinicalworks-integration-edges.yml
