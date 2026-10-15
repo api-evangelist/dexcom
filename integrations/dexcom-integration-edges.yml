@@ -31,9 +31,65 @@ edges:
   detected: '2026-10-14'
   detected_by: mirror-platform-listings.py
   category: health fitness trackers
+- partner_name: Terra
+  partner: terra-api
+  partner_match: aggregator
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://docs.tryterra.co/reference/health-and-fitness-api/supported-integrations
+  category: health data source
+  contract_reference:
+    list: Terra supported integrations (docs.tryterra.co)
+    spec_file: null
+    listed_name: Dexcom
+    listed_id: DEXCOM
+    listed_names:
+    - Dexcom
+    matched_domain: dexcom.com
+    matched_by: domain
+    signal_note: delivery mode / access model / table section are context, never counted
+    detected_by: sweep-health-wellness.py
+    detected: '2026-10-15'
+    delivery_mode:
+    - Periodically fetched
+    developer_access:
+    - Required
+  detected_by: sweep-health-wellness.py
+  first_seen: '2026-10-15'
+- partner_name: Junction (Vital)
+  partner: vital-io
+  partner_match: aggregator
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: system-coverage
+  evidence: https://docs.junction.com/wearables/providers/introduction
+  category: health data source
+  contract_reference:
+    list: Junction (Vital) supported providers (docs.junction.com)
+    spec_file: null
+    listed_name: Dexcom
+    listed_id: dexcom_v3
+    listed_names:
+    - Dexcom
+    - Dexcom (G6 and older)
+    matched_domain: dexcom.com
+    matched_by: domain
+    signal_note: delivery mode / access model / table section are context, never counted
+    detected_by: sweep-health-wellness.py
+    detected: '2026-10-15'
+    table_section:
+    - oauth
+    - password
+  detected_by: sweep-health-wellness.py
+  first_seen: '2026-10-15'
 generated: '2026-10-12'
 method: searched
 checked:
 - eclinicalworks/integrations/eclinicalworks-integration-edges.yml
+- https://docs.junction.com/wearables/providers/introduction
+- https://docs.tryterra.co/reference/health-and-fitness-api/supported-integrations
 source:
 - eclinicalworks/integrations/eclinicalworks-integration-edges.yml

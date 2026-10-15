@@ -34,3 +34,59 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: dexcom-terra
+  label: Terra
+  partner: terra-api
+  partner_name: Terra
+  category: health data source
+  type: coverage
+  channel: partner-built
+  evidence: https://docs.tryterra.co/reference/health-and-fitness-api/supported-integrations
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    list: Terra supported integrations (docs.tryterra.co)
+    spec_file: null
+    listed_name: Dexcom
+    listed_id: DEXCOM
+    listed_names:
+    - Dexcom
+    matched_domain: dexcom.com
+    matched_by: domain
+    signal_note: delivery mode / access model / table section are context, never counted
+    detected_by: sweep-health-wellness.py
+    detected: '2026-10-15'
+    delivery_mode:
+    - Periodically fetched
+    developer_access:
+    - Required
+  status: not-a-workflow
+  arazzo: null
+- slug: dexcom-junction-vital
+  label: Junction (Vital)
+  partner: vital-io
+  partner_name: Junction (Vital)
+  category: health data source
+  type: coverage
+  channel: partner-built
+  evidence: https://docs.junction.com/wearables/providers/introduction
+  source: edge
+  relationship: system-coverage
+  contract_reference:
+    list: Junction (Vital) supported providers (docs.junction.com)
+    spec_file: null
+    listed_name: Dexcom
+    listed_id: dexcom_v3
+    listed_names:
+    - Dexcom
+    - Dexcom (G6 and older)
+    matched_domain: dexcom.com
+    matched_by: domain
+    signal_note: delivery mode / access model / table section are context, never counted
+    detected_by: sweep-health-wellness.py
+    detected: '2026-10-15'
+    table_section:
+    - oauth
+    - password
+  status: not-a-workflow
+  arazzo: null
