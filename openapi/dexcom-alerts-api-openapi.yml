@@ -64,6 +64,16 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    TransmitterGeneration:
+      type: string
+      enum:
+      - unknown
+      - g4
+      - g5
+      - g6
+      - g6+
+      - dexcomPro
+      - g7
     AlertState:
       type: string
       enum:
@@ -71,6 +81,19 @@ components:
       - inactive
       - activeSnoozed
       - activeAlarming
+    AlertName:
+      type: string
+      enum:
+      - unknown
+      - high
+      - low
+      - rise
+      - fall
+      - outOfRange
+      - urgentLow
+      - urgentLowSoon
+      - noReadings
+      - fixedLow
     AlertsResponse:
       type: object
       properties:
@@ -86,33 +109,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AlertRecord'
-    TransmitterGeneration:
-      type: string
-      enum:
-      - unknown
-      - g4
-      - g5
-      - g6
-      - g6+
-      - dexcomPro
-      - g7
     DateTime:
       type: string
       format: date-time
       description: ISO 8601 timestamp.
-    AlertName:
-      type: string
-      enum:
-      - unknown
-      - high
-      - low
-      - rise
-      - fall
-      - outOfRange
-      - urgentLow
-      - urgentLowSoon
-      - noReadings
-      - fixedLow
     AlertRecord:
       type: object
       properties:
@@ -135,15 +135,6 @@ components:
           - string
           - 'null'
   parameters:
-    EndDate:
-      name: endDate
-      in: query
-      required: true
-      description: ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`.
-      schema:
-        type: string
-        format: date-time
-        example: '2026-04-30T23:59:59'
     StartDate:
       name: startDate
       in: query
@@ -153,6 +144,15 @@ components:
         type: string
         format: date-time
         example: '2026-04-01T00:00:00'
+    EndDate:
+      name: endDate
+      in: query
+      required: true
+      description: ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`.
+      schema:
+        type: string
+        format: date-time
+        example: '2026-04-30T23:59:59'
   securitySchemes:
     OAuth2:
       type: oauth2

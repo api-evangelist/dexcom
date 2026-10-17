@@ -64,26 +64,22 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    EndDate:
-      name: endDate
-      in: query
-      required: true
-      description: ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`.
-      schema:
-        type: string
-        format: date-time
-        example: '2026-04-30T23:59:59'
-    StartDate:
-      name: startDate
-      in: query
-      required: true
-      description: ISO 8601 timestamp for the start of the query window (UTC, no offset).
-      schema:
-        type: string
-        format: date-time
-        example: '2026-04-01T00:00:00'
   schemas:
+    CalibrationsResponse:
+      type: object
+      properties:
+        recordType:
+          type: string
+          example: calibration
+        recordVersion:
+          type: string
+          example: '3.0'
+        userId:
+          type: string
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/CalibrationRecord'
     TransmitterGeneration:
       type: string
       enum:
@@ -94,10 +90,12 @@ components:
       - g6+
       - dexcomPro
       - g7
-    DateTime:
+    GlucoseUnit:
       type: string
-      format: date-time
-      description: ISO 8601 timestamp.
+      enum:
+      - unknown
+      - mg/dL
+      - mmol/L
     CalibrationRecord:
       type: object
       properties:
@@ -123,27 +121,29 @@ components:
           format: int64
         transmitterGeneration:
           $ref: '#/components/schemas/TransmitterGeneration'
-    GlucoseUnit:
+    DateTime:
       type: string
-      enum:
-      - unknown
-      - mg/dL
-      - mmol/L
-    CalibrationsResponse:
-      type: object
-      properties:
-        recordType:
-          type: string
-          example: calibration
-        recordVersion:
-          type: string
-          example: '3.0'
-        userId:
-          type: string
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/CalibrationRecord'
+      format: date-time
+      description: ISO 8601 timestamp.
+  parameters:
+    StartDate:
+      name: startDate
+      in: query
+      required: true
+      description: ISO 8601 timestamp for the start of the query window (UTC, no offset).
+      schema:
+        type: string
+        format: date-time
+        example: '2026-04-01T00:00:00'
+    EndDate:
+      name: endDate
+      in: query
+      required: true
+      description: ISO 8601 timestamp for the end of the query window (UTC, no offset). Must be no more than 30 days after `startDate`.
+      schema:
+        type: string
+        format: date-time
+        example: '2026-04-30T23:59:59'
   securitySchemes:
     OAuth2:
       type: oauth2

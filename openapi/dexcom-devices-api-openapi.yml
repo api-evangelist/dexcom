@@ -89,21 +89,22 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DevicesResponse:
-      type: object
-      properties:
-        recordType:
-          type: string
-          example: device
-        recordVersion:
-          type: string
-          example: '3.0'
-        userId:
-          type: string
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/DeviceRecord'
+    TransmitterGeneration:
+      type: string
+      enum:
+      - unknown
+      - g4
+      - g5
+      - g6
+      - g6+
+      - dexcomPro
+      - g7
+    GlucoseUnit:
+      type: string
+      enum:
+      - unknown
+      - mg/dL
+      - mmol/L
     DeviceRecord:
       type: object
       properties:
@@ -126,20 +127,21 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AlertSchedule'
-    DateTime:
-      type: string
-      format: date-time
-      description: ISO 8601 timestamp.
-    TransmitterGeneration:
-      type: string
-      enum:
-      - unknown
-      - g4
-      - g5
-      - g6
-      - g6+
-      - dexcomPro
-      - g7
+    DevicesResponse:
+      type: object
+      properties:
+        recordType:
+          type: string
+          example: device
+        recordVersion:
+          type: string
+          example: '3.0'
+        userId:
+          type: string
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceRecord'
     AlertName:
       type: string
       enum:
@@ -153,12 +155,6 @@ components:
       - urgentLowSoon
       - noReadings
       - fixedLow
-    GlucoseUnit:
-      type: string
-      enum:
-      - unknown
-      - mg/dL
-      - mmol/L
     AlertSetting:
       type: object
       properties:
@@ -207,6 +203,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AlertSetting'
+    DateTime:
+      type: string
+      format: date-time
+      description: ISO 8601 timestamp.
   securitySchemes:
     OAuth2:
       type: oauth2
